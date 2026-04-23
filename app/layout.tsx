@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nodeway.com.br'),
+  metadataBase: new URL('https://nodewayagency.com.br'),
   title: 'Nodeway Agency - Soluções Digitais Sob Medida',
   description: 'Criamos sistemas, plataformas e experiências digitais personalizadas para empresas que buscam escala e performance. Especialistas em Next.js, automação de processos e BI.',
   keywords: ['agência de desenvolvimento web', 'sistemas sob medida', 'automação de processos', 'landing pages de alta conversão', 'Nodeway Agency', 'desenvolvimento next.js', 'inteligência de dados'],
@@ -38,27 +38,27 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://nodeway.com.br', // Ajuste para o domínio final quando disponível
+    canonical: 'https://nodewayagency.com.br',
   },
   manifest: '/manifest.json',
   themeColor: '#0A1628',
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',
-    apple: '/icon.png',
+    apple: '/apple-icon.png',
   },
   openGraph: {
     title: 'Nodeway Agency - Soluções Digitais Sob Medida',
     description: 'Criamos sistemas, plataformas e experiências digitais personalizadas para empresas que buscam escala e performance.',
-    url: 'https://nodeway.com.br',
+    url: 'https://nodewayagency.com.br',
     siteName: 'Nodeway Agency',
     locale: 'pt_BR',
     type: 'website',
     images: [
       {
-        url: '/Nodeway_white.png',
-        width: 1200,
-        height: 630,
+        url: '/icon.png',
+        width: 512,
+        height: 512,
         alt: 'Nodeway Agency - Soluções Digitais',
       },
     ],
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nodeway Agency - Soluções Digitais Sob Medida',
     description: 'Criamos sistemas, plataformas e experiências digitais personalizadas para empresas que buscam escala e performance.',
-    images: ['/Nodeway_white.png'],
+    images: ['/icon.png'],
   }
 }
 
@@ -75,9 +75,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Nodeway Agency",
-  "image": "https://nodeway.com.br/icon.png",
-  "@id": "https://nodeway.com.br",
-  "url": "https://nodeway.com.br",
+  "image": "https://nodewayagency.com.br/icon.png",
+  "@id": "https://nodewayagency.com.br",
+  "url": "https://nodewayagency.com.br",
   "telephone": "+5545999403598",
   "address": {
     "@type": "PostalAddress",
@@ -108,8 +108,8 @@ const jsonLd = {
   "provider": {
     "@type": "Organization",
     "name": "Nodeway Agency",
-    "url": "https://nodeway.com.br",
-    "logo": "https://nodeway.com.br/icon.png"
+    "url": "https://nodewayagency.com.br",
+    "logo": "https://nodewayagency.com.br/icon.png"
   }
 }
 export default function RootLayout({

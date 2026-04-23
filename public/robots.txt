@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://nodeway.com.br/sitemap.xml

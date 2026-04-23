@@ -14,6 +14,8 @@ const footerLinks = {
     { name: "Sobre nós", href: "#about" },
     { name: "Como trabalhamos", href: "#how-it-works" },
     { name: "Contato", href: "#contact" },
+    { name: "Termos de Uso", href: "/termos" },
+    { name: "Privacidade", href: "/privacidade" },
   ],
   Contato: [
     { name: "nodewayagency@gmail.com", href: "mailto:nodewayagency@gmail.com" },
