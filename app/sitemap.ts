@@ -1,15 +1,28 @@
 import { MetadataRoute } from 'next'
+import { blogPosts, cases } from '@/lib/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nodewayagency.com.br'
   const lastModified = new Date()
 
-  return [
+  const staticRoutes = [
     {
       url: baseUrl,
       lastModified: lastModified,
       changeFrequency: 'monthly',
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/cases`,
+      lastModified: lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/termos`,
@@ -23,29 +36,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
-    {
-      url: `${baseUrl}/#features`,
-      lastModified: lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#how-it-works`,
-      lastModified: lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-  ]
+  ] as MetadataRoute.Sitemap;
+
+  const blogRoutes = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  })) as MetadataRoute.Sitemap;
+
+  const caseRoutes = cases.map((caseStudy) => ({
+    url: `${baseUrl}/cases/${caseStudy.slug}`,
+    lastModified: lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  })) as MetadataRoute.Sitemap;
+
+  return [...staticRoutes, ...blogRoutes, ...caseRoutes]
 }

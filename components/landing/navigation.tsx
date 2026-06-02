@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Serviços", href: "#features" },
-  { name: "Como trabalhamos", href: "#how-it-works" },
-  { name: "Sobre", href: "#about" },
-  { name: "Contato", href: "#contact" },
+  { name: "Serviços", href: "/#features" },
+  { name: "Casos de Sucesso", href: "/cases" },
+  { name: "Blog", href: "/blog" },
+  { name: "Como trabalhamos", href: "/#how-it-works" },
+  { name: "Sobre", href: "/#about" },
+  { name: "Contato", href: "/#contact" },
 ];
 
 export function Navigation() {
@@ -54,7 +56,7 @@ export function Navigation() {
             }`}
           >
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group shrink-0">
+            <a href="/" className="flex items-center gap-3 group shrink-0">
               <div className="relative flex items-center gap-2.5">
                 <Image
                   src="/icon.png"

@@ -5,15 +5,17 @@ import { AnimatedWave } from "./animated-wave";
 
 const footerLinks = {
   Serviços: [
-    { name: "Desenvolvimento", href: "#features" },
-    { name: "Landing Pages", href: "#features" },
-    { name: "Automação", href: "#features" },
-    { name: "Dados & BI", href: "#features" },
+    { name: "Desenvolvimento", href: "/#features" },
+    { name: "Landing Pages", href: "/#features" },
+    { name: "Automação", href: "/#features" },
+    { name: "Dados & BI", href: "/#features" },
   ],
   Empresa: [
-    { name: "Sobre nós", href: "#about" },
-    { name: "Como trabalhamos", href: "#how-it-works" },
-    { name: "Contato", href: "#contact" },
+    { name: "Casos de Sucesso", href: "/cases" },
+    { name: "Blog", href: "/blog" },
+    { name: "Sobre nós", href: "/#about" },
+    { name: "Como trabalhamos", href: "/#how-it-works" },
+    { name: "Contato", href: "/#contact" },
     { name: "Termos de Uso", href: "/termos" },
     { name: "Privacidade", href: "/privacidade" },
   ],
@@ -41,7 +43,7 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2">
-              <a href="#" className="inline-flex items-center gap-2 mb-6">
+              <a href="/" className="inline-flex items-center gap-2 mb-6">
                 <span className="text-2xl font-display brand-gradient">Nodeway</span>
                 <span className="text-xs text-muted-foreground font-mono mt-1">AGENCY</span>
               </a>
