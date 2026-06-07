@@ -71,6 +71,11 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
               {caseData.category}
             </span>
             <span className="text-muted-foreground text-sm font-medium">Cliente: {caseData.client}</span>
+            {caseData.city && caseData.state && (
+              <span className="text-muted-foreground text-sm font-medium">
+                {caseData.city}, {caseData.state}
+              </span>
+            )}
           </div>
           
           <h1 className="text-4xl lg:text-6xl font-display tracking-tight text-foreground mb-8">

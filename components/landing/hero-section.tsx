@@ -214,13 +214,7 @@ export function HeroSection() {
         <div className="w-full h-px brand-gradient-bg opacity-20 mb-5" />
 
         <div className="overflow-hidden w-full pb-8">
-          <div
-            className="flex gap-0 whitespace-nowrap"
-            style={{
-              animation: "hero-marquee 28s linear infinite",
-              width: "max-content",
-            }}
-          >
+          <div className="flex gap-0 whitespace-nowrap hero-marquee">
             {[...Array(3)].map((_, setIdx) => (
               <div key={setIdx} className="flex">
                 {stats.map((stat, i) => (

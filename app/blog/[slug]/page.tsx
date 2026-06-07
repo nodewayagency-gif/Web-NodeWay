@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
+import { WHATSAPP_URL_SHORT } from '@/lib/contact';
 import { blogPosts } from '@/lib/data';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
@@ -115,7 +117,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
            <div className="relative z-10">
               <h3 className="text-2xl font-display text-foreground mb-4">Gostou da estratégia?</h3>
               <p className="text-muted-foreground mb-8">Nós podemos aplicar isso diretamente no seu negócio. Fale com nossos especialistas.</p>
-              <a href="https://wa.me/5545999403598" className="inline-flex items-center justify-center brand-gradient-bg text-white font-medium px-8 py-4 rounded-full hover:opacity-90 transition-opacity">
+              <a
+                href={WHATSAPP_URL_SHORT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 brand-gradient-bg text-white font-medium px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
                 Agendar Consultoria Gratuita
               </a>
            </div>

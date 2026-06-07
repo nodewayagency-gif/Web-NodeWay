@@ -27,8 +27,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://nodewayagency.com.br'),
   title: 'Nodeway Agency - Soluções Digitais Sob Medida',
-  description: 'Criamos sistemas, plataformas e experiências digitais personalizadas para empresas que buscam escala e performance. Especialistas em Next.js, automação de processos e BI.',
-  keywords: ['agência de desenvolvimento web', 'sistemas sob medida', 'automação de processos', 'landing pages de alta conversão', 'Nodeway Agency', 'desenvolvimento next.js', 'inteligência de dados'],
+  description: 'Nodeway Agency — desenvolvimento web, sistemas sob medida, e-commerce e BI. Sede em Cascavel, clientes em Blumenau, Guanambi, Toledo. Em expansão para Curitiba e todo o Brasil.',
+  keywords: [
+    'agência de desenvolvimento web',
+    'Nodeway Agency',
+    'desenvolvimento Cascavel',
+    'desenvolvimento Blumenau',
+    'desenvolvimento Guanambi',
+    'sistemas sob medida',
+    'e-commerce',
+    'landing pages',
+    'business intelligence',
+    'automação de processos',
+    'desenvolvimento next.js',
+  ],
   authors: [{ name: 'Nodeway Agency' }],
   robots: {
     index: true,

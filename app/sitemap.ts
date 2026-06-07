@@ -1,56 +1,98 @@
 import { MetadataRoute } from 'next'
 import { blogPosts, cases } from '@/lib/data'
+import { servicePillars, cityHubs } from '@/lib/seo-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nodewayagency.com.br'
   const lastModified = new Date()
 
-  const staticRoutes = [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: lastModified,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
+      url: `${baseUrl}/servicos`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/atendimento`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/blog`,
-      lastModified: lastModified,
+      lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/cases`,
-      lastModified: lastModified,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/termos`,
-      lastModified: lastModified,
+      lastModified,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/privacidade`,
-      lastModified: lastModified,
+      lastModified,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
-  ] as MetadataRoute.Sitemap;
+  ]
 
-  const blogRoutes = blogPosts.map((post) => ({
+  const serviceRoutes: MetadataRoute.Sitemap = servicePillars.map((pillar) => ({
+    url: `${baseUrl}/servicos/${pillar.slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }))
+
+  const cityPriorities: Record<string, number> = {
+    cascavel: 0.9,
+    blumenau: 0.88,
+    guanambi: 0.88,
+    toledo: 0.88,
+    curitiba: 0.85,
+    brasil: 0.8,
+  }
+
+  const cityRoutes: MetadataRoute.Sitemap = cityHubs.map((city) => ({
+    url: `${baseUrl}/atendimento/${city.slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: cityPriorities[city.slug] ?? 0.85,
+  }))
+
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: lastModified,
-    changeFrequency: 'monthly',
+    lastModified,
+    changeFrequency: 'monthly' as const,
     priority: 0.8,
-  })) as MetadataRoute.Sitemap;
+  }))
 
-  const caseRoutes = cases.map((caseStudy) => ({
+  const caseRoutes: MetadataRoute.Sitemap = cases.map((caseStudy) => ({
     url: `${baseUrl}/cases/${caseStudy.slug}`,
-    lastModified: lastModified,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  })) as MetadataRoute.Sitemap;
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }))
 
-  return [...staticRoutes, ...blogRoutes, ...caseRoutes]
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...cityRoutes,
+    ...blogRoutes,
+    ...caseRoutes,
+  ]
 }

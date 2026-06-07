@@ -1,27 +1,55 @@
-import { Navigation } from "@/components/landing/navigation";
-import { HeroSection } from "@/components/landing/hero-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { HowItWorksSection } from "@/components/landing/how-it-works-section";
-import { InfrastructureSection } from "@/components/landing/infrastructure-section";
-import { MetricsSection } from "@/components/landing/metrics-section";
-import { IntegrationsSection } from "@/components/landing/integrations-section";
-import { SecuritySection } from "@/components/landing/security-section";
-import { DevelopersSection } from "@/components/landing/developers-section";
-import { TestimonialsSection } from "@/components/landing/testimonials-section";
-import { PricingSection } from "@/components/landing/pricing-section";
-import { CtaSection } from "@/components/landing/cta-section";
-import { FooterSection } from "@/components/landing/footer-section";
+import dynamic from 'next/dynamic';
+import { Metadata } from 'next';
+import { Navigation } from '@/components/landing/navigation';
+import { HeroSection } from '@/components/landing/hero-section';
+import { SeoIntroSection } from '@/components/landing/seo-intro-section';
+import { FeaturesSection } from '@/components/landing/features-section';
+
+const HowItWorksSection = dynamic(() =>
+  import('@/components/landing/how-it-works-section').then((m) => m.HowItWorksSection)
+);
+const InfrastructureSection = dynamic(() =>
+  import('@/components/landing/infrastructure-section').then((m) => m.InfrastructureSection)
+);
+const MetricsSection = dynamic(() =>
+  import('@/components/landing/metrics-section').then((m) => m.MetricsSection)
+);
+const SecuritySection = dynamic(() =>
+  import('@/components/landing/security-section').then((m) => m.SecuritySection)
+);
+const DevelopersSection = dynamic(() =>
+  import('@/components/landing/developers-section').then((m) => m.DevelopersSection)
+);
+const TestimonialsSection = dynamic(() =>
+  import('@/components/landing/testimonials-section').then((m) => m.TestimonialsSection)
+);
+const PricingSection = dynamic(() =>
+  import('@/components/landing/pricing-section').then((m) => m.PricingSection)
+);
+const CtaSection = dynamic(() =>
+  import('@/components/landing/cta-section').then((m) => m.CtaSection)
+);
+const FooterSection = dynamic(() =>
+  import('@/components/landing/footer-section').then((m) => m.FooterSection)
+);
+
+export const metadata: Metadata = {
+  title: 'Nodeway | Desenvolvimento Web, Sistemas e BI',
+  description:
+    'Nodeway Agency — desenvolvimento web, sistemas sob medida, e-commerce e BI. Sede em Cascavel, clientes em Blumenau, Guanambi, Toledo. Em expansão para Curitiba e todo o Brasil.',
+  alternates: { canonical: 'https://nodewayagency.com.br' },
+};
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       <Navigation />
       <HeroSection />
+      <SeoIntroSection />
       <FeaturesSection />
       <HowItWorksSection />
       <InfrastructureSection />
       <MetricsSection />
-      {/* <IntegrationsSection /> */}
       <SecuritySection />
       <DevelopersSection />
       <TestimonialsSection />
