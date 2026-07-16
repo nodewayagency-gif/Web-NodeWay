@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Copy, Check } from "lucide-react";
+import { MAILTO } from "@/lib/site-config";
 
 const solutions = [
   {
@@ -188,7 +189,7 @@ export function DevelopersSection() {
                 Solicitar orçamento
               </a>
               <span className="text-border">|</span>
-              <a href="mailto:nodewayagency@gmail.com" className="text-muted-foreground hover:text-foreground">
+              <a href={MAILTO} className="text-muted-foreground hover:text-foreground">
                 Falar com especialista
               </a>
             </div>

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { siteConfig, WHATSAPP_URL } from "@/lib/site-config";
 
 const navLinks = [
   {
@@ -88,11 +89,11 @@ export function Navigation() {
               isScrolled ? "h-14" : "h-18 sm:h-20"
             }`}
           >
-            <a href="/" className="flex items-center gap-3 group shrink-0">
+            <Link href="/" className="flex items-center gap-3 group shrink-0">
               <div className="relative flex items-center gap-2.5">
                 <Image
                   src="/icon.png"
-                  alt="Nodeway Agency - Desenvolvimento Web e Sistemas"
+                  alt={`${siteConfig.name} - Desenvolvimento Web e Sistemas`}
                   width={isScrolled ? 32 : 40}
                   height={isScrolled ? 32 : 40}
                   className={`object-contain transition-all duration-500 logo-glow ${
@@ -104,27 +105,27 @@ export function Navigation() {
                   <span
                     className={`${isScrolled ? "text-xl" : "text-2xl"} font-display brand-gradient transition-all duration-500`}
                   >
-                    Nodeway
+                    {siteConfig.shortName}
                   </span>
                   <span
                     className={`text-muted-foreground font-mono mt-1 transition-all duration-500 ${isScrolled ? "text-[10px]" : "text-xs"}`}
                   >
-                    AGENCY
+                    {siteConfig.brandSuffix}
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
 
             <div className="hidden lg:flex items-center gap-8 xl:gap-10">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300 relative group"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-px brand-gradient-bg transition-all duration-300 group-hover:w-full" />
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -177,25 +178,25 @@ export function Navigation() {
         <div className="flex flex-col h-full">
           {/* Top bar — logo única + fechar */}
           <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-border/30">
-            <a
+            <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center gap-2.5"
             >
               <Image
                 src="/icon.png"
-                alt="Nodeway Agency"
+                alt={siteConfig.name}
                 width={36}
                 height={36}
                 className="w-9 h-9 object-contain logo-glow"
               />
               <div className="flex items-center gap-1.5">
-                <span className="text-xl font-display brand-gradient">Nodeway</span>
+                <span className="text-xl font-display brand-gradient">{siteConfig.shortName}</span>
                 <span className="text-[10px] text-muted-foreground font-mono mt-0.5">
-                  AGENCY
+                  {siteConfig.brandSuffix}
                 </span>
               </div>
-            </a>
+            </Link>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="p-2 -mr-1 text-foreground rounded-lg hover:bg-card/50 transition-colors"
@@ -212,7 +213,7 @@ export function Navigation() {
 
             <nav className="flex flex-col gap-1" aria-label="Menu principal">
               {navLinks.map((link, i) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -231,7 +232,7 @@ export function Navigation() {
                   <span className="block text-sm text-muted-foreground mt-0.5">
                     {link.description}
                   </span>
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

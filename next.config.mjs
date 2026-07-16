@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // Otimização de imagem do Next ligada (melhor LCP/SEO). Se você fizer deploy
+  // em um host estático sem otimizador, volte para `unoptimized: true`.
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
   },
 }
 

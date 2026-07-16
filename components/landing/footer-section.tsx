@@ -1,9 +1,17 @@
+import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
-import { WHATSAPP_URL_SHORT } from "@/lib/contact";
+import {
+  siteConfig,
+  socialProfiles,
+  WHATSAPP_URL_SHORT,
+  MAILTO,
+} from "@/lib/site-config";
 import { AnimatedWave } from "./animated-wave";
 
-const footerLinks = {
+type FooterLink = { name: string; href: string; icon?: "mail" | "whatsapp" };
+
+const footerLinks: Record<string, FooterLink[]> = {
   Serviços: [
     { name: "Desenvolvimento Web", href: "/servicos/desenvolvimento-web" },
     { name: "Sistemas Sob Medida", href: "/servicos/sistemas-sob-medida" },
@@ -30,18 +38,56 @@ const footerLinks = {
     { name: "Privacidade", href: "/privacidade" },
   ],
   Contato: [
-    { name: "nodewayagency@gmail.com", href: "mailto:nodewayagency@gmail.com", icon: "mail" as const },
-    { name: "(45) 99940-3598", href: WHATSAPP_URL_SHORT, icon: "whatsapp" as const },
+    { name: siteConfig.contact.email, href: MAILTO, icon: "mail" },
+    { name: siteConfig.contact.phoneDisplay, href: WHATSAPP_URL_SHORT, icon: "whatsapp" },
   ],
+};
+
+const networkLabels: Record<string, string> = {
+  instagram: "Instagram",
+  linkedin: "LinkedIn",
+  facebook: "Facebook",
+  youtube: "YouTube",
 };
 
 const socialLinks = [
   { name: "WhatsApp", href: WHATSAPP_URL_SHORT, icon: "whatsapp" as const },
-  { name: "Instagram", href: "#", icon: null },
-  { name: "LinkedIn", href: "#", icon: null },
+  ...socialProfiles.map((p) => ({
+    name: networkLabels[p.network] ?? p.network,
+    href: p.url,
+    icon: null,
+  })),
 ];
 
+/** Renderiza link interno (Link) ou externo (<a>) conforme o href. */
+function FooterEntry({ link }: { link: FooterLink }) {
+  const content = (
+    <>
+      {link.icon === "whatsapp" && <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />}
+      {link.icon === "mail" && <Mail className="w-3.5 h-3.5 shrink-0" />}
+      {link.name}
+    </>
+  );
+  const className =
+    "text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2 break-all";
+
+  if (link.href.startsWith("/")) {
+    return (
+      <Link href={link.href} className={className}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <a href={link.href} className={className} target="_blank" rel="noopener noreferrer">
+      {content}
+    </a>
+  );
+}
+
 export function FooterSection() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="relative border-t border-border">
       <div className="absolute inset-0 h-64 opacity-10 pointer-events-none overflow-hidden">
@@ -53,10 +99,12 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
-              <a href="/" className="inline-flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display brand-gradient">Nodeway</span>
-                <span className="text-xs text-muted-foreground font-mono mt-1">AGENCY</span>
-              </a>
+              <Link href="/" className="inline-flex items-center gap-2 mb-6">
+                <span className="text-2xl font-display brand-gradient">{siteConfig.shortName}</span>
+                <span className="text-xs text-muted-foreground font-mono mt-1">
+                  {siteConfig.brandSuffix}
+                </span>
+              </Link>
 
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
                 Soluções digitais sob medida para negócios que querem crescer de verdade. Sem fórmulas prontas. Sem templates limitados.
@@ -89,18 +137,7 @@ export function FooterSection() {
                 <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2 break-all"
-                      >
-                        {"icon" in link && link.icon === "whatsapp" && (
-                          <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
-                        )}
-                        {"icon" in link && link.icon === "mail" && (
-                          <Mail className="w-3.5 h-3.5 shrink-0" />
-                        )}
-                        {link.name}
-                      </a>
+                      <FooterEntry link={link} />
                     </li>
                   ))}
                 </ul>
@@ -112,7 +149,7 @@ export function FooterSection() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            2025 Nodeway Agency. Todos os direitos reservados.
+            © {year} {siteConfig.name}. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-2">

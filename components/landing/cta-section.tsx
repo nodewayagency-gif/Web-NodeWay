@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
-import { WHATSAPP_URL, WHATSAPP_URL_SHORT } from "@/lib/contact";
+import { siteConfig, WHATSAPP_URL, WHATSAPP_URL_SHORT, MAILTO } from "@/lib/site-config";
 import { AnimatedTetrahedron } from "./animated-tetrahedron";
 
 export function CtaSection() {
@@ -35,8 +35,8 @@ export function CtaSection() {
           }`}
         >
           <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#00C2CB_0%,transparent_50%)]" />
-            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,#7ED957_0%,transparent_50%)]" />
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,var(--brand-cyan)_0%,transparent_50%)]" />
+            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,var(--brand-green)_0%,transparent_50%)]" />
           </div>
 
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
@@ -75,7 +75,7 @@ export function CtaSection() {
                   </a>
 
                   <a
-                    href="mailto:nodewayagency@gmail.com"
+                    href={MAILTO}
                     className="inline-flex items-center justify-center gap-3 rounded-2xl h-14 px-7 border border-border bg-background/50 text-foreground font-medium hover:bg-card/80 hover:border-primary/30 transition-all"
                   >
                     <Mail className="w-5 h-5 text-muted-foreground shrink-0" />
@@ -117,7 +117,7 @@ export function CtaSection() {
               </a>
 
               <a
-                href="mailto:nodewayagency@gmail.com"
+                href={MAILTO}
                 className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-background/40 p-5 hover:border-primary/40 hover:bg-card/50 transition-all"
               >
                 <div className="flex items-center justify-center w-11 h-11 rounded-xl border border-border bg-card shrink-0">
@@ -132,7 +132,7 @@ export function CtaSection() {
                     Envie detalhes do projeto para análise da nossa equipe.
                   </p>
                   <span className="text-sm font-medium text-foreground break-all group-hover:text-primary transition-colors">
-                    nodewayagency@gmail.com
+                    {siteConfig.contact.email}
                   </span>
                 </div>
               </a>

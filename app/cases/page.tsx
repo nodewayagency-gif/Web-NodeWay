@@ -2,12 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { cases } from '@/lib/data';
+import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 
 export const metadata: Metadata = {
-  title: 'Casos de Sucesso | Nodeway Agency',
+  title: `Casos de Sucesso | ${siteConfig.name}`,
   description: 'Veja como transformamos negócios com desenvolvimento sob medida, automação e dados.',
+  alternates: { canonical: absoluteUrl('/cases') },
 };
 
 export default function CasesPage() {
@@ -40,7 +42,7 @@ export default function CasesPage() {
               
               <div className="flex-1 z-10">
                 <span className="text-xs font-mono text-primary mb-4 block uppercase tracking-wider">{c.category}</span>
-                <h3 className="text-2xl font-display text-foreground mb-3">{c.client}</h3>
+                <h2 className="text-2xl font-display text-foreground mb-3">{c.client}</h2>
                 <p className="text-muted-foreground mb-6 line-clamp-3">{c.description}</p>
               </div>
               

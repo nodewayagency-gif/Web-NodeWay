@@ -1,9 +1,11 @@
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
+import { siteConfig, absoluteUrl } from "@/lib/site-config";
 
 export const metadata = {
-  title: 'Termos de Uso - Nodeway Agency',
-  description: 'Leia os termos de uso e condições para contratação dos serviços da Nodeway Agency.',
+  title: `Termos de Uso - ${siteConfig.name}`,
+  description: `Leia os termos de uso e condições para contratação dos serviços da ${siteConfig.name}.`,
+  alternates: { canonical: absoluteUrl('/termos') },
 };
 
 export default function TermsPage() {

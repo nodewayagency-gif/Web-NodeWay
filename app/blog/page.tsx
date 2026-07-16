@@ -2,12 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import { blogPosts } from '@/lib/data';
+import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 
 export const metadata: Metadata = {
-  title: 'Blog | Nodeway Agency',
+  title: `Blog | ${siteConfig.name}`,
   description: 'Artigos, estratégias e insights sobre desenvolvimento de software, tecnologia e conversão.',
+  alternates: { canonical: absoluteUrl('/blog') },
 };
 
 export default function BlogPage() {

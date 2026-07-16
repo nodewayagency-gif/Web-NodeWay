@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Check } from "lucide-react";
+import { MAILTO } from "@/lib/site-config";
 
 const packages = [
   {
@@ -48,7 +49,7 @@ const packages = [
       "Suporte continuado",
     ],
     cta: "Falar com especialista",
-    href: "mailto:nodewayagency@gmail.com",
+    href: MAILTO,
     highlight: false,
   },
 ];

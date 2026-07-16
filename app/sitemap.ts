@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
 import { blogPosts, cases } from '@/lib/data'
 import { servicePillars, cityHubs } from '@/lib/seo-data'
+import { siteConfig } from '@/lib/site-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://nodewayagency.com.br'
+  const baseUrl = siteConfig.url
   const lastModified = new Date()
 
   const staticRoutes: MetadataRoute.Sitemap = [

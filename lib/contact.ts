@@ -1,4 +1,5 @@
-export const WHATSAPP_URL =
-  "https://wa.me/5545999403598?text=Olá%20Nodeway%2C%20quero%20um%20orçamento.";
-
-export const WHATSAPP_URL_SHORT = "https://wa.me/5545999403598";
+/**
+ * Mantido por retrocompatibilidade. A fonte de verdade dos contatos agora é
+ * lib/site-config.ts. Edite os dados lá.
+ */
+export { WHATSAPP_URL, WHATSAPP_URL_SHORT, MAILTO } from './site-config';

@@ -3,17 +3,31 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, ExternalLink } from 'lucide-react';
 import { cases } from '@/lib/data';
+import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
+
+export async function generateStaticParams() {
+  return cases.map((caseStudy) => ({ slug: caseStudy.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const caseData = cases.find((c) => c.slug === resolvedParams.slug);
   if (!caseData) return { title: 'Case Não Encontrado' };
 
+  const url = absoluteUrl(`/cases/${caseData.slug}`);
+
   return {
-    title: `${caseData.client} - Case de Sucesso | Nodeway Agency`,
+    title: `${caseData.client} - Case de Sucesso | ${siteConfig.name}`,
     description: caseData.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${caseData.client} - Case de Sucesso | ${siteConfig.name}`,
+      description: caseData.description,
+      url,
+      type: 'article',
+    },
   };
 }
 
@@ -30,23 +44,23 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
     "@type": "Article",
     "headline": `${caseData.client} - ${caseData.title}`,
     "description": caseData.description,
-    "image": "https://nodewayagency.com.br/icon.png",
+    "image": absoluteUrl('/cases/' + caseData.slug + '/opengraph-image'),
     "author": {
       "@type": "Organization",
-      "name": "Nodeway Agency",
-      "url": "https://nodewayagency.com.br/"
+      "name": siteConfig.name,
+      "url": `${siteConfig.url}/`
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Nodeway Agency",
+      "name": siteConfig.name,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nodewayagency.com.br/icon.png"
+        "url": absoluteUrl('/icon.png')
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://nodewayagency.com.br/cases/${caseData.slug}`
+      "@id": absoluteUrl(`/cases/${caseData.slug}`)
     }
   };
 

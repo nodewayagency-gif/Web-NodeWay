@@ -1,3 +1,5 @@
+import { siteConfig } from './site-config';
+
 export type PresenceStatus = 'sede' | 'cliente_ativo' | 'em_expansao' | 'nacional';
 
 export interface FaqItem {
@@ -45,7 +47,7 @@ export interface CityHub {
   faq: FaqItem[];
 }
 
-export const BASE_URL = 'https://nodewayagency.com.br';
+export const BASE_URL = siteConfig.url;
 
 export const servicePillars: ServicePillar[] = [
   {

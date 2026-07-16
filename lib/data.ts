@@ -20,7 +20,12 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string;
+  /** Data exibida na tela (texto livre em PT). */
   date: string;
+  /** Data ISO 8601 (com fuso) — usada no schema BlogPosting. */
+  datePublished: string;
+  /** Data ISO 8601 da última atualização (opcional). */
+  dateModified?: string;
   category: string;
   readTime: string;
 }
@@ -217,6 +222,7 @@ export const blogPosts: BlogPost[] = [
     title: "Por que um sistema sob medida é o segredo para escalar sua operação?",
     excerpt: "Sistemas de prateleira funcionam até a página dois. Descubra como criar um software que se adapta ao seu processo, e não o contrário.",
     date: "10 de Maio de 2025",
+    datePublished: "2025-05-10T09:00:00-03:00",
     category: "Desenvolvimento",
     readTime: "5 min",
     content: `
@@ -241,6 +247,7 @@ Com a arquitetura moderna (usando React, Next.js e bancos de dados em nuvem), o 
     title: "Anatomia de uma Landing Page que converte até 5x mais",
     excerpt: "Não basta ter tráfego. Se a sua landing page é confusa ou lenta, você está jogando dinheiro fora no Google Ads.",
     date: "22 de Abril de 2025",
+    datePublished: "2025-04-22T09:00:00-03:00",
     category: "Marketing",
     readTime: "4 min",
     content: `
@@ -269,6 +276,7 @@ No Brasil, o WhatsApp é rei. Para muitos nichos (como E-commerce de alto ticket
     title: "Business Intelligence: Como parar de achar e começar a ter certeza",
     excerpt: "O volume de dados gerados pela sua empresa hoje é gigante. Se você não os está usando para ver o futuro, seu concorrente está.",
     date: "05 de Abril de 2025",
+    datePublished: "2025-04-05T09:00:00-03:00",
     category: "Dados & BI",
     readTime: "6 min",
     content: `

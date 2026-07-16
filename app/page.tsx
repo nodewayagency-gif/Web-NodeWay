@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
+import { siteConfig } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { HeroSection } from '@/components/landing/hero-section';
 import { SeoIntroSection } from '@/components/landing/seo-intro-section';
@@ -34,10 +35,9 @@ const FooterSection = dynamic(() =>
 );
 
 export const metadata: Metadata = {
-  title: 'Nodeway | Desenvolvimento Web, Sistemas e BI',
-  description:
-    'Nodeway Agency — desenvolvimento web, sistemas sob medida, e-commerce e BI. Sede em Cascavel, clientes em Blumenau, Guanambi, Toledo. Em expansão para Curitiba e todo o Brasil.',
-  alternates: { canonical: 'https://nodewayagency.com.br' },
+  title: `${siteConfig.shortName} | Desenvolvimento Web, Sistemas e BI`,
+  description: siteConfig.description,
+  alternates: { canonical: siteConfig.url },
 };
 
 export default function Home() {

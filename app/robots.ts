@@ -1,12 +1,15 @@
 import { MetadataRoute } from 'next'
+import { siteConfig } from '@/lib/site-config'
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/_next/'],
+      // Não bloqueamos /_next/: o Google precisa dos assets (JS/CSS) para renderizar.
+      disallow: '/api/',
     },
-    sitemap: 'https://nodewayagency.com.br/sitemap.xml',
+    sitemap: `${siteConfig.url}/sitemap.xml`,
+    host: siteConfig.url,
   }
 }

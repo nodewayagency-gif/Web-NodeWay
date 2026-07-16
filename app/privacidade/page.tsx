@@ -1,9 +1,11 @@
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
+import { siteConfig, absoluteUrl } from "@/lib/site-config";
 
 export const metadata = {
-  title: 'Política de Privacidade - Nodeway Agency',
-  description: 'Saiba como a Nodeway Agency lida com seus dados e garante sua privacidade.',
+  title: `Política de Privacidade - ${siteConfig.name}`,
+  description: `Saiba como a ${siteConfig.name} lida com seus dados e garante sua privacidade.`,
+  alternates: { canonical: absoluteUrl('/privacidade') },
 };
 
 export default function PrivacyPage() {
@@ -50,7 +52,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-display text-foreground mb-4">5. Seus Direitos</h2>
             <p>
-              Você tem o direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento. Para isso, entre em contato conosco através do e-mail nodewayagency@gmail.com.
+              Você tem o direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento. Para isso, entre em contato conosco através do e-mail {siteConfig.contact.email}.
             </p>
           </section>
 

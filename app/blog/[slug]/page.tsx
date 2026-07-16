@@ -5,17 +5,33 @@ import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { WHATSAPP_URL_SHORT } from '@/lib/contact';
 import { blogPosts } from '@/lib/data';
+import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
+
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) return { title: 'Artigo Não Encontrado' };
 
+  const url = absoluteUrl(`/blog/${post.slug}`);
+
   return {
-    title: `${post.title} | Nodeway Agency`,
+    title: `${post.title} | ${siteConfig.name}`,
     description: post.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${post.title} | ${siteConfig.name}`,
+      description: post.excerpt,
+      url,
+      type: 'article',
+      publishedTime: post.datePublished,
+      modifiedTime: post.dateModified ?? post.datePublished,
+    },
   };
 }
 
@@ -50,24 +66,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
-    "image": "https://nodewayagency.com.br/icon.png",
+    "image": absoluteUrl('/blog/' + post.slug + '/opengraph-image'),
     "author": {
       "@type": "Organization",
-      "name": "Nodeway Agency",
-      "url": "https://nodewayagency.com.br/"
+      "name": siteConfig.name,
+      "url": `${siteConfig.url}/`
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Nodeway Agency",
+      "name": siteConfig.name,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nodewayagency.com.br/icon.png"
+        "url": absoluteUrl('/icon.png')
       }
     },
-    "datePublished": "2025-01-01T08:00:00+08:00",
+    "datePublished": post.datePublished,
+    "dateModified": post.dateModified ?? post.datePublished,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://nodewayagency.com.br/blog/${post.slug}`
+      "@id": absoluteUrl(`/blog/${post.slug}`)
     }
   };
 
