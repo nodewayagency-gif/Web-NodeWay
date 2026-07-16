@@ -6,6 +6,7 @@ import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { WHATSAPP_URL_SHORT } from '@/lib/contact';
 import { blogPosts } from '@/lib/data';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
+import { renderContentBlocks } from '@/lib/render-content';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 
@@ -42,24 +43,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) {
     notFound();
   }
-
-  // A simple markdown-like renderer just for the mock data demonstration
-  const renderContent = (content: string) => {
-    return content.split('\n\n').map((paragraph, index) => {
-      if (paragraph.startsWith('### ')) {
-        return <h3 key={index} className="text-2xl font-display text-foreground mt-8 mb-4">{paragraph.replace('### ', '')}</h3>;
-      }
-      if (paragraph.startsWith('- ')) {
-        const items = paragraph.split('\n').filter(i => i.startsWith('- '));
-        return (
-          <ul key={index} className="list-disc pl-6 mb-6 space-y-2 text-lg text-muted-foreground">
-            {items.map((item, i) => <li key={i}>{item.replace('- ', '')}</li>)}
-          </ul>
-        );
-      }
-      return <p key={index} className="mb-6 text-lg text-muted-foreground leading-relaxed">{paragraph}</p>;
-    });
-  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -126,7 +109,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-16" />
 
         <div className="prose-container">
-          {renderContent(post.content)}
+          {renderContentBlocks(post.content)}
         </div>
 
         <div className="mt-20 p-8 sm:p-12 bg-card border border-border rounded-3xl text-center relative overflow-hidden">

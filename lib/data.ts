@@ -290,6 +290,142 @@ Imagine uma transportadora. Ao cruzar os dados do sistema de abastecimento (tele
 
 Ao conectar seu banco de dados a ferramentas como PowerBI, Metabase ou dashboards customizados em React, a diretoria deixa de pedir "relatórios mensais que demoram 3 dias para ficarem prontos" e passa a olhar a saúde da empresa ao vivo.
     `
+  },
+  {
+    id: "4",
+    slug: "o-que-e-crm-quando-empresa-precisa",
+    title: "O que é um CRM e quando sua empresa realmente precisa de um",
+    excerpt: "CRM é mais do que uma agenda de contatos. Entenda o que um sistema de CRM faz, quando ele deixa de ser opcional e como ele se conecta à sua operação comercial.",
+    date: "01 de Julho de 2026",
+    datePublished: "2026-07-01T09:00:00-03:00",
+    category: "Gestão Comercial",
+    readTime: "5 min",
+    content: `
+CRM é a sigla para Customer Relationship Management — em português, gestão do relacionamento com o cliente. Na prática, é o sistema onde a sua empresa organiza clientes, contatos, oportunidades e todo o histórico comercial em um só lugar.
+
+Mas um bom CRM vai muito além de uma lista de telefones. Ele acompanha o cliente do primeiro contato até o fechamento do pedido — e ajuda o time comercial a não perder nenhuma venda pelo caminho.
+
+## O que um CRM resolve no dia a dia
+Sem um CRM, as informações ficam espalhadas: um orçamento no WhatsApp, um contato na agenda do celular, um pedido numa planilha. Quando alguém sai de férias ou troca de função, esse conhecimento se perde.
+
+Com um CRM, você centraliza:
+
+- **Cadastro de clientes** e o histórico de cada um
+- **Orçamentos e pedidos**, com status claro de cada negociação
+- **Agenda de atendimentos** e retornos combinados
+- **Comissões** dos vendedores por venda fechada
+
+## Quando o CRM deixa de ser opcional
+Alguns sinais de que sua empresa já passou do ponto de usar planilha:
+
+- Vendedores esquecem de retornar para clientes interessados
+- Ninguém sabe ao certo quantos orçamentos estão em aberto
+- O cálculo de comissão dá trabalho (e gera discussão) todo mês
+- A informação depende da memória de uma pessoa só
+
+Se dois ou mais desses pontos soam familiares, é hora de estruturar.
+
+## CRM e o resto da operação
+O ponto que muita empresa descobre tarde: o CRM não vive isolado. Ele conversa com estoque, financeiro e com o seu ERP.
+
+No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), o CRM vem junto do fluxo de **orçamento → pedido → PDF**, do controle de estoque e do financeiro (contas a receber e a pagar). E ele se integra ao seu ERP (Bling, Omie ou Tiny) para manter os dados sincronizados — a emissão de NF-e e os pagamentos continuam no ERP, como devem ser.
+
+Quer ver na prática? Compare os [planos e preços](/planos) e comece com 7 dias grátis.
+    `
+  },
+  {
+    id: "5",
+    slug: "sistema-de-gestao-vs-planilha",
+    title: "Sistema de gestão comercial vs. planilha: quando dar o salto",
+    excerpt: "A planilha resolve no começo — até virar gargalo. Veja os sinais de que sua operação comercial já pede um sistema de gestão de verdade.",
+    date: "24 de Junho de 2026",
+    datePublished: "2026-06-24T09:00:00-03:00",
+    category: "Gestão Comercial",
+    readTime: "4 min",
+    content: `
+Toda empresa começa no Excel. E faz sentido: a planilha é barata, flexível e todo mundo sabe usar. O problema aparece quando a operação cresce e a planilha vira o gargalo em vez da solução.
+
+## Os limites da planilha
+- **Erro humano**: uma célula sobrescrita e o número do mês inteiro muda
+- **Sem controle de acesso**: todo mundo vê e edita tudo
+- **Não escala**: com centenas de pedidos, a planilha trava e ninguém confia mais nela
+- **Retrabalho**: os mesmos dados digitados em vários lugares
+
+## O que muda com um sistema de gestão
+Um **sistema de gestão comercial** aplica as regras do seu negócio automaticamente. O orçamento vira pedido com um clique, o estoque baixa sozinho, a comissão é calculada na hora.
+
+Mais importante: o dado é único. Você cadastra o cliente uma vez e ele aparece no orçamento, no pedido e no financeiro — sem redigitar.
+
+## "Mas eu já tenho um ERP"
+Ter ERP e ter gestão comercial não são a mesma coisa. O ERP cuida do fiscal — nota, imposto, pagamento. A gestão comercial cuida do dia a dia da venda: cliente, orçamento, pedido, comissão, agenda.
+
+O ideal é que os dois conversem. O nosso [sistema](/sistema-de-gestao-comercial) não substitui o seu ERP — ele se conecta a ele (Bling, Omie, Tiny) e assume a parte comercial, deixando a NF-e e os pagamentos onde já estão.
+
+## Quando dar o salto
+Se a sua planilha já tem abas demais, fórmulas que só uma pessoa entende e um "cuidado pra não bagunçar", o momento é agora. Veja os [planos e preços](/planos) — dá para começar pequeno e crescer.
+    `
+  },
+  {
+    id: "6",
+    slug: "integrar-bling-sistema-de-gestao",
+    title: "Como integrar o Bling a um sistema de gestão comercial",
+    excerpt: "O Bling cuida do fiscal; um sistema de gestão comercial cuida da venda. Veja como integrar os dois e parar de digitar a mesma coisa duas vezes.",
+    date: "17 de Junho de 2026",
+    datePublished: "2026-06-17T09:00:00-03:00",
+    category: "Integrações",
+    readTime: "4 min",
+    content: `
+O Bling é um dos ERPs mais usados por pequenas e médias empresas no Brasil, principalmente para emissão de NF-e e controle fiscal. Mas muita gente usa o Bling também como sistema comercial — e aí começa o retrabalho.
+
+## Por que integrar em vez de duplicar
+Quando a venda acontece num lugar e a nota noutro, o dado é digitado duas vezes. Isso significa mais tempo e mais chance de erro.
+
+A integração resolve isso: cliente, produto e pedido cadastrados no sistema de gestão são sincronizados com o Bling — e a nota sai lá, sem redigitação.
+
+## Como a integração funciona no nosso sistema
+No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), a integração com o Bling está disponível nos planos **Pro e Business**. Na prática:
+
+- Você gerencia clientes, orçamentos, pedidos, estoque e comissões no sistema
+- Os dados são sincronizados com o Bling
+- A **emissão de NF-e e os pagamentos continuam no Bling** — não emitimos nota nem processamos pagamento, isso é papel do ERP
+
+Precisa de mais? O plano Business adiciona conectores para **Omie e Tiny**, além de multi-loja e assistente de IA.
+
+## O melhor dos dois mundos
+Você não troca o seu ERP — você tira dele o peso da operação comercial. O Bling faz o que faz bem (fiscal), e o sistema de gestão faz o que ele não foi feito para fazer (o dia a dia da venda).
+
+Veja como isso se encaixa no seu caso nos [planos e preços](/planos).
+    `
+  },
+  {
+    id: "7",
+    slug: "orcamento-pedido-comissao-processo-comercial",
+    title: "Orçamento, pedido e comissão: como organizar o processo comercial",
+    excerpt: "Do orçamento ao pagamento da comissão, um processo comercial organizado vende mais e discute menos. Veja como estruturar cada etapa.",
+    date: "10 de Junho de 2026",
+    datePublished: "2026-06-10T09:00:00-03:00",
+    category: "Gestão Comercial",
+    readTime: "4 min",
+    content: `
+Todo negócio tem um processo comercial — mesmo quem acha que não tem. A diferença é que, sem estrutura, esse processo mora na cabeça das pessoas e falha na hora errada.
+
+## As três etapas que não podem falhar
+
+### 1. Orçamento
+O orçamento é a primeira impressão. Se ele demora ou vem com erro, a venda esfria. Um **sistema de orçamento** deixa o vendedor montar a proposta rápido, com preços e produtos certos, e gerar o PDF pronto para enviar.
+
+### 2. Pedido
+Orçamento aprovado precisa virar pedido sem retrabalho — sem redigitar tudo em outro lugar. No fluxo **orçamento → pedido → PDF**, o dado passa adiante com um clique, e o estoque acompanha.
+
+### 3. Comissão
+A comissão é onde nascem as discussões. Cálculo manual gera dúvida e desconfiança. Com regras claras — **comissão básica** ou **avançada por produto** — o número sai sozinho e todo mundo confia.
+
+## Tudo conectado
+Essas três etapas não deveriam viver em sistemas diferentes. No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), orçamento, pedido, estoque, financeiro e comissão fazem parte do mesmo fluxo — e ainda se conectam ao seu ERP (Bling, Omie, Tiny) para o fiscal.
+
+## Comece pelo essencial
+Não precisa organizar tudo de uma vez. Dá para começar pelo básico — orçamento, pedido, clientes e comissão — e evoluir. Veja os [planos e preços](/planos) e teste grátis por 7 dias.
+    `
   }
 ];
 

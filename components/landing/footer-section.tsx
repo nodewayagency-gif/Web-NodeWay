@@ -29,6 +29,8 @@ const footerLinks: Record<string, FooterLink[]> = {
     { name: "Todo o Brasil", href: "/atendimento/brasil" },
   ],
   Empresa: [
+    { name: "Sistema de Gestão", href: "/sistema-de-gestao-comercial" },
+    { name: "Planos e Preços", href: "/planos" },
     { name: "Casos de Sucesso", href: "/cases" },
     { name: "Blog", href: "/blog" },
     { name: "Onde atendemos", href: "/atendimento" },

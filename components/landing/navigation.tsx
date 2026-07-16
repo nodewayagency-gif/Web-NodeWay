@@ -15,6 +15,11 @@ const navLinks = [
     href: "/servicos",
   },
   {
+    name: "Planos",
+    description: "Planos e preços do sistema",
+    href: "/planos",
+  },
+  {
     name: "Atendimento",
     description: "Cascavel, Blumenau, Guanambi e Brasil",
     href: "/atendimento",

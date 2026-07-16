@@ -32,6 +32,13 @@ export function SeoIntroSection() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
+              href="/planos"
+              className="inline-flex items-center text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+            >
+              Ver planos e preços
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+            <Link
               href="/servicos"
               className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
