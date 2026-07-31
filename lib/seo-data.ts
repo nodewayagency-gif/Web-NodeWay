@@ -169,7 +169,7 @@ export const servicePillars: ServicePillar[] = [
       },
     ],
     relatedCaseSlugs: ['jpb-joias', 'jpb-storex'],
-    relatedBlogSlugs: [],
+    relatedBlogSlugs: ['landing-pages-alta-conversao', 'o-custo-de-nao-investir-no-sistema-certo'],
   },
   {
     slug: 'landing-pages',
@@ -259,7 +259,7 @@ export const servicePillars: ServicePillar[] = [
       },
     ],
     relatedCaseSlugs: ['primardi-saude', 'vivre-produtos-hospitalares', 'jpb-storex'],
-    relatedBlogSlugs: [],
+    relatedBlogSlugs: ['integrar-bling-sistema-de-gestao', 'orcamento-pedido-comissao-processo-comercial'],
   },
 ];
 

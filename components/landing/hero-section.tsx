@@ -14,16 +14,17 @@ const stats = [
 ];
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
+    // Respeita prefers-reduced-motion: não roda o ciclo de palavras.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
     const interval = setInterval(() => {
       setAnimating(true);
       setTimeout(() => {
@@ -110,10 +111,7 @@ export function HeroSection() {
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 pt-32 pb-44 sm:pt-36 sm:pb-48 lg:pt-40 lg:pb-52">
 
         {/* Eyebrow */}
-        <div
-          className={`mb-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-        >
+        <div className="mb-6 hero-rise">
           <span className="inline-flex items-center gap-3 text-xs sm:text-sm font-mono text-muted-foreground tracking-widest uppercase">
             <span className="w-6 h-px brand-gradient-bg" />
             Soluções digitais sob medida
@@ -123,10 +121,7 @@ export function HeroSection() {
 
         {/* Headline principal */}
         <div className="mb-10 sm:mb-14">
-          <h1
-            className={`font-display leading-[0.95] tracking-tight transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-          >
+          <h1 className="font-display leading-[0.95] tracking-tight hero-rise-lcp">
             {/* Linha 1 */}
             <span className="block text-foreground text-[clamp(2.8rem,8vw,7.5rem)]">
               Para negócios
@@ -156,20 +151,20 @@ export function HeroSection() {
         {/* Descricao + CTA */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 lg:items-end">
           <p
-            className={`text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-lg transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+            className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-lg hero-rise"
+            style={{ animationDelay: "0.15s" }}
           >
             Criamos sistemas, aplicações e experiências digitais personalizadas.
             Não vendemos sites — construímos soluções que resolvem problemas reais.
           </p>
 
           <div
-            className={`flex flex-col sm:flex-row items-start gap-3 shrink-0 transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+            className="flex flex-col sm:flex-row items-start gap-3 shrink-0 hero-rise"
+            style={{ animationDelay: "0.25s" }}
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 brand-gradient-bg hover:opacity-90 text-white px-7 h-13 sm:h-14 text-sm sm:text-base rounded-full group font-medium transition-all"
+              className="cta-primary inline-flex items-center justify-center gap-2 px-7 h-13 sm:h-14 text-sm sm:text-base rounded-full group font-medium"
             >
               Solicitar orçamento
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -185,8 +180,8 @@ export function HeroSection() {
 
         {/* Pills de servicos */}
         <div
-          className={`mt-12 flex flex-wrap gap-2 sm:gap-3 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
+          className="mt-12 flex flex-wrap gap-2 sm:gap-3 hero-rise"
+          style={{ animationDelay: "0.4s" }}
         >
           {[
             { icon: Code2, label: "Desenvolvimento" },
@@ -207,8 +202,8 @@ export function HeroSection() {
 
       {/* Carrossel de stats - full width */}
       <div
-        className={`absolute bottom-0 left-0 right-0 transition-all duration-700 delay-700 ${isVisible ? "opacity-100" : "opacity-0"
-          }`}
+        className="absolute bottom-0 left-0 right-0 hero-rise"
+        style={{ animationDelay: "0.55s" }}
       >
         {/* Linha separadora com gradiente */}
         <div className="w-full h-px brand-gradient-bg opacity-20 mb-5" />

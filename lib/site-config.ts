@@ -57,11 +57,11 @@ export const siteConfig = {
   contact: {
     email: 'nodewayagency@gmail.com',
     /** Formato E.164 — usado em JSON-LD e links tel:. Ex.: +5545999403598 */
-    phone: '+5545999403598',
+    phone: '+5545998358847',
     /** Como o telefone aparece na tela. */
-    phoneDisplay: '(45) 99940-3598',
+    phoneDisplay: '(45) 99835-8847',
     /** Só dígitos, com DDI (55) — usado nos links wa.me. */
-    whatsapp: '5545999403598',
+    whatsapp: '5545998358847',
     /** Mensagem pré-preenchida ao abrir o WhatsApp. */
     whatsappMessage: 'Olá Nodeway, quero um orçamento.',
   },
@@ -99,7 +99,7 @@ export const siteConfig = {
       background: '#0A1628', // navy de fundo / theme-color do navegador
       green: '#7ED957',
       cyan: '#00C2CB',
-      blue: '#0071BC',
+      blue: '#0095DB',
       foreground: '#F5F7FA', // texto claro (usado nas imagens OG geradas)
       muted: '#94A3B8',
     },

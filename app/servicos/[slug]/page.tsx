@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!pillar) return { title: 'Serviço não encontrado' };
 
   return {
-    title: `${pillar.title} | Nodeway Agency`,
+    title: pillar.title,
     description: pillar.metaDescription,
     alternates: { canonical: `${BASE_URL}/servicos/${pillar.slug}` },
     openGraph: {
@@ -56,11 +56,25 @@ export default async function ServicePillarPage({
     url: `${BASE_URL}/servicos/${pillar.slug}`,
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Serviços', item: `${BASE_URL}/servicos` },
+      { '@type': 'ListItem', position: 3, name: pillar.title, item: `${BASE_URL}/servicos/${pillar.slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <SeoPageShell eyebrow="Serviços" h1={pillar.h1} intro={pillar.intro}>
         <Link

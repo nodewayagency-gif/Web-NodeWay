@@ -9,6 +9,7 @@ import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { renderContentBlocks } from '@/lib/render-content';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
+import { RelatedBlogPosts } from '@/components/seo/related-links';
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = absoluteUrl(`/blog/${post.slug}`);
 
   return {
-    title: `${post.title} | ${siteConfig.name}`,
+    title: post.title,
     description: post.excerpt,
     alternates: { canonical: url },
     openGraph: {
@@ -71,13 +72,37 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteConfig.url },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: absoluteUrl('/blog') },
+      { '@type': 'ListItem', position: 3, name: post.title, item: absoluteUrl(`/blog/${post.slug}`) },
+    ],
+  };
 
+  // Posts relacionados: mesma categoria primeiro, depois mais recentes.
+  const relatedPostSlugs = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .sort((a, b) => {
+      const ac = a.category === post.category ? 0 : 1;
+      const bc = b.category === post.category ? 0 : 1;
+      if (ac !== bc) return ac - bc;
+      return b.datePublished.localeCompare(a.datePublished);
+    })
+    .slice(0, 3)
+    .map((p) => p.slug);
 
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <Navigation />
       
@@ -121,7 +146,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 href={WHATSAPP_URL_SHORT}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 brand-gradient-bg text-white font-medium px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
+                className="cta-primary inline-flex items-center justify-center gap-2.5 font-medium px-8 py-4 rounded-full"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 Agendar Consultoria Gratuita
@@ -130,6 +155,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
       </article>
+
+      <section className="px-5 sm:px-8 lg:px-16 max-w-[800px] mx-auto pb-16 lg:pb-24">
+        <RelatedBlogPosts slugs={relatedPostSlugs} />
+      </section>
 
       <FooterSection />
     </main>

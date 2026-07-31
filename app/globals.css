@@ -33,7 +33,7 @@
   /* Brand gradient tokens */
   --brand-green: #7ED957;
   --brand-cyan: #00C2CB;
-  --brand-blue: #0071BC;
+  --brand-blue: #0095DB;
   --sidebar: oklch(0.13 0.03 240);
   --sidebar-foreground: oklch(0.97 0.005 200);
   --sidebar-primary: oklch(0.75 0.18 175);
@@ -257,4 +257,47 @@
       transform: none;
     }
   }
+}
+
+/* ── Hero: animação de entrada por CSS puro ──────────────────────────────────
+   O conteúdo (incl. o H1, que é o elemento LCP) já vem visível do SSR; a
+   animação roda no primeiro paint, sem depender de hidratação/JS, e só quando
+   o usuário permite movimento. O H1 anima apenas o transform (opacity fica 1),
+   para não atrasar a medição de LCP. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(1rem); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes hero-rise-lcp {
+    from { transform: translateY(0.75rem); }
+    to   { transform: none; }
+  }
+  .hero-rise     { animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-rise-lcp { animation: hero-rise-lcp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+}
+
+/* ── CTA padronizado ─────────────────────────────────────────────────────────
+   Uma única cor para todos os botões primários. Troque --cta abaixo (ex.:
+   var(--brand-green) ou var(--brand-blue)) para mudar a cor em TODO o site. */
+/* Botão primário padronizado = gradiente da marca (estilo original), aplicado
+   por uma única classe. Todos os CTAs do site usam .cta-primary. */
+.cta-primary {
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-cyan) 50%, var(--brand-blue) 100%);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 12px 30px -12px color-mix(in oklab, var(--brand-cyan) 42%, transparent);
+  transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.cta-primary:hover {
+  opacity: 0.9;
+}
+.cta-secondary {
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.cta-secondary:hover {
+  border-color: color-mix(in oklab, var(--primary) 55%, var(--border));
+  color: var(--primary);
 }

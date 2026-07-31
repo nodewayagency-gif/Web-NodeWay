@@ -20,9 +20,9 @@ import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
 
 export const metadata: Metadata = {
-  title: `Sistema de Gestão Comercial e CRM | ${siteConfig.name}`,
+  title: 'Sistema de Gestão Comercial e CRM',
   description:
-    'Sistema de gestão comercial com CRM: orçamentos, pedidos, clientes, produtos, estoque, financeiro e comissões, integrado ao seu ERP (Bling, Omie, Tiny). Não substitui o ERP fiscal — a NF-e continua no ERP.',
+    'CRM e gestão comercial: orçamentos, pedidos, estoque, financeiro e comissões, integrado ao seu ERP (Bling, Omie, Tiny). Não substitui o ERP fiscal.',
   keywords: [
     'sistema de gestão comercial',
     'CRM',
@@ -112,12 +112,30 @@ const jsonLd = {
   },
 };
 
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: siteConfig.url },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Sistema de Gestão Comercial e CRM',
+      item: absoluteUrl('/sistema-de-gestao-comercial'),
+    },
+  ],
+};
+
 export default function SistemaGestaoComercialPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <Navigation />
 
@@ -139,7 +157,7 @@ export default function SistemaGestaoComercialPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/planos"
-              className="inline-flex items-center justify-center gap-2 brand-gradient-bg text-white font-medium px-8 h-13 rounded-full hover:opacity-90 transition-opacity"
+              className="cta-primary inline-flex items-center justify-center gap-2 font-medium px-8 h-13 rounded-full"
             >
               Ver planos e preços
               <ArrowRight className="w-4 h-4" />
@@ -273,7 +291,7 @@ export default function SistemaGestaoComercialPage() {
             </p>
             <Link
               href="/planos"
-              className="inline-flex items-center justify-center gap-2 brand-gradient-bg text-white font-medium px-8 h-14 rounded-full hover:opacity-90 transition-opacity"
+              className="cta-primary inline-flex items-center justify-center gap-2 font-medium px-8 h-14 rounded-full"
             >
               Ver planos e preços
               <ArrowRight className="w-4 h-4" />

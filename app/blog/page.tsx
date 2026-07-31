@@ -6,17 +6,53 @@ import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 
+const blogDescription =
+  'Artigos e estratégias sobre desenvolvimento de software, sistemas de gestão, CRM, BI, e-commerce e conversão — para tirar mais resultado da sua operação.';
+
 export const metadata: Metadata = {
-  title: `Blog | ${siteConfig.name}`,
-  description: 'Artigos, estratégias e insights sobre desenvolvimento de software, tecnologia e conversão.',
+  title: 'Blog',
+  description: blogDescription,
   alternates: { canonical: absoluteUrl('/blog') },
+  openGraph: {
+    title: `Blog | ${siteConfig.name}`,
+    description: blogDescription,
+    url: absoluteUrl('/blog'),
+    type: 'website',
+  },
 };
 
 export default function BlogPage() {
+  // Mais recentes primeiro (ordena por data ISO, sem alterar os dados).
+  const posts = [...blogPosts].sort((a, b) =>
+    b.datePublished.localeCompare(a.datePublished),
+  );
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `Blog | ${siteConfig.name}`,
+    description: blogDescription,
+    url: absoluteUrl('/blog'),
+    publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+    blogPost: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      datePublished: post.datePublished,
+      dateModified: post.dateModified ?? post.datePublished,
+      image: absoluteUrl(`/blog/${post.slug}/opengraph-image`),
+    })),
+  };
+
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
-      
+
       <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 px-5 sm:px-8 lg:px-16 max-w-[1400px] mx-auto">
         <div className="mb-16">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
@@ -32,7 +68,7 @@ export default function BlogPage() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
+          {posts.map((post) => (
             <Link 
               key={post.id} 
               href={`/blog/${post.slug}`}

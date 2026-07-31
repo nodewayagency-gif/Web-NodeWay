@@ -112,7 +112,7 @@ export function PricingSection() {
               <a
                 href={pkg.href}
                 className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group rounded-lg ${pkg.highlight
-                  ? "brand-gradient-bg text-white hover:opacity-90"
+                  ? "cta-primary"
                   : "border border-border text-foreground hover:border-primary/50 hover:bg-primary/5"
                   }`}
               >

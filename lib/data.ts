@@ -217,6 +217,49 @@ export const cases: CaseStudy[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "8",
+    slug: "o-custo-de-nao-investir-no-sistema-certo",
+    title: "O custo da inação: quanto sua empresa perde por não investir no sistema certo",
+    excerpt: "Não investir também tem preço — só que ele não aparece na planilha. Veja onde o dinheiro vaza quando a empresa insiste numa plataforma que não atende.",
+    date: "30 de Julho de 2026",
+    datePublished: "2026-07-30T09:00:00-03:00",
+    category: "Estratégia",
+    readTime: "6 min",
+    content: `
+Existe um número que quase nenhuma empresa calcula: o custo de continuar como está. É fácil ver quanto custa contratar um novo sistema — o valor vem numa proposta, redondinho. Difícil é enxergar quanto custa **não** contratar: o dinheiro que escorre todos os meses por causa de uma ferramenta que não dá conta.
+
+Esse é o **custo da inação** — o prejuízo silencioso de manter um processo que "está funcionando", mas que trava o crescimento e sangra o caixa sem aparecer em lugar nenhum.
+
+## O custo que não aparece na planilha
+Quando a ferramenta é ruim, o prejuízo não chega como uma fatura. Ele vem diluído: uma venda que esfriou, um relatório que atrasou, um erro que teve que ser refeito. Ninguém soma esses pequenos vazamentos — e é justamente por isso que eles saem tão caro.
+
+Estudos de mercado ajudam a dimensionar o problema. A Gartner estima que dados de baixa qualidade custam milhões por ano às empresas que convivem com informação espalhada e inconsistente. E a Forrester popularizou uma referência que virou clássico: cada real bem investido em experiência e processo tende a voltar multiplicado. O recado dos dois é o mesmo — o problema quase nunca é o preço do sistema, e sim o preço de **não** ter o sistema certo.
+
+## Onde o dinheiro vaza
+Na prática, a conta da inação se forma em lugares bem concretos:
+
+- **Vendas perdidas**: orçamento que demora, retorno que ninguém deu, cliente que foi para o concorrente
+- **Retrabalho**: a mesma informação digitada em três lugares diferentes
+- **Erros caros**: uma célula sobrescrita, um preço errado, um pedido faturado torto
+- **Decisão no escuro**: sem dado confiável, a gestão decide no "achismo"
+- **Tempo do time**: gente qualificada fazendo trabalho manual que um sistema resolveria em segundos
+
+Nenhum desses itens vem com etiqueta de preço. Mas todos, somados, costumam custar muito mais do que a assinatura de qualquer plataforma decente.
+
+## "Está funcionando" não é o mesmo que "está eficiente"
+O maior inimigo da eficiência é a frase "sempre foi assim e deu certo". Dar certo no volume de ontem não significa dar certo no volume de amanhã. A planilha que segurava 50 pedidos por mês trava com 500. O controle que uma pessoa fazia de cabeça vira um risco no dia em que essa pessoa entra de férias.
+
+Investir no sistema certo não é gasto — é estancar a sangria [antes que a planilha vire o gargalo](/blog/sistema-de-gestao-vs-planilha) da operação.
+
+## Como parar de perder dinheiro
+O primeiro passo é simples: colocar um número no que hoje é invisível. Quantas horas o time gasta em tarefa manual? Quantos orçamentos ficam sem resposta? Quantos erros viram retrabalho todo mês?
+
+Com esse número na mão, a decisão fica óbvia. E a solução não precisa ser gigante de uma vez: dá para começar organizando o comercial com um [sistema de gestão](/sistema-de-gestao-comercial), ganhar visão com [relatórios em BI](/blog/bi-dados-decisoes-estrategicas) e evoluir conforme a operação pedir.
+
+O que não dá é seguir pagando a conta da inação sem nem saber o tamanho dela. [Compare os planos](/planos), peça um diagnóstico e descubra quanto a sua empresa está deixando na mesa todo mês.
+    `
+  },
+  {
     id: "1",
     slug: "por-que-sistema-sob-medida-escala-sua-empresa",
     title: "Por que um sistema sob medida é o segredo para escalar sua operação?",
@@ -228,13 +271,13 @@ export const blogPosts: BlogPost[] = [
     content: `
 Muitas empresas começam suas operações usando planilhas e softwares genéricos. No início, isso faz sentido: o custo é baixo e a implementação é rápida. No entanto, à medida que a empresa cresce, esses sistemas "de prateleira" começam a se tornar o maior gargalo da operação.
 
-### O Problema do Software Engessado
+## O Problema do Software Engessado
 Quando você usa um software pronto, você é obrigado a adaptar o processo exclusivo da sua empresa para caber dentro das limitações da ferramenta. Isso gera:
 - Trabalhos manuais paralelos (o famoso "exportar para o Excel para cruzar dados").
 - Falta de integração entre setores.
 - Erros humanos devido à re-digitação de informações.
 
-### A Vantagem Sob Medida
+## A Vantagem Sob Medida
 Um **sistema sob medida** é construído do zero, olhando exatamente para como o seu negócio funciona. Ele automatiza as suas regras de negócio específicas.
 Se o seu setor comercial precisa que o cálculo de um orçamento demore 2 segundos e puxe o preço atualizado do dólar, nós programamos isso.
 
@@ -255,10 +298,10 @@ Você investe milhares de reais em tráfego pago. Os usuários clicam no seu an�
 
 Geralmente, o problema está na **Landing Page**.
 
-### 1. Velocidade é Dinheiro
+## 1. Velocidade é Dinheiro
 Estudos do Google mostram que se a sua página demora mais de 3 segundos para carregar no 4G, 53% das pessoas abandonam a aba. Nós utilizamos **Next.js** justamente por isso: as páginas são pré-renderizadas e entregues instantaneamente.
 
-### 2. Copywriting e Hierarquia
+## 2. Copywriting e Hierarquia
 Uma landing page não é um site institucional. Ela não deve ter dezenas de links num menu que distraem o usuário. O foco deve ser único: a conversão.
 A anatomia ideal:
 - **Hero Section**: Promessa clara (H1) + Botão de CTA contrastante.
@@ -266,7 +309,7 @@ A anatomia ideal:
 - **Prova Social**: Casos de sucesso, logos de clientes, depoimentos reais.
 - **FAQ**: Quebre objeções antes que ele tenha que falar com um vendedor.
 
-### 3. Fricção Zero
+## 3. Fricção Zero
 No Brasil, o WhatsApp é rei. Para muitos nichos (como E-commerce de alto ticket ou B2B), um botão flutuante bem programado levando direto para o WhatsApp do vendedor com uma mensagem pré-pronta converte absurdamente mais do que formulários complexos.
     `
   },
@@ -282,10 +325,10 @@ No Brasil, o WhatsApp é rei. Para muitos nichos (como E-commerce de alto ticket
     content: `
 O gestor moderno sofre de um problema curioso: ele não tem falta de dados, ele tem *excesso de dados inúteis*. Sistemas logísticos, CRMs, ERPs, controle financeiro... tudo gera dados, mas nada conversa.
 
-### O papel do B.I. (Business Intelligence)
+## O papel do B.I. (Business Intelligence)
 O objetivo de implementar inteligência de dados na sua empresa é simples: criar um painel central onde toda a complexidade vira gráficos simples e indicativos visuais (verde, amarelo e vermelho).
 
-### Casos de Uso Reais
+## Casos de Uso Reais
 Imagine uma transportadora. Ao cruzar os dados do sistema de abastecimento (telemetria dos caminhões) com os dados de rotas do ERP, um painel de B.I. pode mostrar exatamente quais rotas ou motoristas estão gerando prejuízo invisível.
 
 Ao conectar seu banco de dados a ferramentas como PowerBI, Metabase ou dashboards customizados em React, a diretoria deixa de pedir "relatórios mensais que demoram 3 dias para ficarem prontos" e passa a olhar a saúde da empresa ao vivo.

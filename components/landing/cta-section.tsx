@@ -65,7 +65,7 @@ export function CtaSection() {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center justify-center gap-3 rounded-2xl h-14 px-7 brand-gradient-bg text-white font-semibold shadow-lg shadow-primary/25 hover:opacity-90 transition-all"
+                    className="cta-primary group inline-flex items-center justify-center gap-3 rounded-2xl h-14 px-7 font-semibold"
                   >
                     <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 shrink-0">
                       <WhatsAppIcon className="w-4 h-4" />

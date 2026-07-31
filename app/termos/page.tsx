@@ -3,9 +3,15 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { siteConfig, absoluteUrl } from "@/lib/site-config";
 
 export const metadata = {
-  title: `Termos de Uso - ${siteConfig.name}`,
+  title: 'Termos de Uso',
   description: `Leia os termos de uso e condições para contratação dos serviços da ${siteConfig.name}.`,
   alternates: { canonical: absoluteUrl('/termos') },
+  openGraph: {
+    title: `Termos de Uso | ${siteConfig.name}`,
+    description: `Leia os termos de uso e condições para contratação dos serviços da ${siteConfig.name}.`,
+    url: absoluteUrl('/termos'),
+    type: 'website',
+  },
 };
 
 export default function TermsPage() {

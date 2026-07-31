@@ -12,36 +12,55 @@ import {
   CalendarClock,
   Plug,
   Bot,
+  LayoutTemplate,
+  SlidersHorizontal,
+  BarChart3,
+  ShoppingCart,
+  Lightbulb,
+  Puzzle,
+  Target,
+  ClipboardList,
+  Code2,
+  Rocket,
+  ChevronRight,
+  Clock,
 } from 'lucide-react';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 import { FaqSection } from '@/components/seo/faq-section';
+import { RelatedBlogPosts } from '@/components/seo/related-links';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
 
 export const metadata: Metadata = {
-  title: `Sistema de Gestão Comercial e CRM — Planos e Preços | ${siteConfig.name}`,
+  title: 'Planos e Soluções — CRM, Landing Pages, BI e E-commerce',
   description:
-    'CRM e gestão comercial: orçamentos, pedidos, clientes, estoque, financeiro e comissões, integrado ao seu ERP (Bling, Omie, Tiny). A partir de R$ 99/mês. Teste grátis 7 dias.',
+    'CRM a partir de R$ 99/mês e soluções sob medida: landing pages, BI, e-commerce, customizações e consultoria — planos fixos e orçamento sob consulta.',
   keywords: [
     'sistema de gestão comercial',
     'CRM',
     'CRM de vendas',
-    'sistema de orçamento',
+    'CRM customizado',
     'sistema de orçamento e pedido',
     'controle de comissões',
     'gestão de clientes',
-    'gestão de vendas',
     'controle de estoque',
     'sistema integrado com Bling',
     'sistema de gestão para PME',
     'ERP Omie Tiny',
+    'criação de landing page',
+    'landing page com SEO',
+    'relatórios em BI',
+    'dashboards de dados',
+    'desenvolvimento de e-commerce',
+    'consultoria de sistemas',
+    'customização de sistema',
   ],
   alternates: { canonical: absoluteUrl('/planos') },
   openGraph: {
-    title: `Sistema de Gestão Comercial e CRM — Planos e Preços | ${siteConfig.name}`,
+    title: `Planos e Soluções — CRM, Landing Pages, BI e E-commerce | ${siteConfig.name}`,
     description:
-      'CRM, orçamentos, pedidos, estoque, financeiro e comissões, integrados ao seu ERP. Planos Starter, Pro e Business. Teste grátis por 7 dias.',
+      'CRM com planos fixos (Starter, Pro e Business) e demais linhas — landing pages, BI, e-commerce, customizações e consultoria — com orçamento sob consulta.',
     url: absoluteUrl('/planos'),
   },
 };
@@ -95,6 +114,226 @@ const modules = [
     title: 'Assistente de IA e multi-loja',
     desc: 'Assistente de IA (até 2.000 usos/mês), multi-loja e domínio próprio para operações maiores.',
     plan: 'Business',
+  },
+];
+
+// ── Links de WhatsApp com contexto ──────────────────────────────────────────
+function wa(message: string) {
+  return `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+
+// ── Linhas de solução que atendemos ─────────────────────────────────────────
+type Solution = {
+  icon: typeof Users;
+  title: string;
+  desc: string;
+  bullets: string[];
+  priceLabel: string;
+  priceNote?: string;
+  cta: { label: string; href: string; external: boolean; primary?: boolean };
+};
+
+const solutions: Solution[] = [
+  {
+    icon: Users,
+    title: 'CRM e Gestão Comercial',
+    desc: 'Nosso sistema pronto para o comercial do dia a dia — do orçamento ao pedido, tudo em um só lugar.',
+    bullets: [
+      'Fluxo orçamento → pedido → PDF em 1 clique',
+      'Integração com Bling, Omie e Tiny',
+      'Teste grátis por 7 dias, sem cartão',
+    ],
+    priceLabel: 'A partir de R$ 99/mês',
+    priceNote: 'planos e preços fixos',
+    cta: { label: 'Ver planos do CRM', href: '#crm', external: false, primary: true },
+  },
+  {
+    icon: LayoutTemplate,
+    title: 'Landing Pages',
+    desc: 'Páginas rápidas e feitas para converter, prontas para receber tráfego pago.',
+    bullets: [
+      'SEO técnico e performance otimizada',
+      'Copy e design focados em conversão',
+      'Pronta para tráfego pago (pixel, GA, WhatsApp)',
+    ],
+    priceLabel: 'Valor a consultar',
+    priceNote: 'por projeto',
+    cta: {
+      label: 'Solicitar orçamento',
+      href: wa('Olá! Tenho interesse em uma landing page com SEO. Podemos conversar?'),
+      external: true,
+    },
+  },
+  {
+    icon: SlidersHorizontal,
+    title: 'CRM Customizado',
+    desc: 'O sistema se adapta à sua empresa — não o contrário. Regras, telas e rotinas do seu jeito.',
+    bullets: [
+      'Campos, telas e relatórios personalizados',
+      'Automação das regras da sua operação',
+      'Integração com as ferramentas que você já usa',
+    ],
+    priceLabel: 'Valor a consultar',
+    priceNote: 'conforme demanda',
+    cta: {
+      label: 'Solicitar orçamento',
+      href: wa('Olá! Quero um CRM customizado com rotinas personalizadas para a minha empresa.'),
+      external: true,
+    },
+  },
+  {
+    icon: BarChart3,
+    title: 'Relatórios em BI',
+    desc: 'Seus dados virando decisão: dashboards com consulta direta ao banco dos seus sistemas.',
+    bullets: [
+      'Consulta direta ao banco dos seus sistemas',
+      'KPIs de vendas, estoque e financeiro em tempo real',
+      'Painéis em Power BI, Metabase ou sob medida',
+    ],
+    priceLabel: 'Valor a consultar',
+    priceNote: 'por projeto',
+    cta: {
+      label: 'Solicitar orçamento',
+      href: wa('Olá! Tenho interesse em relatórios e dashboards em BI. Podemos conversar?'),
+      external: true,
+    },
+  },
+  {
+    icon: ShoppingCart,
+    title: 'E-commerce',
+    desc: 'Sua loja online, do catálogo ao checkout — fechando no WhatsApp ou em gateway de pagamento.',
+    bullets: [
+      'Checkout no WhatsApp ou com gateway de pagamento',
+      'Cálculo de frete na cotação',
+      'Catálogo, pedidos e pagamento integrados',
+    ],
+    priceLabel: 'Valor a consultar',
+    priceNote: 'por projeto',
+    cta: {
+      label: 'Solicitar orçamento',
+      href: wa('Olá! Quero desenvolver um e-commerce. Podemos conversar?'),
+      external: true,
+    },
+  },
+  {
+    icon: Lightbulb,
+    title: 'Consultoria e Customização Pontual',
+    desc: 'Um ajuste específico ou uma direção técnica, sem precisar de um projeto grande.',
+    bullets: [
+      'Melhorias e ajustes pontuais no sistema',
+      'Consultoria técnica e de processos',
+      'Integrações e automações avulsas',
+    ],
+    priceLabel: 'Valor a consultar',
+    priceNote: 'sob demanda',
+    cta: {
+      label: 'Falar com o time',
+      href: wa('Olá! Preciso de consultoria / customização pontual no sistema.'),
+      external: true,
+    },
+  },
+];
+
+// ── Selos de confiança (strip do hero) ──────────────────────────────────────
+const trustBadges = [
+  'CRM com teste grátis de 7 dias',
+  'Diagnóstico e orçamento grátis em 24h',
+  'Projetos 100% sob medida',
+  'Sem fidelidade no CRM',
+];
+
+// ── Diferenciais (por que a Nodeway) ────────────────────────────────────────
+const differentials = [
+  {
+    icon: Puzzle,
+    title: 'Soluções sob medida',
+    desc: 'Nada de fórmula pronta. Cada projeto é pensado para o seu cenário real — o sistema se adapta à empresa, não o contrário.',
+  },
+  {
+    icon: Target,
+    title: 'Foco em resultado e conversão',
+    desc: 'Bonito e funcional não se excluem. Construímos com foco em performance e em gerar resultado mensurável.',
+  },
+  {
+    icon: Plug,
+    title: 'Integração com o que você já usa',
+    desc: 'Conectamos ERPs, gateways, bancos de dados e APIs. Sua stack unificada, sem retrabalho.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Estratégia + execução técnica',
+    desc: 'Pensamos o negócio antes de escrever a primeira linha de código. Visão de produto com mão na massa.',
+  },
+];
+
+// ── Como funciona (linhas sob consulta) ─────────────────────────────────────
+const processSteps = [
+  {
+    n: '1',
+    title: 'Fale com a gente',
+    desc: 'Conte seu desafio pelo WhatsApp. Respondemos rápido, sem robô e sem compromisso.',
+  },
+  {
+    n: '2',
+    title: 'Diagnóstico e proposta',
+    desc: 'Em até 24h enviamos o diagnóstico com escopo, prazo e valor — de graça e sem compromisso.',
+  },
+  {
+    n: '3',
+    title: 'Desenvolvimento sob medida',
+    desc: 'Construímos com validações no caminho, para o resultado sair exatamente como o combinado.',
+  },
+  {
+    n: '4',
+    title: 'Entrega e suporte',
+    desc: 'Publicamos, orientamos o uso e seguimos com suporte e acompanhamento contínuo.',
+  },
+];
+
+const processIcons = [WhatsAppIcon, ClipboardList, Code2, Rocket];
+
+// ── Prova social: clientes e resultados reais (fonte: lib/data.ts cases) ─────
+const clientNames = [
+  'ILC',
+  'Carmax Baterias',
+  'Transporte Maurício',
+  'JPB Joias',
+  'JPB StoreX',
+  'Newflexo',
+  'Formento',
+  'Primardi Saúde',
+  'Vivre',
+];
+
+type Proof = { slug: string; client: string; tag: string; icon: typeof Users; result: string };
+const featuredProof: Proof[] = [
+  {
+    slug: 'newflexo-crm',
+    client: 'Newflexo',
+    tag: 'CRM sob medida',
+    icon: Users,
+    result: 'Funil de vendas centralizado e fim dos leads esquecidos sem retorno.',
+  },
+  {
+    slug: 'carmax-baterias',
+    client: 'Carmax Baterias',
+    tag: 'Landing Page + Tráfego',
+    icon: LayoutTemplate,
+    result: 'Landing pronta para tráfego pago, com contato em 1 clique no mobile.',
+  },
+  {
+    slug: 'transporte-mauricio-bi',
+    client: 'Transporte Maurício',
+    tag: 'Relatórios em BI',
+    icon: BarChart3,
+    result: 'Custos por rota e frota transparentes para a diretoria, em tempo real.',
+  },
+  {
+    slug: 'jpb-storex',
+    client: 'JPB StoreX',
+    tag: 'E-commerce',
+    icon: ShoppingCart,
+    result: 'Loja com checkout, cálculo de frete e pagamento 100% automatizados.',
   },
 ];
 
@@ -172,52 +411,79 @@ const comparison: { feature: string; starter: Cell; pro: Cell; business: Cell }[
 
 const faq = [
   {
-    question: 'É um CRM?',
+    question: 'Como funciona o orçamento das soluções "sob consulta"?',
     answer:
-      'Sim. O sistema inclui CRM: cadastro de clientes, agenda de atendimentos e acompanhamento do funil de orçamentos e pedidos. E vai além do CRM tradicional, cobrindo também estoque, financeiro e comissões de vendedores.',
+      'Você fala com a gente pelo WhatsApp e conta o que precisa. Fazemos um diagnóstico do seu cenário e enviamos uma proposta com escopo, prazo e valor — sem compromisso. Só o CRM tem planos e preços fixos e públicos.',
   },
   {
-    question: 'Serve para gestão comercial e de vendas?',
+    question: 'Quanto tempo leva para entregar um projeto?',
     answer:
-      'Sim. Você controla todo o fluxo de orçamento → pedido → PDF, o cadastro de clientes e produtos, o estoque e as comissões dos vendedores (básica no Starter; avançada por produto no Pro e Business).',
+      'Depende do escopo. Landing pages e ajustes pontuais costumam sair rápido; e-commerce, relatórios em BI e customizações têm o prazo definido na proposta, logo após o diagnóstico.',
   },
   {
-    question: 'O sistema substitui o meu ERP?',
+    question: 'Vocês atendem a minha cidade?',
     answer:
-      'Não. Ele cuida da gestão comercial do dia a dia e se conecta ao seu ERP. A emissão de NF-e e os pagamentos continuam no ERP; nós sincronizamos os dados e cuidamos da operação comercial.',
+      'Atendemos presencialmente em Cascavel e região (PR) e remotamente em todo o Brasil. Já entregamos projetos em Blumenau, Guanambi, Toledo e outras cidades.',
   },
   {
-    question: 'Com quais ERPs o sistema integra?',
+    question: 'Preciso já saber exatamente o que quero?',
+    answer:
+      'Não. No diagnóstico gratuito a gente ajuda a definir o melhor caminho para o seu objetivo antes de fechar o escopo e o valor.',
+  },
+  {
+    question: 'As landing pages já vêm com SEO?',
+    answer:
+      'Sim. Entregamos com SEO técnico, meta tags completas, performance otimizada (Core Web Vitals) e estrutura pronta para campanhas de tráfego pago — feita para converter.',
+  },
+  {
+    question: 'Como funciona o e-commerce de vocês?',
+    answer:
+      'Você escolhe entre checkout via WhatsApp ou integrado a um gateway de pagamento, com cálculo de frete na cotação e integração ao seu catálogo de produtos.',
+  },
+  {
+    question: 'Para os relatórios em BI, vocês acessam meu banco de dados?',
+    answer:
+      'Sim, com a sua autorização fazemos consulta direta ao banco de dados dos seus sistemas para montar dashboards e relatórios sob medida para a gestão.',
+  },
+  {
+    question: 'Qual a diferença entre o CRM pronto e o CRM customizado?',
+    answer:
+      'O CRM pronto tem planos e preços fixos (Starter, Pro e Business) e você já começa a usar. O CRM customizado adapta rotinas, telas e regras ao seu processo — escopo e valor sob demanda.',
+  },
+  {
+    question: 'O CRM tem teste grátis?',
+    answer:
+      'Sim. Você usa todos os recursos do plano Pro por 7 dias, sem precisar de cartão de crédito.',
+  },
+  {
+    question: 'O CRM substitui o meu ERP?',
+    answer:
+      'Não. Ele cuida da gestão comercial do dia a dia e se conecta ao seu ERP. A emissão de NF-e e os pagamentos continuam no ERP; nós sincronizamos os dados.',
+  },
+  {
+    question: 'Com quais ERPs o CRM integra?',
     answer:
       'Com o Bling nos planos Pro e Business, e com o Omie e o Tiny no plano Business, para manter clientes, produtos e pedidos sincronizados.',
   },
   {
-    question: 'Preciso ter um ERP para usar?',
-    answer:
-      'Não é obrigatório para começar, mas os planos Pro e Business integram com o Bling (e o Business com Omie/Tiny) para sincronizar seus dados.',
-  },
-  {
-    question: 'A plataforma emite nota fiscal?',
-    answer:
-      'Não. A emissão de NF-e e os pagamentos continuam no seu ERP; nós cuidamos da gestão comercial e da integração.',
-  },
-  {
-    question: 'Como funciona o teste grátis?',
-    answer: 'Você usa todos os recursos do plano Pro por 7 dias, sem precisar de cartão.',
-  },
-  {
-    question: 'Posso trocar de plano depois?',
+    question: 'Posso trocar de plano do CRM depois?',
     answer: 'Sim, o upgrade ou downgrade pode ser feito a qualquer momento.',
+  },
+  {
+    question: 'Tem fidelidade ou contrato de permanência?',
+    answer:
+      'O CRM é mensal e sem fidelidade. Os projetos sob medida seguem o que for combinado na proposta.',
+  },
+  {
+    question: 'Vocês dão suporte depois da entrega?',
+    answer:
+      'Sim. Oferecemos suporte e acompanhamento contínuo — tanto no CRM quanto nos projetos sob medida.',
   },
 ];
 
 // ── Links de WhatsApp com contexto do plano ─────────────────────────────────
-function wa(message: string) {
-  return `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`;
-}
-
 const trialLink = wa('Olá! Quero começar o teste grátis de 7 dias.');
-const teamLink = wa('Olá! Quero falar com o time sobre os planos.');
+const budgetLink = wa('Olá! Quero um orçamento sob medida para o meu projeto.');
 const subscribeLink = (p: Plan) =>
   wa(`Olá! Tenho interesse em assinar o plano ${p.name} (R$ ${p.price}/mês).`);
 
@@ -238,42 +504,62 @@ function CompareCell({ value }: { value: Cell }) {
   );
 }
 
+const orgRef = { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url };
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Sistema de Gestão Comercial e CRM',
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web',
-  url: absoluteUrl('/planos'),
-  description:
-    'Sistema de gestão comercial com CRM: orçamentos, pedidos, cadastro de clientes e produtos, controle de estoque, financeiro, comissões de vendedores e assistente de IA, integrado ao ERP (Bling, Omie, Tiny). Não emite NF-e nem processa pagamentos — isso continua no ERP do cliente.',
-  featureList: [
-    'CRM e cadastro de clientes',
-    'Orçamentos e pedidos em PDF',
-    'Cadastro de produtos',
-    'Controle de estoque',
-    'Financeiro (contas a receber e a pagar)',
-    'Comissões de vendedores',
-    'Agenda de atendimentos',
-    'Integração com ERP (Bling, Omie, Tiny)',
-    'Assistente de IA',
-    'Multi-loja e domínio próprio',
+  '@graph': [
+    // Trilha de navegação (breadcrumb rich result)
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Início', item: siteConfig.url },
+        { '@type': 'ListItem', position: 2, name: 'Planos e Soluções', item: absoluteUrl('/planos') },
+      ],
+    },
+    // Produto CRM com preços (rich result de produto/software)
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Sistema de Gestão Comercial e CRM',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      url: `${absoluteUrl('/planos')}#crm`,
+      description:
+        'Sistema de gestão comercial com CRM: orçamentos, pedidos, cadastro de clientes e produtos, controle de estoque, financeiro, comissões de vendedores e assistente de IA, integrado ao ERP (Bling, Omie, Tiny). Não emite NF-e nem processa pagamentos — isso continua no ERP do cliente.',
+      featureList: modules.map((m) => m.title),
+      publisher: orgRef,
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'BRL',
+        lowPrice: 99,
+        highPrice: 599,
+        offerCount: plans.length,
+        offers: plans.map((p) => ({
+          '@type': 'Offer',
+          name: `Plano ${p.name}`,
+          price: p.price,
+          priceCurrency: 'BRL',
+          url: `${absoluteUrl('/planos')}#crm`,
+        })),
+      },
+    },
+    // Catálogo de linhas de serviço (ajuda o Google a entender o escopo)
+    {
+      '@type': 'ItemList',
+      name: 'Soluções e serviços da Nodeway Agency',
+      itemListElement: solutions.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'Service',
+          name: s.title,
+          description: s.desc,
+          provider: orgRef,
+          areaServed: { '@type': 'Country', name: 'Brasil' },
+        },
+      })),
+    },
   ],
-  publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'BRL',
-    lowPrice: 99,
-    highPrice: 599,
-    offerCount: plans.length,
-    offers: plans.map((p) => ({
-      '@type': 'Offer',
-      name: `Plano ${p.name}`,
-      price: p.price,
-      priceCurrency: 'BRL',
-      url: absoluteUrl('/planos'),
-    })),
-  },
 };
 
 export default function PlanosPage() {
@@ -286,27 +572,212 @@ export default function PlanosPage() {
       <Navigation />
 
       <section className="pt-32 pb-16 lg:pt-48 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
+        {/* ── Breadcrumb ───────────────────────────────────────── */}
+        <nav aria-label="Trilha de navegação" className="mb-8">
+          <ol className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+            <li>
+              <Link href="/" className="hover:text-primary transition-colors">
+                Início
+              </Link>
+            </li>
+            <ChevronRight className="w-3 h-3" aria-hidden="true" />
+            <li className="text-foreground">Planos e Soluções</li>
+          </ol>
+        </nav>
+
         {/* ── Hero ─────────────────────────────────────────────── */}
-        <div className="max-w-3xl mb-12 lg:mb-16">
+        <div className="max-w-3xl mb-10 lg:mb-12">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px brand-gradient-bg" />
-            Planos e Preços
+            Planos e Soluções
           </span>
           <h1 className="text-4xl lg:text-6xl font-display tracking-tight text-foreground mb-6 leading-[1.05]">
-            Escolha o plano que <span className="brand-gradient">cresce com o seu negócio</span>
+            Soluções sob medida, do <span className="brand-gradient">CRM ao e-commerce</span>
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-            Gestão comercial completa — orçamentos, pedidos, estoque, financeiro e comissões —
-            conectada ao seu ERP. Sem burocracia fiscal: a NF-e continua no seu Bling.
+            CRM com planos fixos e as demais linhas com orçamento sob consulta — tudo direto no
+            WhatsApp.
           </p>
 
           <div className="mt-8 inline-flex items-start gap-3 rounded-2xl border border-primary/25 bg-primary/5 px-5 py-4 text-sm text-muted-foreground">
             <Sparkles className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <p>
-              <span className="text-foreground font-medium">Teste grátis por 7 dias</span>, com todos
-              os recursos do plano Pro. Sem cartão de crédito.
+              <span className="text-foreground font-medium">CRM com teste grátis por 7 dias</span> e
+              demais linhas com orçamento sob medida para a sua operação.
             </p>
           </div>
+        </div>
+
+        {/* ── Selos de confiança ───────────────────────────────── */}
+        <ul className="flex flex-wrap gap-2.5 mb-10 lg:mb-12">
+          {trustBadges.map((b) => (
+            <li
+              key={b}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/30 px-4 py-2 text-sm text-muted-foreground"
+            >
+              <Check className="w-4 h-4 text-primary shrink-0" />
+              {b}
+            </li>
+          ))}
+        </ul>
+
+        {/* ── Linhas de solução ────────────────────────────────── */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8">
+          {solutions.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div
+                key={s.title}
+                className="flex flex-col rounded-3xl border border-border bg-card/30 p-6 lg:p-7 hover:bg-card/50 transition-colors"
+              >
+                <div className="w-11 h-11 rounded-xl border border-border flex items-center justify-center mb-5">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h2 className="text-lg font-display text-foreground mb-2">{s.title}</h2>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
+
+                <ul className="space-y-2.5 mb-6">
+                  {s.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto">
+                  <div className="mb-4">
+                    <span className="block text-base font-display text-foreground">
+                      {s.priceLabel}
+                    </span>
+                    {s.priceNote && (
+                      <span className="block text-xs text-muted-foreground/70">{s.priceNote}</span>
+                    )}
+                  </div>
+                  <a
+                    href={s.cta.href}
+                    {...(s.cta.external
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                    className={`inline-flex w-full items-center justify-center gap-2 h-11 rounded-full font-medium transition-all ${
+                      s.cta.primary
+                        ? 'cta-primary'
+                        : 'border border-border text-foreground hover:border-primary/50 hover:text-primary'
+                    }`}
+                  >
+                    {s.cta.external && <WhatsAppIcon className="w-4 h-4" />}
+                    {s.cta.label}
+                    {!s.cta.external && <ArrowRight className="w-4 h-4" />}
+                  </a>
+                  {s.cta.external && (
+                    <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted-foreground/80">
+                      <Clock className="w-3.5 h-3.5 text-primary/80 shrink-0" />
+                      Diagnóstico e orçamento grátis em 24h
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Diferenciais ───────────────────────────────────────── */}
+      <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
+        <div className="max-w-3xl mb-10 lg:mb-12">
+          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
+            <span className="w-8 h-px brand-gradient-bg" />
+            Por que a Nodeway
+          </span>
+          <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground leading-tight">
+            Tecnologia sob medida, feita para <span className="brand-gradient">gerar resultado</span>
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {differentials.map((d) => {
+            const Icon = d.icon;
+            return (
+              <div
+                key={d.title}
+                className="flex flex-col rounded-2xl border border-border bg-card/30 p-6 hover:bg-card/50 transition-colors"
+              >
+                <div className="w-11 h-11 rounded-xl border border-border flex items-center justify-center mb-5">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-base font-display text-foreground mb-2">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Como funciona (linhas sob consulta) ────────────────── */}
+      <section className="pb-16 lg:pb-24 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
+        <div className="max-w-3xl mb-10 lg:mb-12">
+          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
+            <span className="w-8 h-px brand-gradient-bg" />
+            Como funciona
+          </span>
+          <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground mb-4 leading-tight">
+            Do primeiro contato à entrega, sem enrolação
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Para as linhas com orçamento sob consulta, o caminho é simples e transparente. O CRM,
+            você já assina e começa a usar na hora.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {processSteps.map((s, i) => {
+            const Icon = processIcons[i];
+            return (
+              <div key={s.n} className="relative rounded-2xl border border-border bg-card/30 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full brand-gradient-bg text-white font-display shrink-0">
+                    {s.n}
+                  </span>
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-base font-display text-foreground mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-8">
+          <a
+            href={budgetLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-primary inline-flex items-center justify-center gap-2.5 font-medium px-8 h-13 rounded-full"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            Pedir um orçamento sob medida
+          </a>
+          <p className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground">
+            <Clock className="w-4 h-4 text-primary/80 shrink-0" />
+            Diagnóstico e orçamento grátis, sem compromisso, em até 24h.
+          </p>
+        </div>
+      </section>
+
+      {/* ── CRM: planos e preços fixos ─────────────────────────── */}
+      <section
+        id="crm"
+        className="scroll-mt-24 pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto"
+      >
+        <div className="max-w-3xl mb-10 lg:mb-12">
+          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
+            <span className="w-8 h-px brand-gradient-bg" />
+            CRM · Planos e Preços
+          </span>
+          <h2 className="text-3xl lg:text-5xl font-display tracking-tight text-foreground mb-5 leading-[1.05]">
+            Escolha o plano que <span className="brand-gradient">cresce com o seu negócio</span>
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Gestão comercial completa — orçamentos, pedidos, estoque, financeiro e comissões —
+            conectada ao seu ERP. Sem burocracia fiscal: a NF-e continua no seu Bling.
+          </p>
         </div>
 
         {/* ── Grade de 3 planos ────────────────────────────────── */}
@@ -349,7 +820,7 @@ export default function PlanosPage() {
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-2 h-12 rounded-full font-medium transition-all mb-8 ${
                     featured
-                      ? 'brand-gradient-bg text-white hover:opacity-90 shadow-lg shadow-primary/20'
+                      ? 'cta-primary'
                       : 'border border-border text-foreground hover:border-primary/50 hover:text-primary'
                   }`}
                 >
@@ -478,9 +949,90 @@ export default function PlanosPage() {
         </div>
       </section>
 
+      {/* ── Prova social: clientes e resultados reais ──────────── */}
+      <section className="pb-16 lg:pb-24 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
+        <div className="max-w-3xl mb-8 lg:mb-10">
+          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
+            <span className="w-8 h-px brand-gradient-bg" />
+            Prova real
+          </span>
+          <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground mb-4 leading-tight">
+            Resultados reais, <span className="brand-gradient">clientes reais</span>
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Não falamos de tecnologia no vácuo. Veja o que já construímos para empresas como a
+            sua — do CRM ao e-commerce.
+          </p>
+        </div>
+
+        {/* Faixa de clientes */}
+        <div className="mb-10 rounded-2xl border border-border bg-card/20 px-5 py-5">
+          <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/70 mb-3">
+            Empresas que já contam com a Nodeway
+          </p>
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {clientNames.map((name) => (
+              <li key={name} className="text-sm sm:text-base font-display text-foreground/80">
+                {name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Cases em destaque, um por linha de produto */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {featuredProof.map((p) => {
+            const Icon = p.icon;
+            return (
+              <Link
+                key={p.slug}
+                href={`/cases/${p.slug}`}
+                className="group flex flex-col rounded-2xl border border-border bg-card/30 p-6 hover:bg-card/50 hover:border-primary/40 transition-colors"
+              >
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="w-9 h-9 rounded-lg border border-border flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </span>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground">
+                    {p.tag}
+                  </span>
+                </div>
+                <p className="text-base text-foreground leading-relaxed mb-5 flex-1">{p.result}</p>
+                <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                  {p.client}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="mt-8">
+          <Link
+            href="/cases"
+            className="inline-flex items-center text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+          >
+            Ver todos os cases
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Link>
+        </div>
+      </section>
+
       {/* ── FAQ ────────────────────────────────────────────────── */}
       <section className="pb-8 px-5 sm:px-8 lg:px-16 max-w-[800px] mx-auto">
-        <FaqSection faq={faq} title="Perguntas frequentes sobre o sistema" />
+        <FaqSection faq={faq} title="Perguntas frequentes" />
+      </section>
+
+      {/* ── Cluster: artigos relacionados ──────────────────────── */}
+      <section className="pb-12 px-5 sm:px-8 lg:px-16 max-w-[800px] mx-auto">
+        <RelatedBlogPosts
+          slugs={[
+            'landing-pages-alta-conversao',
+            'bi-dados-decisoes-estrategicas',
+            'o-que-e-crm-quando-empresa-precisa',
+            'por-que-sistema-sob-medida-escala-sua-empresa',
+          ]}
+        />
       </section>
 
       {/* ── CTA final ──────────────────────────────────────────── */}
@@ -489,29 +1041,30 @@ export default function PlanosPage() {
           <div className="absolute inset-0 bg-primary/5" />
           <div className="relative z-10">
             <h2 className="text-3xl lg:text-4xl font-display text-foreground mb-4">
-              Pronto para organizar suas vendas?
+              Pronto para tirar seu projeto do papel?
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Comece hoje com 7 dias grátis ou fale com nosso time para tirar suas dúvidas.
+              Comece o CRM com 7 dias grátis ou peça um orçamento sob medida para as demais linhas —
+              a gente responde no WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href={trialLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 brand-gradient-bg text-white font-medium px-8 h-14 rounded-full hover:opacity-90 transition-opacity w-full sm:w-auto"
+                className="cta-primary inline-flex items-center justify-center gap-2 font-medium px-8 h-14 rounded-full w-full sm:w-auto"
               >
-                Começar teste grátis
+                Começar teste grátis do CRM
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
-                href={teamLink}
+                href={budgetLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 border border-border text-foreground font-medium px-8 h-14 rounded-full hover:border-primary/50 hover:text-primary transition-colors w-full sm:w-auto"
               >
                 <WhatsAppIcon className="w-5 h-5" />
-                Falar com o time
+                Pedir orçamento sob medida
               </a>
             </div>
           </div>

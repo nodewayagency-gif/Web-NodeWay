@@ -6,10 +6,19 @@ import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 
+const casesDescription =
+  'Cases reais da Nodeway Agency: sistemas sob medida, CRM, e-commerce, automação e BI que resolveram gargalos e geraram resultado para empresas de verdade.';
+
 export const metadata: Metadata = {
-  title: `Casos de Sucesso | ${siteConfig.name}`,
-  description: 'Veja como transformamos negócios com desenvolvimento sob medida, automação e dados.',
+  title: 'Casos de Sucesso',
+  description: casesDescription,
   alternates: { canonical: absoluteUrl('/cases') },
+  openGraph: {
+    title: `Casos de Sucesso | ${siteConfig.name}`,
+    description: casesDescription,
+    url: absoluteUrl('/cases'),
+    type: 'website',
+  },
 };
 
 export default function CasesPage() {

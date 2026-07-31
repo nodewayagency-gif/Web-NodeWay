@@ -137,7 +137,7 @@ export function Navigation() {
             <div className="hidden md:flex items-center shrink-0">
               <Button
                 size="sm"
-                className={`brand-gradient-bg hover:opacity-90 text-white rounded-full transition-all duration-500 font-medium border-0 gap-2 ${
+                className={`cta-primary rounded-full transition-all duration-500 font-medium border-0 gap-2 ${
                   isScrolled ? "px-4 h-8 text-xs" : "px-5 h-9 text-sm"
                 }`}
                 asChild
@@ -255,7 +255,7 @@ export function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-3 w-full h-14 rounded-full brand-gradient-bg text-white text-base font-medium transition-all hover:opacity-90 shadow-lg shadow-primary/20"
+              className="cta-primary flex items-center justify-center gap-3 w-full h-14 rounded-full text-base font-medium"
             >
               <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white/20">
                 <WhatsAppIcon className="w-5 h-5" />

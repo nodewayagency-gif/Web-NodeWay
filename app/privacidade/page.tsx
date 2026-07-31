@@ -3,9 +3,15 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { siteConfig, absoluteUrl } from "@/lib/site-config";
 
 export const metadata = {
-  title: `Política de Privacidade - ${siteConfig.name}`,
+  title: 'Política de Privacidade',
   description: `Saiba como a ${siteConfig.name} lida com seus dados e garante sua privacidade.`,
   alternates: { canonical: absoluteUrl('/privacidade') },
+  openGraph: {
+    title: `Política de Privacidade | ${siteConfig.name}`,
+    description: `Saiba como a ${siteConfig.name} lida com seus dados e garante sua privacidade.`,
+    url: absoluteUrl('/privacidade'),
+    type: 'website',
+  },
 };
 
 export default function PrivacyPage() {

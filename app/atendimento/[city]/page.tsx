@@ -24,7 +24,8 @@ export async function generateMetadata({
   if (!hub) return { title: 'Região não encontrada' };
 
   return {
-    title: hub.metaTitle,
+    // metaTitle já traz "| Nodeway Agency"; absolute evita duplicar o sufixo do template.
+    title: { absolute: hub.metaTitle },
     description: hub.metaDescription,
     alternates: { canonical: `${BASE_URL}/atendimento/${hub.slug}` },
     openGraph: {
@@ -55,18 +56,25 @@ export default async function CityHubPage({
     name: `Nodeway Agency - ${hub.name}`,
     description: hub.metaDescription,
     url: `${BASE_URL}/atendimento/${hub.slug}`,
-    provider: {
-      '@type': 'Organization',
-      name: 'Nodeway Agency',
-      url: BASE_URL,
-    },
-    ...(hub.state && {
-      areaServed: {
-        '@type': 'City',
-        name: hub.name,
-        containedInPlace: { '@type': 'State', name: hub.state },
-      },
-    }),
+    // Referencia a Organization canônica por @id (evita entidade duplicada e "fina").
+    provider: { '@id': `${BASE_URL}/#organization` },
+    areaServed: hub.state
+      ? {
+          '@type': 'City',
+          name: hub.name,
+          containedInPlace: { '@type': 'State', name: hub.state },
+        }
+      : { '@type': 'Country', name: 'Brasil' },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Atendimento', item: `${BASE_URL}/atendimento` },
+      { '@type': 'ListItem', position: 3, name: hub.name, item: `${BASE_URL}/atendimento/${hub.slug}` },
+    ],
   };
 
   return (
@@ -74,6 +82,10 @@ export default async function CityHubPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <SeoPageShell
         eyebrow={`${hub.name}${hub.state ? `, ${hub.state}` : ''} · ${hub.region}`}

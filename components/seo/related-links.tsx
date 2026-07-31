@@ -89,7 +89,7 @@ export function SeoCta() {
           href={WHATSAPP_URL_SHORT}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2.5 brand-gradient-bg text-white font-medium px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
+          className="cta-primary inline-flex items-center justify-center gap-2.5 font-medium px-8 py-4 rounded-full"
         >
           <WhatsAppIcon className="w-5 h-5" />
           Falar no WhatsApp

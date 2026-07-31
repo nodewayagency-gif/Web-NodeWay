@@ -6,6 +6,7 @@ import { cases } from '@/lib/data';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
+import { RelatedServices, RelatedCases } from '@/components/seo/related-links';
 
 export async function generateStaticParams() {
   return cases.map((caseStudy) => ({ slug: caseStudy.slug }));
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = absoluteUrl(`/cases/${caseData.slug}`);
 
   return {
-    title: `${caseData.client} - Case de Sucesso | ${siteConfig.name}`,
+    title: `${caseData.client} — Case de Sucesso`,
     description: caseData.description,
     alternates: { canonical: url },
     openGraph: {
@@ -64,11 +65,39 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
     }
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: siteConfig.url },
+      { '@type': 'ListItem', position: 2, name: 'Cases', item: absoluteUrl('/cases') },
+      { '@type': 'ListItem', position: 3, name: caseData.client, item: absoluteUrl(`/cases/${caseData.slug}`) },
+    ],
+  };
+
+  // Cases irmãos: mesmo serviço (peso 2) ou mesma categoria (peso 1), sem o atual.
+  const relatedCaseSlugs = cases
+    .filter((c) => c.slug !== caseData.slug)
+    .map((c) => ({
+      slug: c.slug,
+      score:
+        (c.serviceTags?.filter((t) => caseData.serviceTags?.includes(t)).length ?? 0) * 2 +
+        (c.category === caseData.category ? 1 : 0),
+    }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((x) => x.slug);
+
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <Navigation />
       
@@ -136,6 +165,13 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
         </div>
 
       </article>
+
+      {((caseData.serviceTags?.length ?? 0) > 0 || relatedCaseSlugs.length > 0) && (
+        <section className="px-5 sm:px-8 lg:px-16 max-w-[1000px] mx-auto pb-16 lg:pb-24">
+          <RelatedServices slugs={caseData.serviceTags ?? []} />
+          <RelatedCases slugs={relatedCaseSlugs} />
+        </section>
+      )}
 
       <FooterSection />
     </main>

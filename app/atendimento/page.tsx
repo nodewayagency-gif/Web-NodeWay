@@ -7,11 +7,19 @@ import { PresenceBadge } from '@/components/seo/presence-badge';
 import { SeoCta } from '@/components/seo/related-links';
 import { cityHubs, BASE_URL } from '@/lib/seo-data';
 
+const atendimentoDescription =
+  'Nodeway Agency atende Cascavel (sede), Blumenau, Guanambi, Toledo, Curitiba e todo o Brasil. Clientes reais em múltiplas regiões, em expansão.';
+
 export const metadata: Metadata = {
-  title: 'Onde Atendemos | Nodeway Agency',
-  description:
-    'Nodeway Agency atende Cascavel (sede), Blumenau, Guanambi, Toledo, Curitiba e todo o Brasil. Clientes reais em múltiplas regiões, em expansão.',
+  title: 'Onde Atendemos',
+  description: atendimentoDescription,
   alternates: { canonical: `${BASE_URL}/atendimento` },
+  openGraph: {
+    title: 'Onde Atendemos | Nodeway Agency',
+    description: atendimentoDescription,
+    url: `${BASE_URL}/atendimento`,
+    type: 'website',
+  },
 };
 
 export default function AtendimentoPage() {

@@ -35,7 +35,9 @@ const FooterSection = dynamic(() =>
 );
 
 export const metadata: Metadata = {
-  title: `${siteConfig.shortName} | Desenvolvimento Web, Sistemas e BI`,
+  // Keyword no início + marca. absolute porque o template não se aplica ao
+  // segmento raiz (só aos filhos), então o sufixo é incluído manualmente aqui.
+  title: { absolute: 'Desenvolvimento Web e Sistemas Sob Medida | Nodeway Agency' },
   description: siteConfig.description,
   alternates: { canonical: siteConfig.url },
 };

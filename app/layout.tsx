@@ -11,7 +11,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: `${siteConfig.name} - ${siteConfig.tagline}`,
+  title: {
+    default: `${siteConfig.name} - ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name }],
@@ -25,6 +28,10 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  // Defina GOOGLE_SITE_VERIFICATION no ambiente (ex.: Vercel) para ativar.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
   },
   alternates: {
     canonical: siteConfig.url,
@@ -45,10 +52,10 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     type: 'website',
   },
+  // title/description omitidos de propósito: o Next deriva por página (do title
+  // e description de cada rota), evitando cards do X genéricos nas páginas internas.
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} - ${siteConfig.tagline}`,
-    description: siteConfig.ogDescription,
   },
   creator: siteConfig.name,
   publisher: siteConfig.name,

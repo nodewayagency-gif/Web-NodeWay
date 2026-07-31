@@ -7,11 +7,19 @@ import { ExpansionSection } from '@/components/seo/expansion-section';
 import { SeoCta } from '@/components/seo/related-links';
 import { servicePillars, BASE_URL } from '@/lib/seo-data';
 
+const servicosDescription =
+  'Desenvolvimento web, sistemas sob medida, e-commerce, landing pages, BI e automação. Nodeway Agency — Cascavel, Blumenau, Guanambi e todo o Brasil.';
+
 export const metadata: Metadata = {
-  title: 'Serviços de Desenvolvimento Digital | Nodeway Agency',
-  description:
-    'Desenvolvimento web, sistemas sob medida, e-commerce, landing pages, BI e automação. Nodeway Agency — Cascavel, Blumenau, Guanambi e todo o Brasil.',
+  title: 'Serviços de Desenvolvimento Digital',
+  description: servicosDescription,
   alternates: { canonical: `${BASE_URL}/servicos` },
+  openGraph: {
+    title: 'Serviços de Desenvolvimento Digital | Nodeway Agency',
+    description: servicosDescription,
+    url: `${BASE_URL}/servicos`,
+    type: 'website',
+  },
 };
 
 export default function ServicosPage() {
