@@ -101,6 +101,17 @@ export default async function CityHubPage({
           Todas as regiões
         </Link>
 
+        {hub.sections && hub.sections.length > 0 && (
+          <div className="mb-16 space-y-10">
+            {hub.sections.map((s) => (
+              <section key={s.title}>
+                <h2 className="text-2xl font-display text-foreground mb-4">{s.title}</h2>
+                <p className="text-muted-foreground leading-relaxed">{s.content}</p>
+              </section>
+            ))}
+          </div>
+        )}
+
         {hub.highlights.length > 0 && (
           <section className="mb-16">
             <h2 className="text-2xl font-display text-foreground mb-6">Destaques</h2>
