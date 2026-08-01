@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { siteConfig, absoluteUrl, socialProfiles, WHATSAPP_URL_SHORT } from '@/lib/site-config'
 import { fontVariables } from '@/lib/fonts'
@@ -141,6 +142,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={siteConfig.lang} className="bg-background" style={brandVars as unknown as React.CSSProperties}>
+      <head>
+        {siteConfig.googleAdsId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAdsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-gtag" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '${siteConfig.googleAdsId}');
+              `}
+            </Script>
+          </>
+        )}
+      </head>
       <body className={`${fontVariables} font-sans antialiased`}>
         <script
           type="application/ld+json"

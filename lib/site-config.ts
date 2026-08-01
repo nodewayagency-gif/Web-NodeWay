@@ -48,6 +48,8 @@ export const siteConfig = {
   category: 'technology',
   locale: 'pt_BR', // formato Open Graph
   lang: 'pt-BR', // atributo <html lang>
+  /** ID da tag do Google Ads / Google Analytics */
+  googleAdsId: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID,
 
   // ── Domínio ───────────────────────────────────────────────────────────────
   /** SEM barra no final. Ex.: https://exemplo.com.br */
