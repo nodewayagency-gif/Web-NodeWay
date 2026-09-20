@@ -57,7 +57,7 @@ export const siteConfig = {
 
   // ── Contato ───────────────────────────────────────────────────────────────
   contact: {
-    email: 'nodewayagency@gmail.com',
+    email: 'contato@nodewayagency.com.br',
     /** Formato E.164 — usado em JSON-LD e links tel:. Ex.: +5545999403598 */
     phone: '+5545998358847',
     /** Como o telefone aparece na tela. */
