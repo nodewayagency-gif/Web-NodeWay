@@ -59,11 +59,11 @@ export const siteConfig = {
   contact: {
     email: 'contato@nodewayagency.com.br',
     /** Formato E.164 — usado em JSON-LD e links tel:. Ex.: +5545999403598 */
-    phone: '+5545998358847',
+    phone: '+5545991057939',
     /** Como o telefone aparece na tela. */
-    phoneDisplay: '(45) 99835-8847',
+    phoneDisplay: '(45) 99105-7939',
     /** Só dígitos, com DDI (55) — usado nos links wa.me. */
-    whatsapp: '5545998358847',
+    whatsapp: '5545991057939',
     /** Mensagem pré-preenchida ao abrir o WhatsApp. */
     whatsappMessage: 'Olá Nodeway, quero um orçamento.',
   },
