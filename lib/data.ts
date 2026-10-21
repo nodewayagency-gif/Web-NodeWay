@@ -13,7 +13,7 @@ export interface CaseStudy {
   solution: string;
   results: string[];
 }
-
+//push
 export interface BlogPost {
   id: string;
   slug: string;
