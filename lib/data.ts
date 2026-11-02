@@ -281,7 +281,7 @@ Quando você usa um software pronto, você é obrigado a adaptar o processo excl
 Um **sistema sob medida** é construído do zero, olhando exatamente para como o seu negócio funciona. Ele automatiza as suas regras de negócio específicas.
 Se o seu setor comercial precisa que o cálculo de um orçamento demore 2 segundos e puxe o preço atualizado do dólar, nós programamos isso.
 
-Com a arquitetura moderna (usando React, Next.js e bancos de dados em nuvem), o custo e o tempo de desenvolvimento de sistemas dedicados caiu muito, tornando essa estratégia acessível para PMEs que desejam saltar para o próximo nível de escala.
+Com a engenharia de software moderna e bancos de dados em nuvem, o custo e o tempo de desenvolvimento de sistemas dedicados caiu muito, tornando essa estratégia acessível para PMEs que desejam saltar para o próximo nível de escala.
     `
   },
   {
@@ -299,7 +299,7 @@ Você investe milhares de reais em tráfego pago. Os usuários clicam no seu an�
 Geralmente, o problema está na **Landing Page**.
 
 ## 1. Velocidade é Dinheiro
-Estudos do Google mostram que se a sua página demora mais de 3 segundos para carregar no 4G, 53% das pessoas abandonam a aba. Nós utilizamos **Next.js** justamente por isso: as páginas são pré-renderizadas e entregues instantaneamente.
+Estudos do Google mostram que se a sua página demora mais de 3 segundos para carregar no 4G, 53% das pessoas abandonam a aba. Nós desenvolvemos com foco absoluto em engenharia de alta performance justamente por isso: as páginas são otimizadas e entregues de forma instantânea.
 
 ## 2. Copywriting e Hierarquia
 Uma landing page não é um site institucional. Ela não deve ter dezenas de links num menu que distraem o usuário. O foco deve ser único: a conversão.
@@ -331,7 +331,7 @@ O objetivo de implementar inteligência de dados na sua empresa é simples: cria
 ## Casos de Uso Reais
 Imagine uma transportadora. Ao cruzar os dados do sistema de abastecimento (telemetria dos caminhões) com os dados de rotas do ERP, um painel de B.I. pode mostrar exatamente quais rotas ou motoristas estão gerando prejuízo invisível.
 
-Ao conectar seu banco de dados a ferramentas como PowerBI, Metabase ou dashboards customizados em React, a diretoria deixa de pedir "relatórios mensais que demoram 3 dias para ficarem prontos" e passa a olhar a saúde da empresa ao vivo.
+Ao conectar seu banco de dados a painéis visuais e dashboards customizados sob medida, a diretoria deixa de pedir "relatórios mensais que demoram 3 dias para ficarem prontos" e passa a olhar a saúde da empresa ao vivo.
     `
   },
   {

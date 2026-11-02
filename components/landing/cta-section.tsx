@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Mail, MapPin, Sparkles } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { siteConfig, WHATSAPP_URL, WHATSAPP_URL_SHORT, MAILTO } from "@/lib/site-config";
-import { AnimatedTetrahedron } from "./animated-tetrahedron";
 
 export function CtaSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,11 +25,11 @@ export function CtaSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-20 lg:py-28 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-28 overflow-x-hidden"
     >
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16">
         <div
-          className={`relative overflow-hidden rounded-3xl lg:rounded-[40px] border border-white/10 bg-card/30 backdrop-blur-xl transition-all duration-700 ${
+          className={`relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[40px] border border-white/10 bg-card/40 backdrop-blur-xl transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -41,101 +40,102 @@ export function CtaSection() {
 
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-          <div className="relative z-10 p-6 sm:p-10 lg:p-14">
-            <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-start">
+          <div className="relative z-10 p-5 sm:p-9 lg:p-14">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Conteúdo principal */}
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-mono text-primary mb-6">
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Pronto para escalar seu negócio?
+                  Atendimento humano · Direto de Cascavel/PR para todo o Brasil
                 </div>
 
-                <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-display tracking-tight leading-[1.05] text-foreground mb-5">
-                  Sua operação merece{" "}
-                  <span className="brand-gradient italic">estrutura.</span>
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display tracking-tight leading-[1.08] text-foreground mb-4">
+                  Vamos conversar sobre o próximo passo da{" "}
+                  <span className="brand-gradient italic">sua empresa?</span>
                 </h2>
 
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-                  Não construímos apenas sites. Criamos os alicerces digitais que
-                  automatizam sua rotina e sustentam seu crescimento.
+                <p className="text-xs sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl">
+                  Você não precisa saber qual tecnologia escolher nem ter um projeto pronto no papel.
+                  Conte para a gente o que está travando a sua rotina hoje e nós desenhamos o
+                  caminho mais simples — sem compromisso.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <a
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cta-primary group inline-flex items-center justify-center gap-3 rounded-2xl h-14 px-7 font-semibold"
+                    className="cta-primary group inline-flex items-center justify-center gap-2.5 rounded-full h-12 sm:h-14 px-7 text-xs sm:text-sm font-semibold w-full sm:w-auto"
                   >
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 shrink-0">
-                      <WhatsAppIcon className="w-4 h-4" />
+                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 shrink-0">
+                      <WhatsAppIcon className="w-3.5 h-3.5" />
                     </span>
-                    Falar no WhatsApp
+                    Chamar especialista no WhatsApp
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                   </a>
 
                   <a
                     href={MAILTO}
-                    className="inline-flex items-center justify-center gap-3 rounded-2xl h-14 px-7 border border-border bg-background/50 text-foreground font-medium hover:bg-card/80 hover:border-primary/30 transition-all"
+                    className="inline-flex items-center justify-center gap-2.5 rounded-full h-12 sm:h-14 px-6 border border-border bg-background/50 text-foreground text-xs sm:text-sm font-medium hover:bg-card/80 hover:border-primary/30 transition-all w-full sm:w-auto"
                   >
-                    <Mail className="w-5 h-5 text-muted-foreground shrink-0" />
-                    Enviar e-mail
+                    <Mail className="w-4 h-4 text-muted-foreground shrink-0" />
+                    Prefiro enviar um e-mail
                   </a>
                 </div>
               </div>
 
-              {/* Visual decorativo — só desktop */}
-              <div className="hidden lg:flex items-center justify-center w-[220px] h-[220px] opacity-30 shrink-0">
-                <AnimatedTetrahedron />
+              {/* Card de acolhimento humano à direita */}
+              <div className="lg:col-span-5 w-full">
+                <div className="rounded-2xl sm:rounded-3xl border border-border/80 bg-background/60 p-5 sm:p-7 space-y-4 sm:space-y-5">
+                  <div className="flex items-center gap-3 pb-3.5 border-b border-border/60">
+                    <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shrink-0" />
+                    <div>
+                      <p className="text-xs sm:text-sm font-medium text-foreground">
+                        Time Nodeway disponível agora
+                      </p>
+                      <p className="text-[11px] sm:text-xs text-muted-foreground">
+                        Segunda a sexta, das 09h às 18h
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2.5 text-xs sm:text-sm">
+                    <li className="flex items-start gap-2.5 text-foreground/90">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                      <span>Você fala direto com quem entende e constrói a solução (sem robôs)</span>
+                    </li>
+                    <li className="flex items-start gap-2.5 text-foreground/90">
+                      <Clock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>Diagnóstico e proposta gratuita entregue em até 24h</span>
+                    </li>
+                    <li className="flex items-start gap-2.5 text-foreground/90">
+                      <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>Reunião presencial em Cascavel/região ou por vídeo em todo o Brasil</span>
+                    </li>
+                  </ul>
+
+                  <div className="pt-3 border-t border-border/60 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                    <a
+                      href={WHATSAPP_URL_SHORT}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl bg-card/80 border border-border/60 p-3 hover:border-primary/40 transition-colors"
+                    >
+                      <span className="text-muted-foreground block text-[11px] mb-0.5">WhatsApp Direto</span>
+                      <span className="font-semibold text-primary">{siteConfig.contact.phoneDisplay}</span>
+                    </a>
+                    <a
+                      href={MAILTO}
+                      className="rounded-xl bg-card/80 border border-border/60 p-3 hover:border-primary/40 transition-colors"
+                    >
+                      <span className="text-muted-foreground block text-[11px] mb-0.5">E-mail Comercial</span>
+                      <span className="font-semibold text-foreground truncate block">
+                        {siteConfig.contact.email}
+                      </span>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            {/* Cards de contato — grid organizado */}
-            <div className="mt-10 pt-8 border-t border-border/40 grid sm:grid-cols-2 gap-4">
-              <a
-                href={WHATSAPP_URL_SHORT}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-background/40 p-5 hover:border-primary/40 hover:bg-card/50 transition-all"
-              >
-                <div className="flex items-center justify-center w-11 h-11 rounded-xl brand-gradient-bg shrink-0 shadow-md shadow-primary/20">
-                  <WhatsAppIcon className="w-5 h-5 text-white" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] uppercase tracking-widest text-primary font-bold mb-1">
-                    Resposta rápida
-                  </p>
-                  <p className="text-lg font-display text-foreground mb-1">WhatsApp</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    Fale com nosso time e valide sua ideia em poucos minutos.
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                    Iniciar conversa
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              </a>
-
-              <a
-                href={MAILTO}
-                className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-background/40 p-5 hover:border-primary/40 hover:bg-card/50 transition-all"
-              >
-                <div className="flex items-center justify-center w-11 h-11 rounded-xl border border-border bg-card shrink-0">
-                  <Mail className="w-5 h-5 text-muted-foreground" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-1">
-                    Proposta formal
-                  </p>
-                  <p className="text-lg font-display text-foreground mb-1">E-mail</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    Envie detalhes do projeto para análise da nossa equipe.
-                  </p>
-                  <span className="text-sm font-medium text-foreground break-all group-hover:text-primary transition-colors">
-                    {siteConfig.contact.email}
-                  </span>
-                </div>
-              </a>
             </div>
           </div>
         </div>

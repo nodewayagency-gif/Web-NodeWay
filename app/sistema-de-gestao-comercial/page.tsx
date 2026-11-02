@@ -11,13 +11,14 @@ import {
   CalendarClock,
   Plug,
   Bot,
+  ExternalLink,
 } from 'lucide-react';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 import { FaqSection } from '@/components/seo/faq-section';
 import { RelatedBlogPosts } from '@/components/seo/related-links';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
-import { siteConfig, absoluteUrl } from '@/lib/site-config';
+import { siteConfig, absoluteUrl, CRM_PLANOS_URL } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Sistema de Gestão Comercial e CRM',
@@ -46,12 +47,12 @@ export const metadata: Metadata = {
 const modules = [
   { icon: Users, title: 'CRM e cadastro de clientes', desc: 'Centralize clientes e acompanhe cada oportunidade, do primeiro contato ao fechamento.' },
   { icon: FileText, title: 'Orçamentos e pedidos em PDF', desc: 'Monte o orçamento, converta em pedido e gere o PDF pronto para enviar.' },
-  { icon: Percent, title: 'Comissões de vendedores', desc: 'Comissão básica em todos os planos e avançada por produto no Pro e Business.' },
-  { icon: CalendarClock, title: 'Agenda de atendimentos', desc: 'Organize retornos e compromissos junto do histórico comercial. (Pro e Business)' },
-  { icon: Boxes, title: 'Controle de estoque', desc: 'Movimentações de entrada e saída com saldos sempre atualizados. (Pro e Business)' },
-  { icon: Wallet, title: 'Financeiro', desc: 'Contas a receber e a pagar para acompanhar o caixa. (Pro e Business)' },
-  { icon: Plug, title: 'Integração com ERP', desc: 'Sincronize com Bling (Pro e Business) e Omie ou Tiny (Business).' },
-  { icon: Bot, title: 'Assistente de IA e multi-loja', desc: 'IA (até 2.000 usos/mês), multi-loja e domínio próprio. (Business)' },
+  { icon: Percent, title: 'Comissões de vendedores', desc: 'Comissão básica em todos os planos e avançada por produto no Pro e Enterprise.' },
+  { icon: CalendarClock, title: 'Agenda de atendimentos', desc: 'Organize retornos e compromissos junto do histórico comercial.' },
+  { icon: Boxes, title: 'Controle de estoque', desc: 'Movimentações de entrada e saída com saldos sempre atualizados.' },
+  { icon: Wallet, title: 'Financeiro', desc: 'Contas a receber e a pagar para acompanhar o caixa da operação comercial.' },
+  { icon: Plug, title: 'Integração com ERP', desc: 'Sincronize com Bling, Omie ou Tiny para emissão fiscal centralizada.' },
+  { icon: Bot, title: 'Equipe de vendas e maquininha', desc: 'Gestão de usuários, metas, controle de comissões e integração com Point.' },
 ];
 
 const steps = [
@@ -70,7 +71,7 @@ const faq = [
   {
     question: 'É um CRM?',
     answer:
-      'Sim. Inclui CRM (clientes, agenda de atendimentos e acompanhamento do funil de orçamentos e pedidos) e vai além, cobrindo estoque, financeiro e comissões.',
+      'Sim. Inclui CRM completo (clientes, leads, agenda de atendimentos e acompanhamento de propostas) e vai além, cobrindo estoque, compras, financeiro e comissões.',
   },
   {
     question: 'Substitui o meu ERP?',
@@ -78,18 +79,17 @@ const faq = [
       'Não. Ele cuida da gestão comercial e se integra ao seu ERP (Bling, Omie ou Tiny). A emissão de NF-e e os pagamentos continuam no ERP.',
   },
   {
-    question: 'Com quais ERPs integra?',
-    answer: 'Bling nos planos Pro e Business; Omie e Tiny no plano Business.',
+    question: 'Quais são os planos disponíveis?',
+    answer:
+      'Temos os planos Starter (R$ 69,90/mês), Pro (R$ 149,90/mês) e Enterprise (R$ 299,90/mês), além de 7 dias de teste grátis.',
   },
   {
     question: 'Tem teste grátis?',
-    answer: 'Sim. Você usa todos os recursos do plano Pro por 7 dias, sem cartão de crédito.',
+    answer: 'Sim. Você pode experimentar os recursos por 7 dias grátis diretamente na plataforma.',
   },
 ];
 
-const trialLink = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
-  'Olá! Quero começar o teste grátis de 7 dias.',
-)}`;
+const trialLink = CRM_PLANOS_URL;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -99,16 +99,16 @@ const jsonLd = {
   operatingSystem: 'Web',
   url: absoluteUrl('/sistema-de-gestao-comercial'),
   description:
-    'Sistema de gestão comercial com CRM: orçamentos, pedidos, clientes, produtos, estoque, financeiro, comissões e IA, integrado ao ERP (Bling, Omie, Tiny). Não emite NF-e nem processa pagamentos.',
+    'Sistema de gestão comercial com CRM: orçamentos, pedidos, clientes, produtos, estoque, financeiro, comissões e equipe de vendas. Não emite NF-e nem processa pagamentos.',
   featureList: modules.map((m) => m.title),
   publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
   offers: {
     '@type': 'AggregateOffer',
     priceCurrency: 'BRL',
-    lowPrice: 99,
-    highPrice: 599,
+    lowPrice: 69.9,
+    highPrice: 299.9,
     offerCount: 3,
-    url: absoluteUrl('/planos'),
+    url: CRM_PLANOS_URL,
   },
 };
 
@@ -155,20 +155,22 @@ export default function SistemaGestaoComercialPage() {
             soltas e sem trocar o seu sistema fiscal.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/planos"
+            <a
+              href={CRM_PLANOS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="cta-primary inline-flex items-center justify-center gap-2 font-medium px-8 h-13 rounded-full"
             >
-              Ver planos e preços
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              Ver planos no CRM
+              <ExternalLink className="w-4 h-4" />
+            </a>
             <a
-              href={trialLink}
+              href={CRM_PLANOS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 border border-border text-foreground font-medium px-8 h-13 rounded-full hover:border-primary/50 hover:text-primary transition-colors"
             >
-              <WhatsAppIcon className="w-5 h-5" />
+              <ExternalLink className="w-4 h-4 text-primary" />
               Teste grátis por 7 dias
             </a>
           </div>
@@ -245,9 +247,9 @@ export default function SistemaGestaoComercialPage() {
           </p>
           <ul className="grid sm:grid-cols-3 gap-4 max-w-3xl">
             {[
-              { erp: 'Bling', plano: 'Planos Pro e Business' },
-              { erp: 'Omie', plano: 'Plano Business' },
-              { erp: 'Tiny', plano: 'Plano Business' },
+              { erp: 'Bling', plano: 'Planos Pro e Enterprise' },
+              { erp: 'Omie', plano: 'Plano Enterprise' },
+              { erp: 'Tiny', plano: 'Plano Enterprise' },
             ].map((i) => (
               <li key={i.erp} className="flex items-start gap-3 rounded-2xl border border-border bg-background/40 p-4">
                 <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -287,15 +289,17 @@ export default function SistemaGestaoComercialPage() {
               Organize sua operação comercial
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Escolha o plano ideal e comece com 7 dias grátis — todos os recursos do plano Pro.
+              Acesse a página oficial do Nodeway CRM e comece agora com 7 dias grátis.
             </p>
-            <Link
-              href="/planos"
+            <a
+              href={CRM_PLANOS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="cta-primary inline-flex items-center justify-center gap-2 font-medium px-8 h-14 rounded-full"
             >
-              Ver planos e preços
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              Conhecer planos no CRM
+              <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>

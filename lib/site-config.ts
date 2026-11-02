@@ -42,7 +42,7 @@ export const siteConfig = {
     'landing pages',
     'business intelligence',
     'automação de processos',
-    'desenvolvimento next.js',
+    'desenvolvimento web sob medida',
   ],
   /** Categoria (metadata) e idioma. */
   category: 'technology',
@@ -109,6 +109,9 @@ export const siteConfig = {
 };
 
 // ── Helpers derivados (não precisa editar) ──────────────────────────────────
+
+/** Link oficial da página de planos do Nodeway CRM */
+export const CRM_PLANOS_URL = 'https://crm.nodewayagency.com.br/planos';
 
 /** Link do WhatsApp com mensagem pré-preenchida. */
 export const WHATSAPP_URL = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(

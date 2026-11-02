@@ -43,7 +43,7 @@ console.log("Visibilidade:", bi.insights)`,
 ];
 
 const highlights = [
-  { title: "Stack moderna", description: "Next.js, Node, Python e mais." },
+  { title: "Engenharia moderna", description: "Arquitetura sob medida para sua escala." },
   { title: "Código limpo", description: "Escalável e fácil de manter." },
   { title: "Integração total", description: "APIs, CRMs, ERPs e ferramentas." },
   { title: "Suporte contínuo", description: "Evolução constante do produto." },

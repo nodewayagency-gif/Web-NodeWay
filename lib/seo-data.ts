@@ -57,7 +57,7 @@ export const servicePillars: ServicePillar[] = [
     title: 'Desenvolvimento Web',
     h1: 'Desenvolvimento Web sob medida para empresas que querem escalar',
     metaDescription:
-      'Desenvolvimento web com Next.js, performance e SEO. A Nodeway Agency cria plataformas digitais em Cascavel, Blumenau, Guanambi e todo o Brasil.',
+      'Desenvolvimento web sob medida, performance e SEO. A Nodeway Agency cria plataformas digitais em Cascavel, Blumenau, Guanambi e todo o Brasil.',
     intro:
       'Construímos sites e plataformas web com foco em performance, SEO e conversão. Cada projeto é pensado para o seu negócio — sem templates limitados.',
     sections: [
@@ -69,7 +69,7 @@ export const servicePillars: ServicePillar[] = [
       {
         title: 'Como a Nodeway desenvolve',
         content:
-          'Utilizamos Next.js, React e arquitetura moderna em nuvem. Entregamos páginas rápidas, responsivas e preparadas para indexação no Google — com atendimento presencial em Cascavel e remoto para todo o Brasil.',
+          'Desenvolvemos com arquitetura moderna e segura em nuvem. Entregamos páginas rápidas, responsivas e preparadas para indexação no Google — com atendimento presencial em Cascavel e remoto para todo o Brasil.',
       },
       {
         title: 'Projetos reais',
@@ -114,7 +114,7 @@ export const servicePillars: ServicePillar[] = [
       {
         title: 'Tecnologia e escala',
         content:
-          'Stack moderna com React, Next.js e bancos em nuvem. Sistemas preparados para crescer com sua empresa, com integrações via API quando necessário.',
+          'Engenharia moderna, segura e com bancos em nuvem. Sistemas preparados para crescer com sua empresa, com integrações via API quando necessário.',
       },
     ],
     faq: [
@@ -190,7 +190,7 @@ export const servicePillars: ServicePillar[] = [
       {
         title: 'Performance é conversão',
         content:
-          'Usamos Next.js para entregar páginas instantâneas no mobile — crítico quando 90% do tráfego de urgência vem do celular, como no case da Carmax Baterias.',
+          'Desenvolvemos com foco em alta performance para entregar páginas instantâneas no mobile — crítico quando 90% do tráfego de urgência vem do celular, como no case da Carmax Baterias.',
       },
     ],
     faq: [
@@ -299,7 +299,7 @@ export const cityHubs: CityHub[] = [
       'Sede da Nodeway Agency, em Cascavel/PR',
       'Atendimento presencial na cidade e remoto para todo o Brasil',
       '5 clientes ativos em Cascavel: ILC, JPB Joias, JPB StoreX, Newflexo e Carmax Baterias',
-      'Especialistas em Next.js, e-commerce, CRM sob medida e landing pages de conversão',
+      'Especialistas em software sob medida, e-commerce, CRM e landing pages de conversão',
       'Foco no Oeste do Paraná: agro, indústria, comércio e serviços',
       'Dashboards de BI e integrações para automatizar rotinas comerciais e fiscais',
     ],
@@ -374,7 +374,7 @@ export const cityHubs: CityHub[] = [
       'Nodeway atende Blumenau/SC. Case Formento Playgrounds: orçamentos, kits de produtos, pedidos e indicadores. Sistemas sob medida.',
     h1: 'Desenvolvimento de sistemas em Blumenau',
     localIntro:
-      'A Nodeway Agency atua em Blumenau/SC com projetos de desenvolvimento sob medida, criação de sites em Next.js, e-commerce e automação para indústrias e empresas do Vale do Itajaí. Somos parceiros ativos da região: aqui atendemos a Formento Indústria e Comércio de Playgrounds, com um sistema próprio de orçamentos, kits de produtos, pedidos e painéis de indicadores.',
+      'A Nodeway Agency atua em Blumenau/SC com projetos de desenvolvimento sob medida, criação de sites rápidos, e-commerce e automação para indústrias e empresas do Vale do Itajaí. Somos parceiros ativos da região: aqui atendemos a Formento Indústria e Comércio de Playgrounds, com um sistema próprio de orçamentos, kits de produtos, pedidos e painéis de indicadores.',
     sections: [
       {
         title: 'Do têxtil ao TI: a indústria de Blumenau precisa de sistemas sob medida',
@@ -384,7 +384,7 @@ export const cityHubs: CityHub[] = [
       {
         title: 'Blumenau como polo de tecnologia: e-commerce, sites e automação no Vale do Itajaí',
         content:
-          'Blumenau deixou de ser apenas a capital do têxtil e virou um dos maiores polos de tecnologia de Santa Catarina, respondendo por cerca de 12% do setor no estado e reunindo milhares de empresas de TI na região. Esse ambiente maduro eleva a régua: comércios, indústrias e prestadores de serviço do Vale do Itajaí precisam de presença digital rápida e de operações integradas. A Nodeway entrega criação de sites em Next.js com foco em performance e SEO, e-commerce em Blumenau/SC para vender além da loja física, e landing pages de conversão para campanhas. Quando os sistemas não conversam, cuidamos das integrações e automação, conectando ERP, loja virtual, financeiro e planilhas para reduzir digitação manual e erros.',
+          'Blumenau deixou de ser apenas a capital do têxtil e virou um dos maiores polos de tecnologia de Santa Catarina, respondendo por cerca de 12% do setor no estado e reunindo milhares de empresas de TI na região. Esse ambiente maduro eleva a régua: comércios, indústrias e prestadores de serviço do Vale do Itajaí precisam de presença digital rápida e de operações integradas. A Nodeway entrega criação de sites com foco em performance e SEO, e-commerce em Blumenau/SC para vender além da loja física, e landing pages de conversão para campanhas. Quando os sistemas não conversam, cuidamos das integrações e automação, conectando ERP, loja virtual, financeiro e planilhas para reduzir digitação manual e erros.',
       },
       {
         title: 'Decisão com dados: BI e dashboards para empresas de Blumenau',
@@ -397,7 +397,7 @@ export const cityHubs: CityHub[] = [
       'Case real: Formento Indústria e Comércio de Playgrounds',
       'Sistema sob medida de orçamentos, kits de produtos e pedidos',
       'Painéis de indicadores (BI) para acompanhar produção e vendas',
-      'Desenvolvimento web em Next.js, e-commerce e landing pages de conversão',
+      'Desenvolvimento web sob medida, e-commerce e landing pages de conversão',
       'Integrações e automação entre ERP, loja e planilhas',
     ],
     clients: [
@@ -423,7 +423,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Que serviços a Nodeway oferece em Blumenau/SC?',
         answer:
-          'Desenvolvimento web em Next.js, sistemas sob medida, e-commerce, landing pages de conversão, relatórios e dashboards em BI, além de integrações e automação entre sistemas como ERP, loja e planilhas.',
+          'Desenvolvimento web sob medida, sistemas personalizados, e-commerce, landing pages de conversão, relatórios e dashboards em BI, além de integrações e automação entre sistemas como ERP, loja e planilhas.',
       },
       {
         question: 'Preciso estar em Blumenau para contratar? A Nodeway fica em Cascavel/PR.',
@@ -463,7 +463,7 @@ export const cityHubs: CityHub[] = [
       {
         title: 'Como a Nodeway atende empresas de Guanambi',
         content:
-          'A Nodeway tem sede em Cascavel/PR e atende Guanambi de forma remota, com a mesma equipe que já entrega para os clientes locais. Na prática, isso quer dizer reuniões de descoberta por vídeo, entregas em ciclos curtos e suporte contínuo — sem precisar de fornecedor na porta ao lado. Além de sistemas sob medida e integrações, desenvolvemos sites e landing pages de conversão em Next.js (rápidas e otimizadas para SEO), lojas de e-commerce e painéis de BI. Para pequenas e médias empresas de Guanambi e de todo o Sudoeste da Bahia, é acesso a um padrão técnico de grande centro, com a proximidade de quem já conhece a realidade da distribuição e do comércio regional.',
+          'A Nodeway tem sede em Cascavel/PR e atende Guanambi de forma remota, com a mesma equipe que já entrega para os clientes locais. Na prática, isso quer dizer reuniões de descoberta por vídeo, entregas em ciclos curtos e suporte contínuo — sem precisar de fornecedor na porta ao lado. Além de sistemas sob medida e integrações, desenvolvemos sites e landing pages de conversão de alto impacto (rápidas e otimizadas para SEO), lojas de e-commerce e painéis de BI. Para pequenas e médias empresas de Guanambi e de todo o Sudoeste da Bahia, é acesso a um padrão técnico de grande centro, com a proximidade de quem já conhece a realidade da distribuição e do comércio regional.',
       },
     ],
     highlights: [
@@ -504,7 +504,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Só trabalham com o setor de saúde em Guanambi?',
         answer:
-          'Não. A saúde é onde temos cases, mas atendemos comércio, atacado e serviços da região com sistemas sob medida, e-commerce, sites em Next.js, integrações e dashboards de BI.',
+          'Não. A saúde é onde temos cases, mas atendemos comércio, atacado e serviços da região com sistemas sob medida, e-commerce, sites de alta velocidade, integrações e dashboards de BI.',
       },
       {
         question: 'Como funciona o atendimento à distância, já que a sede é em Cascavel/PR?',
@@ -524,7 +524,7 @@ export const cityHubs: CityHub[] = [
       'Nodeway atende Toledo/PR. Case Transporte Maurício: painéis de B.I. logístico, frota, rotas e custos em tempo real.',
     h1: 'Business Intelligence em Toledo',
     localIntro:
-      'A Nodeway Agency atende Toledo, a Capital do Agronegócio do Paraná, com desenvolvimento web em Next.js, sistemas sob medida, e-commerce e painéis de BI. Já somos parceiros ativos na cidade, ajudando empresas do Oeste do Paraná a transformar a força do agro, da indústria e da logística em tecnologia que gera resultado.',
+      'A Nodeway Agency atende Toledo, a Capital do Agronegócio do Paraná, com desenvolvimento web sob medida, sistemas dedicados, e-commerce e painéis de BI. Já somos parceiros ativos na cidade, ajudando empresas do Oeste do Paraná a transformar a força do agro, da indústria e da logística em tecnologia que gera resultado.',
     sections: [
       {
         title: 'Tecnologia para a Capital do Agronegócio do Paraná',
@@ -539,13 +539,13 @@ export const cityHubs: CityHub[] = [
       {
         title: 'Comércio, serviços e sites que convertem em Toledo/PR',
         content:
-          'Toledo cresceu mais de 20% em população na última década e mantém saldo positivo de empregos puxado por serviços, indústria e construção, o que aquece o comércio local e a demanda por presença digital. Criação de sites em Toledo, e-commerce em Toledo/PR e landing pages de conversão ajudam lojas, prestadores e indústrias a vender e captar clientes fora do balcão. A Nodeway desenvolve tudo em Next.js, com foco em velocidade, SEO e experiência mobile, além de integrar sistemas de ERP, financeiro e atendimento para automatizar tarefas repetitivas. Para a pequena e média empresa toledana, é tecnologia sob medida que acompanha o ritmo de uma cidade que não para de crescer.',
+          'Toledo cresceu mais de 20% em população na última década e mantém saldo positivo de empregos puxado por serviços, indústria e construção, o que aquece o comércio local e a demanda por presença digital. Criação de sites em Toledo, e-commerce em Toledo/PR e landing pages de conversão ajudam lojas, prestadores e indústrias a vender e captar clientes fora do balcão. A Nodeway desenvolve tudo sob medida, com foco em velocidade, SEO e experiência mobile, além de integrar sistemas de ERP, financeiro e atendimento para automatizar tarefas repetitivas. Para a pequena e média empresa toledana, é tecnologia sob medida que acompanha o ritmo de uma cidade que não para de crescer.',
       },
     ],
     highlights: [
       'Nodeway é parceira ativa em Toledo/PR, com clientes reais na cidade',
       'Cliente na cidade: Transporte Maurício, com painéis de BI de frota, rotas e custos',
-      'Desenvolvimento de sistemas sob medida e sites em Next.js para o Oeste do Paraná',
+      'Desenvolvimento de sistemas sob medida e sites rápidos para o Oeste do Paraná',
       'E-commerce e landing pages de conversão para o comércio e o agro toledano',
       'Dashboards de BI para agroindústria, logística e indústria da região',
       'Integrações e automação de sistemas para pequenas e médias empresas',
@@ -598,7 +598,7 @@ export const cityHubs: CityHub[] = [
       {
         title: 'O maior polo de serviços e tecnologia do Paraná',
         content:
-          'Curitiba é uma economia movida a serviços: cerca de dois terços do valor adicionado da cidade vêm desse setor, com destaque para tecnologia da informação, que emprega dezenas de milhares de profissionais e reúne milhares de empresas de software. Programas como o Tecnoparque reforçam esse ecossistema. Nesse ambiente, o padrão técnico é alto e a concorrência digital é intensa — pequenas e médias empresas precisam de sites rápidos e sistemas bem construídos para não ficar para trás. É exatamente aí que a Nodeway atua: desenvolvimento web em Curitiba com Next.js, landing pages de conversão e sistemas sob medida que acompanham a maturidade digital da capital paranaense.',
+          'Curitiba é uma economia movida a serviços: cerca de dois terços do valor adicionado da cidade vêm desse setor, com destaque para tecnologia da informação, que emprega dezenas de milhares de profissionais e reúne milhares de empresas de software. Programas como o Tecnoparque reforçam esse ecossistema. Nesse ambiente, o padrão técnico é alto e a concorrência digital é intensa — pequenas e médias empresas precisam de sites rápidos e sistemas bem construídos para não ficar para trás. É exatamente aí que a Nodeway atua: desenvolvimento web em Curitiba sob medida, landing pages de conversão e sistemas robustos que acompanham a maturidade digital da capital paranaense.',
       },
       {
         title: 'Indústria, automotivo e comércio: dados e sistemas sob medida',
@@ -616,7 +616,7 @@ export const cityHubs: CityHub[] = [
       'Sede em Cascavel/PR, a cerca de 2h30 da capital',
       'Cases reais no Paraná (Cascavel, Toledo), em SC (Blumenau) e na BA (Guanambi)',
       'Ainda sem cliente em Curitiba — atendimento remoto imediato disponível',
-      'Foco em Next.js, sistemas sob medida, BI e automação para PMEs',
+      'Foco em sistemas sob medida, sites rápidos, BI e automação para PMEs',
       'Aceitando novos projetos de desenvolvimento e integração na região',
     ],
     clients: [],
@@ -634,7 +634,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Que serviços a Nodeway oferece para empresas de Curitiba?',
         answer:
-          'Desenvolvimento web em Next.js, sistemas sob medida, e-commerce, landing pages de conversão, relatórios e dashboards em BI, e integrações e automação entre sistemas — sempre focados em pequenas e médias empresas.',
+          'Desenvolvimento web sob medida, sistemas dedicados, e-commerce, landing pages de conversão, relatórios e dashboards em BI, e integrações e automação entre sistemas — sempre focados em pequenas e médias empresas.',
       },
       {
         question: 'A Nodeway atende a indústria e o comércio da região metropolitana?',
@@ -654,12 +654,12 @@ export const cityHubs: CityHub[] = [
       'Nodeway Agency atende empresas em todo o Brasil. Cascavel, Blumenau, Guanambi, Toledo, Curitiba. Sistemas, e-commerce, BI e landing pages.',
     h1: 'Desenvolvimento digital para todo o Brasil',
     localIntro:
-      'Da sede em Cascavel/PR ao Nordeste, a Nodeway Agency desenvolve sites, sistemas sob medida, e-commerce, landing pages e dashboards de BI para pequenas e médias empresas em todo o Brasil. O atendimento é 100% remoto, com a mesma engenharia em Next.js e o mesmo acompanhamento próximo, esteja o cliente no oeste do Paraná, no Vale do Itajaí ou no sertão baiano.',
+      'Da sede em Cascavel/PR ao Nordeste, a Nodeway Agency desenvolve sites, sistemas sob medida, e-commerce, landing pages e dashboards de BI para pequenas e médias empresas em todo o Brasil. O atendimento é 100% remoto, com a mesma engenharia de alto padrão e o mesmo acompanhamento próximo, esteja o cliente no oeste do Paraná, no Vale do Itajaí ou no sertão baiano.',
     sections: [
       {
         title: 'Tecnologia para PMEs de todas as regiões do Brasil',
         content:
-          'As pequenas e médias empresas respondem por mais de um quarto do PIB brasileiro e vivem hoje seu maior patamar de digitalização: segundo o Sebrae, 76% dos empreendedores já usam computador no negócio e quase metade adota algum software de gestão integrada. O problema é que boa parte ainda depende de planilhas soltas, ERPs engessados e sites lentos que não convertem. A Nodeway atende esse cenário de ponta a ponta, do interior do Paraná às capitais, com desenvolvimento em Next.js, sistemas sob medida e integrações que conectam vendas, estoque e financeiro. Por ser 100% remota, a agência entrega a mesma qualidade técnica para empresas de qualquer cidade, sem custo de deslocamento embutido no projeto.',
+          'As pequenas e médias empresas respondem por mais de um quarto do PIB brasileiro e vivem hoje seu maior patamar de digitalização: segundo o Sebrae, 76% dos empreendedores já usam computador no negócio e quase metade adota algum software de gestão integrada. O problema é que boa parte ainda depende de planilhas soltas, ERPs engessados e sites lentos que não convertem. A Nodeway atende esse cenário de ponta a ponta, do interior do Paraná às capitais, com desenvolvimento sob medida de alta velocidade, sistemas dedicados e integrações que conectam vendas, estoque e financeiro. Por ser 100% remota, a agência entrega a mesma qualidade técnica para empresas de qualquer cidade, sem custo de deslocamento embutido no projeto.',
       },
       {
         title: 'Atendimento remoto sem perder proximidade',
@@ -667,15 +667,15 @@ export const cityHubs: CityHub[] = [
           'Trabalhar à distância não significa atendimento genérico. A Nodeway mantém clientes ativos em quatro estados — Cascavel e Toledo no oeste do Paraná, Blumenau em Santa Catarina e Guanambi na Bahia — e usa esse mesmo método para qualquer empresa do país: descoberta do processo real, escopo claro, entregas em ciclos curtos e comunicação direta com quem decide. Reuniões por vídeo, ambientes de homologação e documentação substituem a presença física sem perder o acompanhamento. Assim, uma indústria de Santa Catarina, um comércio do Paraná ou uma empresa de serviços do Nordeste recebem a mesma engenharia moderna, com foco em performance, SEO e sistemas que realmente encaixam na operação de cada negócio.',
       },
       {
-        title: 'Do site ao dashboard: uma stack completa para crescer',
+        title: 'Do site ao dashboard: uma solução completa para crescer',
         content:
-          'Contratar fornecedores diferentes para site, sistema, loja e relatórios costuma gerar retrabalho e dados desconectados. A Nodeway concentra tudo em uma stack única: criação de sites e landing pages rápidas e mobile-first, e-commerce, sistemas web sob medida (CRM, orçamentos, gestão operacional), painéis de BI e automações que eliminam tarefas manuais. Para a PME brasileira em crescimento, isso significa um site que indexa bem no Google, uma operação organizada em sistema próprio e indicadores atualizados para decidir com dados. Empresas de comércio, indústria, agronegócio, logística e serviços em qualquer estado podem contratar módulos isolados ou evoluir para uma plataforma integrada, no ritmo do orçamento e da maturidade digital de cada uma.',
+          'Contratar fornecedores diferentes para site, sistema, loja e relatórios costuma gerar retrabalho e dados desconectados. A Nodeway concentra tudo em uma solução única e integrada: criação de sites e landing pages rápidas e mobile-first, e-commerce, sistemas web sob medida (CRM, orçamentos, gestão operacional), painéis de BI e automações que eliminam tarefas manuais. Para a PME brasileira em crescimento, isso significa um site que indexa bem no Google, uma operação organizada em sistema próprio e indicadores atualizados para decidir com dados. Empresas de comércio, indústria, agronegócio, logística e serviços em qualquer estado podem contratar módulos isolados ou evoluir para uma plataforma integrada, no ritmo do orçamento e da maturidade digital de cada uma.',
       },
     ],
     highlights: [
       'Sede em Cascavel/PR com atendimento nacional 100% remoto',
       'Clientes reais ativos em Cascavel/PR, Toledo/PR, Blumenau/SC e Guanambi/BA',
-      'Desenvolvimento web em Next.js, sistemas sob medida e e-commerce',
+      'Desenvolvimento web sob medida, sistemas dedicados e e-commerce',
       'Landing pages de conversão para Google Ads e SEO',
       'Relatórios e dashboards em BI para decisão baseada em dados',
       'Integrações e automação entre ERP, financeiro, fiscal e logística',
@@ -695,7 +695,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Quais serviços a Nodeway oferece para empresas de outras regiões?',
         answer:
-          'Desenvolvimento web em Next.js, sistemas sob medida, e-commerce, landing pages de conversão, dashboards de BI e integrações e automação entre sistemas.',
+          'Desenvolvimento web sob medida, sistemas dedicados, e-commerce, landing pages de conversão, dashboards de BI e integrações e automação entre sistemas.',
       },
       {
         question: 'A Nodeway atende empresas de qualquer setor?',

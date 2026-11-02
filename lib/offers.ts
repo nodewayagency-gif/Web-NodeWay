@@ -312,14 +312,14 @@ export const offers: Offer[] = [
       { title: 'Integração entre sistemas', desc: 'ERP, e-commerce, pagamento, frete e APIs conectados.' },
       { title: 'Automação de rotinas', desc: 'O que era manual passa a rodar sozinho.' },
       { title: 'Menos erro, mais tempo', desc: 'Dado único, sem redigitação nem retrabalho.' },
-      { title: 'Sob medida pra sua stack', desc: 'Trabalhamos com as ferramentas que você já tem.' },
+      { title: 'Sob medida para o seu processo', desc: 'Trabalhamos com as ferramentas que você já tem.' },
     ],
     caseSlugs: ['jpb-storex', 'primardi-saude'],
     faq: [
       {
         question: 'Vocês integram com qual sistema?',
         answer:
-          'ERPs, gateways, transportadoras, planilhas e APIs em geral — conforme a sua stack.',
+          'ERPs, gateways, transportadoras, planilhas e APIs em geral — conforme a sua operação.',
       },
       {
         question: 'Dá pra automatizar só uma parte?',

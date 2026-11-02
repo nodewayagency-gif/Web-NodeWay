@@ -3,9 +3,9 @@
 import { useEffect, useState, useRef } from "react";
 
 const integrations = [
-  { name: "Next.js", category: "Frontend" },
-  { name: "Node.js", category: "Backend" },
-  { name: "PostgreSQL", category: "Banco de Dados" },
+  { name: "Bling ERP", category: "ERP & Fiscal" },
+  { name: "Omie", category: "ERP & Financeiro" },
+  { name: "Tiny ERP", category: "ERP & Estoque" },
   { name: "n8n", category: "Automacao" },
   { name: "Zapier", category: "Automacao" },
   { name: "Power BI", category: "Analytics" },

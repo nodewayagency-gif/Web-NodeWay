@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Code2, Cpu, Database, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
+import { WHATSAPP_URL } from "@/lib/site-config";
 
-const words = ["crescer", "escalar", "converter", "inovar"];
+const words = ["crescer", "ganhar tempo", "se organizar", "vender mais"];
 
-const stats = [
-  { value: "24/7", label: "soluções em operação contínua" },
-  { value: "100%", label: "desenvolvimento sob medida" },
-  { value: "360°", label: "visão estratégica do negócio" },
-  { value: "Full", label: "foco em performance" },
-  { value: "End-to-end", label: "do planejamento à entrega" },
+const realImpactMarquee = [
+  { highlight: "Orçamentos de horas para segundos", client: "Indústria Gráfica" },
+  { highlight: "Frota e custos em tempo real", client: "Transporte Maurício" },
+  { highlight: "Vitrine de luxo com fechamento no WhatsApp", client: "JPB Joias" },
+  { highlight: "Fim dos clientes esquecidos sem retorno", client: "Newflexo" },
+  { highlight: "Kits de produtos e pedidos em minutos", client: "Formento Playgrounds" },
+  { highlight: "Atendimento, licitações e fiscal integrados", client: "Primardi Saúde & Vivre" },
 ];
 
 export function HeroSection() {
@@ -18,7 +21,6 @@ export function HeroSection() {
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    // Respeita prefers-reduced-motion: não roda o ciclo de palavras.
     if (
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -31,202 +33,153 @@ export function HeroSection() {
         setWordIndex((prev) => (prev + 1) % words.length);
         setAnimating(false);
       }, 300);
-    }, 2800);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-
-      {/* Fundo: malha de pontos animados com gradiente */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Camada de gradiente radial do centro */}
+    <section className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-center overflow-x-hidden">
+      {/* Fundo acolhedor com luzes suaves */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,194,203,0.12) 0%, rgba(0,113,188,0.08) 40%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,194,203,0.12) 0%, rgba(0,113,188,0.06) 50%, transparent 75%)",
           }}
         />
-        {/* Glow verde no canto superior esquerdo */}
         <div
-          className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full"
+          className="absolute -top-32 -left-32 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full blur-3xl opacity-60"
           style={{
             background:
-              "radial-gradient(circle, rgba(126,217,87,0.10) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(126,217,87,0.12) 0%, transparent 70%)",
           }}
         />
-        {/* Glow azul no canto inferior direito */}
         <div
-          className="absolute -bottom-40 -right-20 w-[600px] h-[600px] rounded-full"
+          className="absolute -bottom-32 -right-20 w-[380px] sm:w-[550px] h-[380px] sm:h-[550px] rounded-full blur-3xl opacity-60"
           style={{
             background:
-              "radial-gradient(circle, rgba(0,113,188,0.12) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(0,113,188,0.14) 0%, transparent 70%)",
           }}
         />
-
-        {/* Grade de linhas finas */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-[0.06]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="grid"
-              width="60"
-              height="60"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 60 0 L 0 0 0 60"
-                fill="none"
-                stroke="rgba(0,194,203,1)"
-                strokeWidth="0.8"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-
-        {/* Pontos nos cruzamentos da grade */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-[0.12]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="dots"
-              width="60"
-              height="60"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="0" cy="0" r="1.5" fill="#00C2CB" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
       </div>
 
-      {/* Conteudo principal */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 pt-32 pb-44 sm:pt-36 sm:pb-48 lg:pt-40 lg:pb-52">
-
-        {/* Eyebrow */}
-        <div className="mb-6 hero-rise">
-          <span className="inline-flex items-center gap-3 text-xs sm:text-sm font-mono text-muted-foreground tracking-widest uppercase">
-            <span className="w-6 h-px brand-gradient-bg" />
-            Soluções digitais sob medida
-            <span className="w-6 h-px brand-gradient-bg" />
-          </span>
-        </div>
-
-        {/* Headline principal */}
-        <div className="mb-10 sm:mb-14">
-          <h1 className="font-display leading-[0.95] tracking-tight hero-rise-lcp">
-            {/* Linha 1 */}
-            <span className="block text-foreground text-[clamp(2.8rem,8vw,7.5rem)]">
-              Para negócios
+      {/* Conteúdo principal limpo, focado em Software Personalizado (Selfware) */}
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 pt-28 pb-32 sm:pt-36 sm:pb-36 lg:pt-40 lg:pb-40">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          {/* Badge Minimalista Clean */}
+          <div className="mb-6 hero-rise">
+            <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm text-primary font-medium tracking-wide">
+              Sistemas e softwares sob medida para a sua operação
             </span>
+          </div>
 
-            {/* Linha 2 - "que querem" + palavra animada */}
-            <span className="block text-[clamp(2.8rem,8vw,7.5rem)]">
-              <span className="text-foreground">que querem </span>
-              <span
-                className={`inline-block brand-gradient transition-all duration-300 ${animating
-                  ? "opacity-0 translate-y-3"
-                  : "opacity-100 translate-y-0"
-                  }`}
-                style={{ minWidth: "4ch" }}
-              >
-                {words[wordIndex]}
+          {/* Headline humanizada — estrutura estável no mobile para NUNCA mudar a altura da página ao trocar palavras */}
+          <div className="mb-6 sm:mb-8">
+            <h1 className="font-display leading-[1.2] sm:leading-[1.18] tracking-tight hero-rise-lcp">
+              <span className="block text-foreground text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+                Para empresas que querem
               </span>
-            </span>
 
-            {/* Linha 3 */}
-            <span className="block text-muted-foreground text-[clamp(2rem,5vw,4.5rem)] mt-1">
-              de verdade.
-            </span>
-          </h1>
-        </div>
+              <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-1.5 sm:mt-2 h-[1.35em] overflow-visible">
+                <span
+                  className={`inline-block brand-gradient px-1.5 pt-0.5 pb-2 sm:pb-4 transition-all duration-300 overflow-visible ${
+                    animating
+                      ? "opacity-0 translate-y-3"
+                      : "opacity-100 translate-y-0"
+                  }`}
+                  style={{
+                    lineHeight: "1.22",
+                  }}
+                >
+                  {words[wordIndex]}
+                </span>
+              </span>
 
-        {/* Descricao + CTA */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 lg:items-end">
+              <span className="block text-muted-foreground text-xl sm:text-3xl md:text-5xl lg:text-6xl mt-2 sm:mt-3">
+                com tecnologia feita para a sua rotina.
+              </span>
+            </h1>
+          </div>
+
+          {/* Subtítulo focado em software sob medida / selfware */}
           <p
-            className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-lg hero-rise"
+            className="text-sm sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-8 sm:mb-10 hero-rise px-2"
             style={{ animationDelay: "0.15s" }}
           >
-            Criamos sistemas, aplicações e experiências digitais personalizadas.
-            Não vendemos sites — construímos soluções que resolvem problemas reais.
+            Não vendemos soluções prontas ou engessadas. Desenvolvemos o{" "}
+            <strong className="text-foreground font-medium">software personalizado</strong> que a sua
+            operação precisa para eliminar planilhas, agilizar processos e dar clareza total ao
+            seu negócio.
           </p>
 
+          {/* Botões de Ação */}
           <div
-            className="flex flex-col sm:flex-row items-start gap-3 shrink-0 hero-rise"
+            className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 hero-rise px-3 sm:px-0"
             style={{ animationDelay: "0.25s" }}
           >
             <a
-              href="#contact"
-              className="cta-primary inline-flex items-center justify-center gap-2 px-7 h-13 sm:h-14 text-sm sm:text-base rounded-full group font-medium"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary inline-flex items-center justify-center gap-2.5 px-5 sm:px-8 h-13 sm:h-14 text-sm sm:text-base rounded-full group font-semibold shadow-lg shadow-primary/15 transition-transform hover:scale-[1.02]"
             >
-              Solicitar orçamento
+              <WhatsAppIcon className="w-4 h-4 shrink-0" />
+              Solicitar proposta sob medida
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
+
             <a
               href="#features"
-              className="inline-flex items-center justify-center gap-2 h-13 sm:h-14 px-7 text-sm sm:text-base rounded-full border border-border text-foreground/70 hover:text-foreground hover:border-primary/50 transition-all"
+              className="inline-flex items-center justify-center gap-2 h-13 sm:h-14 px-6 sm:px-7 text-sm sm:text-base rounded-full border border-border bg-card/60 backdrop-blur-sm text-foreground hover:border-primary/50 hover:bg-card/90 transition-all font-medium"
             >
-              Ver serviços
+              Conhecer o que fazemos
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-        </div>
 
-        {/* Pills de servicos */}
-        <div
-          className="mt-12 flex flex-wrap gap-2 sm:gap-3 hero-rise"
-          style={{ animationDelay: "0.4s" }}
-        >
-          {[
-            { icon: Code2, label: "Desenvolvimento" },
-            { icon: Zap, label: "Automação" },
-            { icon: Database, label: "Dados & BI" },
-            { icon: Cpu, label: "Performance" },
-          ].map(({ icon: Icon, label }) => (
-            <span
-              key={label}
-              className="brand-border inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm text-muted-foreground bg-card/50 backdrop-blur-sm"
-            >
-              <Icon className="w-3.5 h-3.5 text-primary" />
-              {label}
+          {/* Selos de tranquilidade */}
+          <div
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs sm:text-sm text-muted-foreground hero-rise px-2"
+            style={{ animationDelay: "0.35s" }}
+          >
+            <span className="inline-flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+              100% adaptado ao seu negócio
             </span>
-          ))}
+            <span className="inline-flex items-center gap-2">
+              <Clock className="w-4 h-4 text-primary shrink-0" />
+              Diagnóstico e proposta em até 24h
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary shrink-0" />
+              Sede em Cascavel/PR · Clientes em todo o Brasil
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Carrossel de stats - full width */}
+      {/* Faixa inferior: Resultados Reais com Clientes Reais */}
       <div
-        className="absolute bottom-0 left-0 right-0 hero-rise"
-        style={{ animationDelay: "0.55s" }}
+        className="w-full border-t border-border/60 bg-card/40 backdrop-blur-sm py-4 overflow-hidden hero-rise"
+        style={{ animationDelay: "0.45s" }}
       >
-        {/* Linha separadora com gradiente */}
-        <div className="w-full h-px brand-gradient-bg opacity-20 mb-5" />
-
-        <div className="overflow-hidden w-full pb-8">
+        <div className="max-w-[1400px] mx-auto overflow-hidden">
           <div className="flex gap-0 whitespace-nowrap hero-marquee">
             {[...Array(3)].map((_, setIdx) => (
-              <div key={setIdx} className="flex">
-                {stats.map((stat, i) => (
-                  <div
-                    key={`${setIdx}-${i}`}
-                    className="flex items-center gap-0"
-                  >
-                    <div className="flex items-baseline gap-2 px-8 sm:px-12">
-                      <span className="text-3xl sm:text-4xl lg:text-5xl font-display brand-gradient">
-                        {stat.value}
+              <div key={setIdx} className="flex shrink-0">
+                {realImpactMarquee.map((item, i) => (
+                  <div key={`${setIdx}-${i}`} className="flex items-center">
+                    <div className="flex items-center gap-2.5 px-5 sm:px-8">
+                      <span className="w-1.5 h-1.5 rounded-full brand-gradient-bg shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium text-foreground">
+                        {item.highlight}
                       </span>
-                      <span className="text-xs sm:text-sm text-muted-foreground">
-                        {stat.label}
+                      <span className="text-[11px] sm:text-xs text-muted-foreground bg-card/90 border border-border/70 px-2 py-0.5 rounded-full">
+                        {item.client}
                       </span>
                     </div>
-                    {/* Divisor */}
-                    <span className="w-px h-8 bg-border opacity-40 shrink-0" />
+                    <span className="w-px h-4 bg-border/60 shrink-0" />
                   </div>
                 ))}
               </div>

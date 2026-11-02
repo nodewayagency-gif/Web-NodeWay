@@ -1,148 +1,219 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, MapPin, Sparkles } from "lucide-react";
 
-const differentials = [
+const realStories = [
   {
-    title: "Soluções realmente personalizadas",
-    description: "Nenhuma fórmula pronta. Cada cliente recebe uma solução pensada para o seu cenário real.",
-    metric: "100% customizado",
+    id: "sistema-orcamento-etiquetas",
+    client: "Indústria Gráfica",
+    location: "Paraná",
+    category: "Sistema Sob Medida",
+    headline: "Orçamentos complexos que levavam horas agora ficam prontos em segundos.",
+    before:
+      "O setor comercial precisava calcular dezenas de variáveis (tipo de papel, tamanho, faca, cores e tiragem) manualmente. Demorava horas e qualquer erro na conta gerava prejuízo.",
+    after:
+      "Criamos uma calculadora inteligente sob medida: o vendedor preenche as medidas e o sistema entrega o valor exato na hora, já com a margem certa da empresa.",
+    results: [
+      "Orçamentos reduzidos de horas para poucos segundos",
+      "Zero erros de cálculo no setor comercial",
+      "Mais vendas fechadas por responder o cliente na hora",
+    ],
+    metricHighlight: "De horas para segundos",
   },
   {
-    title: "Foco em resultado, não apenas estética",
-    description: "Bonito e funcional não são exclusivos. Construímos com foco em conversão e performance.",
-    metric: "Resultado mensurável",
+    id: "transporte-mauricio-bi",
+    client: "Transporte Maurício",
+    location: "Toledo / PR",
+    category: "Painéis de Dados (BI)",
+    headline: "Fim das planilhas soltas: custo de cada caminhão e rota ao vivo na tela.",
+    before:
+      "A transportadora tinha muitos dados espalhados em sistemas antigos e planilhas, dificultando enxergar rápido o custo de combustível, manutenção e lucro real por rota.",
+    after:
+      "Conectamos os dados automaticamente e montamos painéis visuais simples. Hoje a diretoria acompanha abastecimento, manutenção e margem de cada viagem em tempo real.",
+    results: [
+      "Decisões rápidas baseadas em números reais do dia",
+      "Identificação imediata de rotas com custo elevado",
+      "Gestão de frota 100% clara para a diretoria",
+    ],
+    metricHighlight: "Frota 100% visível ao vivo",
   },
   {
-    title: "Integração com ferramentas e sistemas",
-    description: "Conectamos o que você já usa. APIs, automações, bancos de dados — tudo integrado.",
-    metric: "Stack unificada",
+    id: "jpb-joias",
+    client: "JPB Joias",
+    location: "Cascavel / PR",
+    category: "E-commerce Humanizado",
+    headline: "Uma vitrine de luxo que leva o cliente pronto para fechar no WhatsApp.",
+    before:
+      "Em peças de alto valor (joias), muitos clientes tinham receio de passar o cartão sozinhos num site frio sem antes tirar dúvidas com uma pessoa de confiança.",
+    after:
+      "Desenhamos uma loja virtual elegante onde, em vez de um carrinho impessoal, o botão envia a joia escolhida direto para o WhatsApp do consultor finalizar a venda com atendimento VIP.",
+    results: [
+      "Aumento expressivo nos fechamentos de alto valor",
+      "Atendimento humano próximo e acolhedor",
+      "Vendedores já recebem exatamente qual peça o cliente quer",
+    ],
+    metricHighlight: "Venda VIP no WhatsApp",
   },
   {
-    title: "Pensamento estratégico + técnico",
-    description: "Não somos só desenvolvedores. Pensamos o negócio antes de escrever qualquer linha de código.",
-    metric: "Visão 360°",
+    id: "formento-playgrounds",
+    client: "Formento Playgrounds",
+    location: "Blumenau / SC",
+    category: "Sistema Comercial + BI",
+    headline: "Montagem de kits de produtos, orçamentos e pedidos em minutos.",
+    before:
+      "Montar orçamentos com várias combinações de brinquedos e acompanhar os indicadores de produção manualmente tomava muito tempo da equipe.",
+    after:
+      "Construímos uma plataforma única onde a equipe monta kits padronizados, gera pedidos rapidamente e acompanha vendas e produção em painéis visuais.",
+    results: [
+      "Orçamentos completos gerados em poucos minutos",
+      "Kits de produtos organizados e fáceis de reutilizar",
+      "Visão clara do comercial e da produção em tempo real",
+    ],
+    metricHighlight: "Pedidos em minutos",
+  },
+  {
+    id: "primardi-saude",
+    client: "Primardi Saúde & Vivre",
+    location: "Guanambi / BA",
+    category: "Plataforma Integrada",
+    headline: "Atendimento, licitações, compras e fiscal trabalhando no mesmo sistema.",
+    before:
+      "No setor de distribuição de medicamentos e produtos hospitalares, setores desconectados e planilhas geravam retrabalho e lentidão para responder ao mercado.",
+    after:
+      "Unificamos teleatendimento, controle de licitações, compras e faturamento fiscal em uma plataforma feita sob medida para a rotina hospitalar.",
+    results: [
+      "Todos os setores conectados sem redigitação",
+      "Respostas rápidas em processos de licitação",
+      "Segurança fiscal e controle de compras centralizado",
+    ],
+    metricHighlight: "Operação 100% integrada",
   },
 ];
 
 export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % differentials.length);
-        setIsAnimating(false);
-      }, 300);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const active = differentials[activeIndex];
+  const active = realStories[activeIndex];
 
   return (
-    <section className="relative py-32 lg:py-40 border-t border-border lg:pb-14">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Diferencial
-          </span>
-          <div className="flex-1 h-px bg-border" />
-          <span className="font-mono text-xs text-muted-foreground">
-            {String(activeIndex + 1).padStart(2, "0")} / {String(differentials.length).padStart(2, "0")}
-          </span>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-8">
-            <blockquote
-              className={`transition-all duration-300 ${isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-                }`}
-            >
-              <p className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
-                &ldquo;{active.title}&rdquo;
-              </p>
-            </blockquote>
-
-            <div
-              className={`mt-12 transition-all duration-300 delay-100 ${isAnimating ? "opacity-0" : "opacity-100"
-                }`}
-            >
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
-                {active.description}
-              </p>
-            </div>
+    <section id="cases" className="relative py-16 sm:py-20 lg:py-28 border-t border-border bg-card/20 overflow-x-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16">
+        {/* Cabeçalho */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-mono text-primary mb-3">
+              <span className="w-6 sm:w-8 h-px brand-gradient-bg" />
+              Histórias reais de clientes
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-display tracking-tight text-foreground leading-[1.08]">
+              Empresas reais que trocaram a{' '}
+              <span className="brand-gradient">bagunça pela clareza.</span>
+            </h2>
           </div>
 
-          <div className="lg:col-span-4 flex flex-col justify-center">
-            <div
-              className={`p-8 brand-border rounded-lg transition-all duration-300 ${isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-                }`}
+          <Link
+            href="/cases"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-primary hover:opacity-80 transition-opacity group shrink-0"
+          >
+            Ver todos os casos de sucesso
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        {/* Seletor de Clientes com scroll horizontal touch no mobile */}
+        <div className="flex gap-2 overflow-x-auto pb-3 pt-1 scrollbar-none sm:flex-wrap mb-6 sm:mb-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+          {realStories.map((story, idx) => (
+            <button
+              key={story.id}
+              type="button"
+              onClick={() => setActiveIndex(idx)}
+              className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all shrink-0 whitespace-nowrap ${
+                activeIndex === idx
+                  ? "brand-gradient-bg text-white shadow-md shadow-primary/20"
+                  : "border border-border bg-card/60 text-muted-foreground hover:text-foreground hover:border-primary/40"
+              }`}
             >
-              <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-4">
-                Resultado
-              </span>
-              <p className="font-display text-3xl md:text-4xl brand-gradient">{active.metric}</p>
-            </div>
-
-            <div className="flex gap-2 mt-8">
-              {differentials.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setIsAnimating(true);
-                    setTimeout(() => { setActiveIndex(idx); setIsAnimating(false); }, 300);
-                  }}
-                  className={`h-2 transition-all duration-300 rounded-full ${idx === activeIndex ? "w-8 brand-gradient-bg" : "w-2 bg-border hover:bg-muted-foreground/40"
-                    }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-24 pt-12 border-t border-border">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-8 text-center">
-            Soluções que já construímos
-          </p>
-        </div>
-      </div>
-
-      {/* Full-width marquee container */}
-      <div className="relative w-full overflow-hidden py-10 lg:py-16">
-        {/* Edge Fade Masks */}
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
-
-        <div className="flex gap-16 md:gap-24 items-center marquee w-max">
-          {[...Array(2)].map((_, setIdx) => (
-            <div key={setIdx} className="flex gap-16 md:gap-24 items-center shrink-0">
-              {[
-                "Plataformas Web",
-                "Sistemas Internos",
-                "Landing Pages",
-                "Automações",
-                "Dashboards BI",
-                "APIs & Integrações",
-                "Apps com Banco de Dados",
-                "Ferramentas de Gestão",
-              ].map((item) => (
-                <div
-                  key={`${setIdx}-${item}`}
-                  className="flex items-center gap-6 md:gap-10 group"
-                >
-                  <span
-                    className="font-display text-2xl md:text-4xl lg:text-5xl text-foreground/15 whitespace-nowrap hover:text-primary/40 transition-all duration-500 cursor-default"
-                  >
-                    {item}
-                  </span>
-                  <div className="w-2 h-2 rounded-full brand-gradient-bg opacity-30" />
-                </div>
-              ))}
-            </div>
+              {story.client}
+            </button>
           ))}
+        </div>
+
+        {/* Card Principal da História Ativa */}
+        <div className="rounded-2xl sm:rounded-3xl border border-border bg-card/60 backdrop-blur-sm p-5 sm:p-8 lg:p-12 overflow-hidden">
+          <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
+            {/* Coluna Esquerda: Contexto + Antes e Depois */}
+            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  {active.category}
+                </span>
+                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                  <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                  {active.location}
+                </span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-display text-foreground leading-snug">
+                “{active.headline}”
+              </h3>
+
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 pt-1">
+                <div className="rounded-xl sm:rounded-2xl border border-border/70 bg-background/50 p-4 sm:p-5">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground block mb-1.5">
+                    Como era antes
+                  </span>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {active.before}
+                  </p>
+                </div>
+
+                <div className="rounded-xl sm:rounded-2xl border border-primary/30 bg-primary/5 p-4 sm:p-5">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-primary block mb-1.5">
+                    O que fizemos juntos
+                  </span>
+                  <p className="text-xs sm:text-sm text-foreground leading-relaxed">
+                    {active.after}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Coluna Direita: Resultados Práticos */}
+            <div className="lg:col-span-5 flex flex-col justify-between rounded-xl sm:rounded-2xl border border-border/80 bg-background/60 p-5 sm:p-7 space-y-5">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground block mb-1.5">
+                  Impacto no dia a dia
+                </span>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-display brand-gradient mb-4">
+                  {active.metricHighlight}
+                </p>
+
+                <ul className="space-y-2.5 sm:space-y-3">
+                  {active.results.map((res) => (
+                    <li key={res} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                      <span>{res}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-3 border-t border-border/60 flex items-center justify-between">
+                <span className="text-xs text-muted-foreground truncate">
+                  Cliente: <strong className="text-foreground">{active.client}</strong>
+                </span>
+                <Link
+                  href={`/cases/${active.id}`}
+                  className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline shrink-0"
+                >
+                  Ver case
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

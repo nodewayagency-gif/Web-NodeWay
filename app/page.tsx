@@ -6,23 +6,11 @@ import { HeroSection } from '@/components/landing/hero-section';
 import { SeoIntroSection } from '@/components/landing/seo-intro-section';
 import { FeaturesSection } from '@/components/landing/features-section';
 
-const HowItWorksSection = dynamic(() =>
-  import('@/components/landing/how-it-works-section').then((m) => m.HowItWorksSection)
-);
-const InfrastructureSection = dynamic(() =>
-  import('@/components/landing/infrastructure-section').then((m) => m.InfrastructureSection)
-);
-const MetricsSection = dynamic(() =>
-  import('@/components/landing/metrics-section').then((m) => m.MetricsSection)
-);
-const SecuritySection = dynamic(() =>
-  import('@/components/landing/security-section').then((m) => m.SecuritySection)
-);
-const DevelopersSection = dynamic(() =>
-  import('@/components/landing/developers-section').then((m) => m.DevelopersSection)
-);
 const TestimonialsSection = dynamic(() =>
   import('@/components/landing/testimonials-section').then((m) => m.TestimonialsSection)
+);
+const HowItWorksSection = dynamic(() =>
+  import('@/components/landing/how-it-works-section').then((m) => m.HowItWorksSection)
 );
 const PricingSection = dynamic(() =>
   import('@/components/landing/pricing-section').then((m) => m.PricingSection)
@@ -49,12 +37,8 @@ export default function Home() {
       <HeroSection />
       <SeoIntroSection />
       <FeaturesSection />
-      <HowItWorksSection />
-      <InfrastructureSection />
-      <MetricsSection />
-      <SecuritySection />
-      <DevelopersSection />
       <TestimonialsSection />
+      <HowItWorksSection />
       <PricingSection />
       <CtaSection />
       <FooterSection />

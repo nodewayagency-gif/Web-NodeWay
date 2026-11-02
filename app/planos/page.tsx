@@ -24,18 +24,19 @@ import {
   Rocket,
   ChevronRight,
   Clock,
+  ExternalLink,
 } from 'lucide-react';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 import { FaqSection } from '@/components/seo/faq-section';
 import { RelatedBlogPosts } from '@/components/seo/related-links';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
-import { siteConfig, absoluteUrl } from '@/lib/site-config';
+import { siteConfig, absoluteUrl, CRM_PLANOS_URL } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Planos e Soluções — CRM, Landing Pages, BI e E-commerce',
   description:
-    'CRM a partir de R$ 99/mês e soluções sob medida: landing pages, BI, e-commerce, customizações e consultoria — planos fixos e orçamento sob consulta.',
+    'CRM a partir de R$ 69,90/mês e soluções sob medida: landing pages, BI, e-commerce, customizações e consultoria — planos fixos e orçamento sob consulta.',
   keywords: [
     'sistema de gestão comercial',
     'CRM',
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Planos e Soluções — CRM, Landing Pages, BI e E-commerce | ${siteConfig.name}`,
     description:
-      'CRM com planos fixos (Starter, Pro e Business) e demais linhas — landing pages, BI, e-commerce, customizações e consultoria — com orçamento sob consulta.',
+      'CRM com planos fixos (Starter, Pro e Enterprise) e demais linhas — landing pages, BI, e-commerce, customizações e consultoria — com orçamento sob consulta.',
     url: absoluteUrl('/planos'),
   },
 };
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
 const modules = [
   {
     icon: Users,
-    title: 'CRM e cadastro de clientes',
+    title: 'CRM, clientes e leads',
     desc: 'Centralize seus clientes e acompanhe cada oportunidade, do primeiro contato ao fechamento do pedido.',
     plan: 'Todos os planos',
   },
@@ -82,38 +83,38 @@ const modules = [
   {
     icon: Percent,
     title: 'Comissões de vendedores',
-    desc: 'Comissão básica em todos os planos e comissão avançada por produto nos planos Pro e Business.',
+    desc: 'Comissão básica em todos os planos e comissão avançada por produto nos planos Pro e Enterprise.',
     plan: 'Todos os planos',
   },
   {
     icon: CalendarClock,
     title: 'Agenda de atendimentos',
     desc: 'Organize retornos e compromissos com clientes junto do histórico comercial.',
-    plan: 'Pro e Business',
+    plan: 'Todos os planos',
   },
   {
     icon: Boxes,
-    title: 'Controle de estoque',
+    title: 'Controle de estoque e produtos',
     desc: 'Registre movimentações de entrada e saída e mantenha os saldos sempre atualizados.',
-    plan: 'Pro e Business',
+    plan: 'Todos os planos',
   },
   {
     icon: Wallet,
-    title: 'Financeiro',
+    title: 'Financeiro e contas',
     desc: 'Contas a receber e a pagar para acompanhar o caixa da operação comercial.',
-    plan: 'Pro e Business',
+    plan: 'Todos os planos',
   },
   {
     icon: Plug,
-    title: 'Integração com seu ERP',
-    desc: 'Sincronize dados com o Bling (Pro e Business) e com Omie ou Tiny no plano Business.',
-    plan: 'Pro e Business',
+    title: 'Equipe de vendas e compras',
+    desc: 'Controle de usuários, pedidos de compras e comissões da equipe.',
+    plan: 'Pro e Enterprise',
   },
   {
     icon: Bot,
-    title: 'Assistente de IA e multi-loja',
-    desc: 'Assistente de IA (até 2.000 usos/mês), multi-loja e domínio próprio para operações maiores.',
-    plan: 'Business',
+    title: 'Maquininha Point e automações',
+    desc: 'Integrações de pagamento e suporte dedicado para operações de alto volume.',
+    plan: 'Pro e Enterprise',
   },
 ];
 
@@ -136,16 +137,16 @@ type Solution = {
 const solutions: Solution[] = [
   {
     icon: Users,
-    title: 'CRM e Gestão Comercial',
+    title: 'Nodeway CRM & Gestão Comercial',
     desc: 'Nosso sistema pronto para o comercial do dia a dia — do orçamento ao pedido, tudo em um só lugar.',
     bullets: [
       'Fluxo orçamento → pedido → PDF em 1 clique',
-      'Integração com Bling, Omie e Tiny',
-      'Teste grátis por 7 dias, sem cartão',
+      'Clientes, leads, agenda, estoque e financeiro',
+      'Teste grátis por 7 dias na plataforma oficial',
     ],
-    priceLabel: 'A partir de R$ 99/mês',
-    priceNote: 'planos e preços fixos',
-    cta: { label: 'Ver planos do CRM', href: '#crm', external: false, primary: true },
+    priceLabel: 'A partir de R$ 69,90/mês',
+    priceNote: 'Starter (R$ 69,90) · Pro (R$ 149,90) · Enterprise (R$ 299,90)',
+    cta: { label: 'Acessar planos no CRM', href: CRM_PLANOS_URL, external: true, primary: true },
   },
   {
     icon: LayoutTemplate,
@@ -257,7 +258,7 @@ const differentials = [
   {
     icon: Plug,
     title: 'Integração com o que você já usa',
-    desc: 'Conectamos ERPs, gateways, bancos de dados e APIs. Sua stack unificada, sem retrabalho.',
+    desc: 'Conectamos ERPs, gateways, bancos de dados e APIs. Sua operação unificada, sem retrabalho.',
   },
   {
     icon: Lightbulb,
@@ -337,10 +338,10 @@ const featuredProof: Proof[] = [
   },
 ];
 
-// ── Fonte de verdade: preços e recursos vêm do brief ────────────────────────
+// ── Fonte de verdade: Planos oficiais do Nodeway CRM ────────────────────────
 type Plan = {
   name: string;
-  price: number;
+  price: string;
   summary: string;
   featuresPrefix?: string;
   features: string[];
@@ -351,69 +352,80 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: 'Starter',
-    price: 99,
-    summary: 'O essencial para começar a vender com organização.',
+    price: '69,90',
+    summary:
+      'Ideal para profissionais autônomos e pequenos negócios que buscam organização e controle comercial completo.',
     features: [
-      'Vendas: orçamento → pedido → PDF',
-      'Cadastro de Clientes',
-      'Cadastro de Produtos',
-      'Comissão básica de vendedores',
+      'Até 200 produtos cadastrados',
+      '1 usuário de acesso',
+      'Clientes, Leads e Agenda comercial',
+      'Orçamentos e Pedidos em PDF rápido',
+      'Controle de Estoque e Produtos',
+      'Módulo Financeiro integrado',
     ],
   },
   {
     name: 'Pro',
-    price: 249,
+    price: '149,90',
     summary:
-      'Gestão completa do dia a dia, com estoque, financeiro e integração ao seu ERP.',
+      'A solução mais completa e escolhida por empresas e franquias ativas que buscam escala comercial e automação.',
     featuresPrefix: 'Tudo do Starter, e mais:',
     features: [
-      'Agenda de atendimentos',
-      'Financeiro (contas a receber e a pagar)',
-      'Controle de estoque (movimentações)',
-      'Comissão avançada por produto',
-      'Integração com o Bling',
+      'Até 1.000 produtos cadastrados',
+      'Até 8 usuários na equipe',
+      'Equipe de vendas e Comissões avançadas',
+      'Gestão de Compras e Estoque avançado',
+      'Integração com maquininha Point',
+      'Branding avançado e CRM Atividades',
+      'Suporte prioritário',
     ],
     highlighted: true,
-    badge: 'Mais popular',
+    badge: 'Mais escolhido',
   },
   {
-    name: 'Business',
-    price: 599,
-    summary: 'Para operações maiores e multi-loja, com IA e conectores extras.',
+    name: 'Enterprise',
+    price: '299,90',
+    summary:
+      'Capacidade máxima para redes de franquias, grandes operações e equipes robustas com suporte dedicado.',
     featuresPrefix: 'Tudo do Pro, e mais:',
     features: [
-      'Assistente de IA (até 2.000 usos por mês)',
-      'Multi-loja',
-      'Conectores extras de ERP (Omie, Tiny)',
-      'Domínio próprio',
-      'Suporte prioritário',
+      'Até 10.000 produtos cadastrados',
+      'Até 50 usuários na equipe',
+      'Capacidade máxima para franquias e redes',
+      'Operações em larga escala',
+      'Suporte dedicado e prioritário',
     ],
   },
 ];
 
 type Cell = boolean | string;
-const comparison: { feature: string; starter: Cell; pro: Cell; business: Cell }[] = [
-  { feature: 'Vendas (orçamento → pedido → PDF)', starter: true, pro: true, business: true },
-  { feature: 'Clientes', starter: true, pro: true, business: true },
-  { feature: 'Produtos', starter: true, pro: true, business: true },
-  { feature: 'Comissão básica', starter: true, pro: true, business: true },
-  { feature: 'Agenda de atendimentos', starter: false, pro: true, business: true },
-  { feature: 'Financeiro (a receber / a pagar)', starter: false, pro: true, business: true },
-  { feature: 'Controle de estoque', starter: false, pro: true, business: true },
-  { feature: 'Comissão avançada por produto', starter: false, pro: true, business: true },
-  { feature: 'Integração com Bling', starter: false, pro: true, business: true },
-  { feature: 'Assistente de IA', starter: false, pro: false, business: '2.000/mês' },
-  { feature: 'Multi-loja', starter: false, pro: false, business: true },
-  { feature: 'Conectores extras (Omie / Tiny)', starter: false, pro: false, business: true },
-  { feature: 'Domínio próprio', starter: false, pro: false, business: true },
-  { feature: 'Suporte prioritário', starter: false, pro: false, business: true },
+const comparison: { feature: string; starter: Cell; pro: Cell; enterprise: Cell }[] = [
+  { feature: 'Usuários incluídos', starter: '1 usuário', pro: '8 usuários', enterprise: '50 usuários' },
+  { feature: 'Limite de produtos', starter: '200 produtos', pro: '1.000 produtos', enterprise: '10.000 produtos' },
+  { feature: 'Clientes e Leads', starter: true, pro: true, enterprise: true },
+  { feature: 'Agenda de atendimentos', starter: true, pro: true, enterprise: true },
+  { feature: 'Orçamentos e Pedidos em PDF', starter: true, pro: true, enterprise: true },
+  { feature: 'Controle de Estoque', starter: true, pro: true, enterprise: true },
+  { feature: 'Financeiro (receber e pagar)', starter: true, pro: true, enterprise: true },
+  { feature: 'Equipe de Vendas', starter: false, pro: true, enterprise: true },
+  { feature: 'Comissão avançada por produto', starter: false, pro: true, enterprise: true },
+  { feature: 'Gestão de Compras', starter: false, pro: true, enterprise: true },
+  { feature: 'Maquininha Point', starter: false, pro: true, enterprise: true },
+  { feature: 'Branding avançado', starter: false, pro: true, enterprise: true },
+  { feature: 'CRM Atividades', starter: false, pro: true, enterprise: true },
+  { feature: 'Suporte prioritário / dedicado', starter: false, pro: true, enterprise: true },
 ];
 
 const faq = [
   {
+    question: 'Onde posso assinar ou testar o CRM da Nodeway?',
+    answer:
+      'Você pode assinar ou iniciar o teste grátis de 7 dias diretamente no site oficial do CRM: crm.nodewayagency.com.br/planos.',
+  },
+  {
     question: 'Como funciona o orçamento das soluções "sob consulta"?',
     answer:
-      'Você fala com a gente pelo WhatsApp e conta o que precisa. Fazemos um diagnóstico do seu cenário e enviamos uma proposta com escopo, prazo e valor — sem compromisso. Só o CRM tem planos e preços fixos e públicos.',
+      'Você fala com a gente pelo WhatsApp e conta o que precisa. Fazemos um diagnóstico do seu cenário e enviamos uma proposta com escopo, prazo e valor — sem compromisso. O CRM conta com planos fixos prontos para contratação.',
   },
   {
     question: 'Quanto tempo leva para entregar um projeto?',
@@ -426,44 +438,14 @@ const faq = [
       'Atendemos presencialmente em Cascavel e região (PR) e remotamente em todo o Brasil. Já entregamos projetos em Blumenau, Guanambi, Toledo e outras cidades.',
   },
   {
-    question: 'Preciso já saber exatamente o que quero?',
-    answer:
-      'Não. No diagnóstico gratuito a gente ajuda a definir o melhor caminho para o seu objetivo antes de fechar o escopo e o valor.',
-  },
-  {
-    question: 'As landing pages já vêm com SEO?',
-    answer:
-      'Sim. Entregamos com SEO técnico, meta tags completas, performance otimizada (Core Web Vitals) e estrutura pronta para campanhas de tráfego pago — feita para converter.',
-  },
-  {
-    question: 'Como funciona o e-commerce de vocês?',
-    answer:
-      'Você escolhe entre checkout via WhatsApp ou integrado a um gateway de pagamento, com cálculo de frete na cotação e integração ao seu catálogo de produtos.',
-  },
-  {
-    question: 'Para os relatórios em BI, vocês acessam meu banco de dados?',
-    answer:
-      'Sim, com a sua autorização fazemos consulta direta ao banco de dados dos seus sistemas para montar dashboards e relatórios sob medida para a gestão.',
-  },
-  {
-    question: 'Qual a diferença entre o CRM pronto e o CRM customizado?',
-    answer:
-      'O CRM pronto tem planos e preços fixos (Starter, Pro e Business) e você já começa a usar. O CRM customizado adapta rotinas, telas e regras ao seu processo — escopo e valor sob demanda.',
-  },
-  {
     question: 'O CRM tem teste grátis?',
     answer:
-      'Sim. Você usa todos os recursos do plano Pro por 7 dias, sem precisar de cartão de crédito.',
+      'Sim. Você pode experimentar os recursos do CRM por 7 dias grátis diretamente na plataforma oficial.',
   },
   {
     question: 'O CRM substitui o meu ERP?',
     answer:
       'Não. Ele cuida da gestão comercial do dia a dia e se conecta ao seu ERP. A emissão de NF-e e os pagamentos continuam no ERP; nós sincronizamos os dados.',
-  },
-  {
-    question: 'Com quais ERPs o CRM integra?',
-    answer:
-      'Com o Bling nos planos Pro e Business, e com o Omie e o Tiny no plano Business, para manter clientes, produtos e pedidos sincronizados.',
   },
   {
     question: 'Posso trocar de plano do CRM depois?',
@@ -481,11 +463,9 @@ const faq = [
   },
 ];
 
-// ── Links de WhatsApp com contexto do plano ─────────────────────────────────
-const trialLink = wa('Olá! Quero começar o teste grátis de 7 dias.');
+// ── Links de navegação e WhatsApp ────────────────────────────────────────────
+const trialLink = CRM_PLANOS_URL;
 const budgetLink = wa('Olá! Quero um orçamento sob medida para o meu projeto.');
-const subscribeLink = (p: Plan) =>
-  wa(`Olá! Tenho interesse em assinar o plano ${p.name} (R$ ${p.price}/mês).`);
 
 // ── Célula da tabela comparativa ────────────────────────────────────────────
 function CompareCell({ value }: { value: Cell }) {
@@ -509,7 +489,6 @@ const orgRef = { '@type': 'Organization', name: siteConfig.name, url: siteConfig
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    // Trilha de navegação (breadcrumb rich result)
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -517,33 +496,25 @@ const jsonLd = {
         { '@type': 'ListItem', position: 2, name: 'Planos e Soluções', item: absoluteUrl('/planos') },
       ],
     },
-    // Produto CRM com preços (rich result de produto/software)
     {
       '@type': 'SoftwareApplication',
-      name: 'Sistema de Gestão Comercial e CRM',
+      name: 'Nodeway CRM',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
-      url: `${absoluteUrl('/planos')}#crm`,
+      url: CRM_PLANOS_URL,
       description:
-        'Sistema de gestão comercial com CRM: orçamentos, pedidos, cadastro de clientes e produtos, controle de estoque, financeiro, comissões de vendedores e assistente de IA, integrado ao ERP (Bling, Omie, Tiny). Não emite NF-e nem processa pagamentos — isso continua no ERP do cliente.',
+        'CRM e gestão de vendas, clientes, produtos e operação comercial Nodeway Agency.',
       featureList: modules.map((m) => m.title),
       publisher: orgRef,
       offers: {
         '@type': 'AggregateOffer',
         priceCurrency: 'BRL',
-        lowPrice: 99,
-        highPrice: 599,
+        lowPrice: 69.9,
+        highPrice: 299.9,
         offerCount: plans.length,
-        offers: plans.map((p) => ({
-          '@type': 'Offer',
-          name: `Plano ${p.name}`,
-          price: p.price,
-          priceCurrency: 'BRL',
-          url: `${absoluteUrl('/planos')}#crm`,
-        })),
+        url: CRM_PLANOS_URL,
       },
     },
-    // Catálogo de linhas de serviço (ajuda o Google a entender o escopo)
     {
       '@type': 'ItemList',
       name: 'Soluções e serviços da Nodeway Agency',
@@ -595,15 +566,15 @@ export default function PlanosPage() {
             Soluções sob medida, do <span className="brand-gradient">CRM ao e-commerce</span>
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-            CRM com planos fixos e as demais linhas com orçamento sob consulta — tudo direto no
-            WhatsApp.
+            CRM com planos a partir de R$ 69,90/mês e as demais soluções com orçamento sob medida —
+            tudo com clareza e atendimento direto.
           </p>
 
           <div className="mt-8 inline-flex items-start gap-3 rounded-2xl border border-primary/25 bg-primary/5 px-5 py-4 text-sm text-muted-foreground">
             <Sparkles className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <p>
-              <span className="text-foreground font-medium">CRM com teste grátis por 7 dias</span> e
-              demais linhas com orçamento sob medida para a sua operação.
+              <span className="text-foreground font-medium">Nodeway CRM com 7 dias grátis</span> na
+              plataforma oficial e projetos sob medida para sua operação.
             </p>
           </div>
         </div>
@@ -654,22 +625,35 @@ export default function PlanosPage() {
                       <span className="block text-xs text-muted-foreground/70">{s.priceNote}</span>
                     )}
                   </div>
-                  <a
-                    href={s.cta.href}
-                    {...(s.cta.external
-                      ? { target: '_blank', rel: 'noopener noreferrer' }
-                      : {})}
-                    className={`inline-flex w-full items-center justify-center gap-2 h-11 rounded-full font-medium transition-all ${
-                      s.cta.primary
-                        ? 'cta-primary'
-                        : 'border border-border text-foreground hover:border-primary/50 hover:text-primary'
-                    }`}
-                  >
-                    {s.cta.external && <WhatsAppIcon className="w-4 h-4" />}
-                    {s.cta.label}
-                    {!s.cta.external && <ArrowRight className="w-4 h-4" />}
-                  </a>
-                  {s.cta.external && (
+                  {s.cta.external ? (
+                    <a
+                      href={s.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex w-full items-center justify-center gap-2 h-11 rounded-full font-medium transition-all ${
+                        s.cta.primary
+                          ? 'cta-primary'
+                          : 'border border-border text-foreground hover:border-primary/50 hover:text-primary'
+                      }`}
+                    >
+                      {s.title.includes('CRM') ? (
+                        <ExternalLink className="w-4 h-4" />
+                      ) : (
+                        <WhatsAppIcon className="w-4 h-4" />
+                      )}
+                      {s.cta.label}
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={s.cta.href}
+                      className="cta-primary inline-flex w-full items-center justify-center gap-2 h-11 rounded-full font-medium transition-all"
+                    >
+                      {s.cta.label}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
+                  {s.cta.external && !s.title.includes('CRM') && (
                     <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted-foreground/80">
                       <Clock className="w-3.5 h-3.5 text-primary/80 shrink-0" />
                       Diagnóstico e orçamento grátis em 24h
@@ -723,8 +707,8 @@ export default function PlanosPage() {
             Do primeiro contato à entrega, sem enrolação
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Para as linhas com orçamento sob consulta, o caminho é simples e transparente. O CRM,
-            você já assina e começa a usar na hora.
+            Para as linhas com orçamento sob consulta, o caminho é simples e transparente. E o CRM,
+            você já assina e começa a usar online na hora.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
@@ -766,21 +750,33 @@ export default function PlanosPage() {
         id="crm"
         className="scroll-mt-24 pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto"
       >
-        <div className="max-w-3xl mb-10 lg:mb-12">
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-            <span className="w-8 h-px brand-gradient-bg" />
-            CRM · Planos e Preços
-          </span>
-          <h2 className="text-3xl lg:text-5xl font-display tracking-tight text-foreground mb-5 leading-[1.05]">
-            Escolha o plano que <span className="brand-gradient">cresce com o seu negócio</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Gestão comercial completa — orçamentos, pedidos, estoque, financeiro e comissões —
-            conectada ao seu ERP. Sem burocracia fiscal: a NF-e continua no seu Bling.
-          </p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-12">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-4">
+              <span className="w-8 h-px brand-gradient-bg" />
+              Nodeway CRM · Planos Oficiais
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-display tracking-tight text-foreground mb-4 leading-[1.05]">
+              Escolha o plano que <span className="brand-gradient">cresce com o seu negócio</span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Gestão comercial completa — orçamentos, pedidos, estoque, financeiro, equipe de vendas e
+              comissões. Teste grátis por 7 dias.
+            </p>
+          </div>
+
+          <a
+            href={CRM_PLANOS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-primary inline-flex items-center gap-2 h-12 px-6 rounded-full text-sm font-medium shrink-0"
+          >
+            Acessar página oficial do CRM
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
 
-        {/* ── Grade de 3 planos ────────────────────────────────── */}
+        {/* ── Grade de 3 planos oficiais do CRM ──────────────────── */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {plans.map((plan) => {
             const featured = plan.highlighted;
@@ -815,7 +811,7 @@ export default function PlanosPage() {
                 </p>
 
                 <a
-                  href={subscribeLink(plan)}
+                  href={CRM_PLANOS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-2 h-12 rounded-full font-medium transition-all mb-8 ${
@@ -824,8 +820,8 @@ export default function PlanosPage() {
                       : 'border border-border text-foreground hover:border-primary/50 hover:text-primary'
                   }`}
                 >
-                  Assinar
-                  <ArrowRight className="w-4 h-4" />
+                  Assinar no CRM
+                  <ExternalLink className="w-4 h-4" />
                 </a>
 
                 {plan.featuresPrefix && (
@@ -845,14 +841,23 @@ export default function PlanosPage() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground/70 mt-8">
-          Valores em Real (R$), por empresa, com cobrança mensal.
+          Contratação imediata e teste grátis de 7 dias disponível em{' '}
+          <a
+            href={CRM_PLANOS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            crm.nodewayagency.com.br/planos
+          </a>
+          .
         </p>
       </section>
 
       {/* ── Tabela comparativa ─────────────────────────────────── */}
       <section className="pb-16 lg:pb-24 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
         <h2 className="text-3xl font-display text-foreground mb-8 text-center">
-          Compare os planos
+          Compare os recursos de cada plano
         </h2>
 
         <div className="overflow-x-auto rounded-2xl border border-border">
@@ -889,7 +894,7 @@ export default function PlanosPage() {
                     <CompareCell value={row.pro} />
                   </td>
                   <td className="p-4 text-center">
-                    <CompareCell value={row.business} />
+                    <CompareCell value={row.enterprise} />
                   </td>
                 </tr>
               ))}
@@ -938,7 +943,16 @@ export default function PlanosPage() {
           })}
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-4 items-center">
+          <a
+            href={CRM_PLANOS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-primary inline-flex items-center gap-2 text-sm font-medium px-6 h-11 rounded-full"
+          >
+            Acessar o Nodeway CRM
+            <ExternalLink className="w-4 h-4" />
+          </a>
           <Link
             href="/sistema-de-gestao-comercial"
             className="inline-flex items-center text-sm font-medium text-primary hover:opacity-80 transition-opacity"
@@ -1044,7 +1058,7 @@ export default function PlanosPage() {
               Pronto para tirar seu projeto do papel?
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Comece o CRM com 7 dias grátis ou peça um orçamento sob medida para as demais linhas —
+              Comece o CRM com 7 dias grátis na plataforma oficial ou peça um orçamento sob medida para as demais linhas —
               a gente responde no WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -1054,8 +1068,8 @@ export default function PlanosPage() {
                 rel="noopener noreferrer"
                 className="cta-primary inline-flex items-center justify-center gap-2 font-medium px-8 h-14 rounded-full w-full sm:w-auto"
               >
-                Começar teste grátis do CRM
-                <ArrowRight className="w-4 h-4" />
+                Acessar planos do CRM
+                <ExternalLink className="w-4 h-4" />
               </a>
               <a
                 href={budgetLink}
