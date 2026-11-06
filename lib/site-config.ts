@@ -59,11 +59,11 @@ export const siteConfig = {
   contact: {
     email: 'contato@nodewayagency.com.br',
     /** Formato E.164 — usado em JSON-LD e links tel:. Ex.: +5545999403598 */
-    phone: '+5545991057939',
+    phone: '+5545999643684',
     /** Como o telefone aparece na tela. */
-    phoneDisplay: '(45) 99105-7939',
+    phoneDisplay: '(45) 99964-3684',
     /** Só dígitos, com DDI (55) — usado nos links wa.me. */
-    whatsapp: '5545991057939',
+    whatsapp: '5545999643684',
     /** Mensagem pré-preenchida ao abrir o WhatsApp. */
     whatsappMessage: 'Olá Nodeway, quero um orçamento.',
   },
@@ -78,6 +78,9 @@ export const siteConfig = {
 
   // ── Dados da empresa (SEO local / JSON-LD Organization) ───────────────────
   business: {
+    /** Razão social e CNPJ — exibidos na Política de Privacidade e nos Termos. Deixe '' para ocultar. */
+    legalName: '',
+    cnpj: '67.052.221/0001-84',
     priceRange: '$$',
     address: {
       locality: 'Cascavel',

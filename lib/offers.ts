@@ -68,10 +68,10 @@ export const offers: Offer[] = [
     headlineLead: 'Organize as vendas e',
     headlineAccent: 'pare de perder pedido',
     subhead:
-      'Do orçamento ao pedido, com clientes, estoque, financeiro e comissões num sistema só. A partir de R$ 99/mês, com 7 dias grátis.',
+      'Do orçamento ao pedido, com clientes, estoque, financeiro e comissões num sistema só. A partir de R$ 69,90/mês, com 7 dias grátis.',
     ctaLabel: 'Testar grátis por 7 dias',
     whatsappMessage: 'Olá! Quero testar o CRM / sistema de gestão comercial.',
-    priceNote: 'A partir de R$ 99/mês · 7 dias grátis, sem cartão',
+    priceNote: 'A partir de R$ 69,90/mês · 7 dias grátis, sem cartão',
     secondaryCta: { label: 'Ver planos e preços', href: '/planos#crm' },
     pains: [
       'Orçamento no WhatsApp, pedido na planilha, cliente na cabeça de alguém',
@@ -82,9 +82,9 @@ export const offers: Offer[] = [
       { title: 'Orçamento → pedido → PDF', desc: 'Monte, aprove e envie em 1 clique, sem redigitar.' },
       { title: 'Clientes, estoque e financeiro', desc: 'Tudo em um lugar, com dado único e atualizado.' },
       { title: 'Comissões automáticas', desc: 'Básica ou por produto — o número sai sozinho.' },
-      { title: 'Integra com o seu ERP', desc: 'Bling, Omie e Tiny; a NF-e continua no ERP.' },
+      { title: 'Cobra na maquininha Point', desc: 'O pedido é cobrado direto na maquininha do Mercado Pago.' },
     ],
-    caseSlugs: ['newflexo-crm', 'formento-playgrounds'],
+    caseSlugs: ['sistema-orcamento-etiquetas', 'formento-playgrounds'],
     faq: [
       {
         question: 'É um CRM mesmo?',
@@ -94,7 +94,7 @@ export const offers: Offer[] = [
       {
         question: 'Substitui o meu ERP?',
         answer:
-          'Não. Ele cuida da gestão comercial e integra ao seu ERP (Bling, Omie, Tiny). A NF-e e os pagamentos continuam no ERP.',
+          'Não. Ele cuida da gestão comercial; a NF-e continua no seu ERP. A integração com Bling, Omie e Tiny está em desenvolvimento.',
       },
       {
         question: 'Como funciona o teste grátis?',
@@ -102,14 +102,14 @@ export const offers: Offer[] = [
       },
       {
         question: 'Quanto custa?',
-        answer: 'A partir de R$ 99/mês, nos planos Starter, Pro e Business.',
+        answer: 'A partir de R$ 69,90/mês, nos planos Starter (R$ 69,90), Pro (R$ 149,90) e Enterprise (R$ 299,90).',
       },
     ],
     metaTitle: 'CRM e Sistema de Gestão Comercial — Teste Grátis 7 Dias',
     metaDescription:
-      'CRM com orçamentos, pedidos, estoque, financeiro e comissões, integrado ao seu ERP. A partir de R$ 99/mês. Teste grátis por 7 dias, sem cartão.',
+      'CRM com orçamentos, pedidos, estoque, financeiro, comissões e maquininha Point. A partir de R$ 69,90/mês. Teste grátis por 7 dias, sem cartão.',
     ogTitle: 'CRM e Gestão Comercial',
-    ogSubtitle: 'A partir de R$ 99/mês · teste grátis por 7 dias',
+    ogSubtitle: 'A partir de R$ 69,90/mês · teste grátis por 7 dias',
   },
   {
     slug: 'landing-pages',

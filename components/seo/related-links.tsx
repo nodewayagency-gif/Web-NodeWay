@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SiteScreenshot } from '@/components/landing/site-screenshot';
 import { ArrowRight } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { WHATSAPP_URL_SHORT } from '@/lib/contact';
@@ -6,8 +7,10 @@ import { getCaseBySlug } from '@/lib/data';
 import { blogPosts } from '@/lib/data';
 import { servicePillars } from '@/lib/seo-data';
 
-export function RelatedCases({ slugs }: { slugs: string[] }) {
+export function RelatedCases({ slugs, preferSystem = false }: { slugs: string[]; preferSystem?: boolean }) {
   const items = slugs.map(getCaseBySlug).filter(Boolean);
+  const imageOf = (c: NonNullable<(typeof items)[number]>) =>
+    (preferSystem && c.images?.find((i) => i.label.startsWith('Sistema'))) || c.images?.[0];
   if (!items.length) return null;
 
   return (
@@ -20,6 +23,16 @@ export function RelatedCases({ slugs }: { slugs: string[] }) {
             href={`/cases/${c!.slug}`}
             className="group bg-card/30 border border-border rounded-xl p-5 hover:bg-card/60 transition-colors"
           >
+            {imageOf(c!) && (
+              <SiteScreenshot
+                cover
+                src={imageOf(c!)!.src}
+                alt={`${imageOf(c!)!.label} — ${c!.client}, desenvolvido pela Nodeway`}
+                url={imageOf(c!)!.label === 'Landing page' ? c!.url : undefined}
+                sizes="(min-width: 640px) 400px, 100vw"
+                className="mb-4 shadow-none"
+              />
+            )}
             <p className="text-xs font-mono text-primary mb-2">{c!.client}</p>
             <p className="text-foreground font-medium group-hover:text-primary transition-colors">
               {c!.title}

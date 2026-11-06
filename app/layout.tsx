@@ -1,4 +1,5 @@
 import React from 'react'
+import { WhatsAppClickTracker } from '@/components/whatsapp-click-tracker'
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
@@ -190,6 +191,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <WhatsAppClickTracker />
         <Analytics />
       </body>
     </html>

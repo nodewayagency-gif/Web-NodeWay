@@ -16,62 +16,62 @@ import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 const features = [
   {
     number: "01",
-    badge: "Fim das planilhas",
-    title: "Sistemas e Softwares Sob Medida",
+    badge: "Sistemas sob medida",
+    title: "“Minha equipe perde horas em planilhas.”",
     description:
-      "Construímos a ferramenta exclusiva que a sua empresa precisa para operar com fluidez. Sem templates limitados e sem telas inúteis: cada regra de negócio, cálculo de orçamento e etapa de trabalho desenvolvida exatamente para o seu processo.",
+      "Cadastre uma vez: orçamento, pedido e financeiro passam a conversar sozinhos.",
     highlights: [
-      "Orçamentos e pedidos calculados na hora, com PDF pronto para enviar",
-      "Centralização de clientes, estoque, equipe e financeiro",
-      "Acesso seguro e simples pelo celular ou computador para toda a equipe",
+      "Orçamento e PDF gerados na hora",
+      "Clientes, estoque, equipe e financeiro num só lugar",
+      "Acesso pelo celular ou computador",
     ],
     href: "/servicos/sistemas-sob-medida",
-    linkLabel: "Ver como funciona um sistema sob medida",
+    linkLabel: "Ver sistemas sob medida",
     visual: "dev",
   },
   {
     number: "02",
-    badge: "Mais clientes chamando",
-    title: "Páginas de Vendas e Lojas Online",
+    badge: "Páginas e lojas online",
+    title: "“Visitam meu site, mas ninguém chama no WhatsApp.”",
     description:
-      "Não fazemos sites que ficam apenas 'bonitos na vitrine'. Construímos páginas ultra-rápidas e lojas virtuais pensadas para quem pesquisa no Google ou clica no seu anúncio chamar seu vendedor na hora.",
+      "Páginas rápidas e claras que levam o visitante direto ao seu vendedor.",
     highlights: [
-      "Carregamento instantâneo no 4G (sem clientes desistindo por lentidão)",
-      "Botão no WhatsApp com o item ou serviço pré-selecionado",
-      "E-commerce com cálculo de frete e pagamento seguro",
+      "Abre rápido até no 4G",
+      "WhatsApp com o item já selecionado",
+      "Loja com frete e pagamento integrados",
     ],
     href: "/servicos/landing-pages",
-    linkLabel: "Conhecer páginas e lojas de alta conversão",
+    linkLabel: "Ver páginas e lojas",
     visual: "landing",
   },
   {
     number: "03",
-    badge: "Zero retrabalho",
-    title: "Integração de Sistemas & Automação de Rotinas",
+    badge: "Integrações e automação",
+    title: "“Digitamos a mesma venda em três sistemas.”",
     description:
-      "Chega de digitar a mesma venda três vezes em sistemas diferentes. Conectamos seu setor comercial ao seu ERP (Bling, Omie, Tiny) e aos meios de pagamento para sua equipe focar em vender e atender bem.",
+      "Conectamos o comercial ao seu ERP e aos pagamentos. A nota sai sem redigitar.",
     highlights: [
-      "Sincronização com Bling, Omie e Tiny (a nota fiscal sai sem redigitar)",
-      "Histórico de vendas e propostas organizado para consulta imediata",
-      "Menos erros manuais e horas economizadas toda semana",
+      "Sincroniza com Bling, Omie e Tiny",
+      "Histórico de vendas e propostas organizado",
+      "Menos erro manual, mais horas livres",
     ],
     href: "/servicos/integracoes-automacao",
-    linkLabel: "Entender integrações e automações de processo",
+    linkLabel: "Ver integrações",
     visual: "automation",
   },
   {
     number: "04",
-    badge: "Decisão com segurança",
-    title: "Painéis de Controle e Lucro (BI)",
+    badge: "Painéis de dados (BI)",
+    title: "“Vendo bem, mas não sei onde está o lucro.”",
     description:
-      "Pare de decidir no 'achismo' ou esperar dias por um relatório em planilha. Juntamos os dados espalhados da sua empresa em painéis visuais claros que mostram, ao vivo, onde está o lucro e onde estão os gargalos.",
+      "Painéis ao vivo com custos, margens e gargalos, fáceis de ler no celular.",
     highlights: [
-      "Indicadores claros e objetivos para a diretoria",
-      "Acompanhamento de vendas, custos, rotas e frotas em tempo real",
-      "Visão na tela do celular para você acompanhar de qualquer lugar",
+      "Indicadores objetivos para a diretoria",
+      "Vendas, custos, rotas e frota em tempo real",
+      "Acompanhe de qualquer lugar",
     ],
     href: "/servicos/bi-dados",
-    linkLabel: "Ver exemplos de painéis de dados",
+    linkLabel: "Ver painéis de dados",
     visual: "data",
   },
 ];
@@ -258,21 +258,17 @@ export function FeaturesSection() {
         <div className="max-w-3xl mb-8 sm:mb-14 lg:mb-20">
           <span className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-mono text-primary mb-3">
             <span className="w-6 sm:w-8 h-px brand-gradient-bg" />
-            O que construímos para você
+            O que fazemos
           </span>
           <h2
             className={`text-2xl sm:text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Não entregamos templates <span className="brand-gradient">prontos</span>.
+            Onde sua rotina <span className="brand-gradient">trava</span>,
             <br />
-            <span className="text-muted-foreground">Construímos soluções sob medida.</span>
+            <span className="text-muted-foreground">a gente constrói a saída.</span>
           </h2>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
-            Desenvolvimento pensado para resolver a dor exata do seu negócio. Veja as 4 frentes em
-            que ajudamos as empresas a operarem com eficiência e escala.
-          </p>
         </div>
 
         <div className="grid gap-5 sm:gap-8 lg:gap-10">

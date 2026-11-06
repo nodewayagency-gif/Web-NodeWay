@@ -74,8 +74,10 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
               className="group flex flex-col bg-card/30 border border-border rounded-2xl p-6 lg:p-8 hover:bg-card/60 transition-colors relative overflow-hidden"
             >
-              <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground mb-4">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-mono text-muted-foreground mb-4">
                 <span className="text-primary font-medium">{post.category}</span>
+                <span className="w-1 h-1 rounded-full bg-border" />
+                <time dateTime={post.datePublished}>{post.date}</time>
                 <span className="w-1 h-1 rounded-full bg-border" />
                 <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
               </div>

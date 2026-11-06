@@ -92,7 +92,10 @@ export default async function ServicePillarPage({
           </div>
         ))}
 
-        <RelatedCases slugs={pillar.relatedCaseSlugs} />
+        <RelatedCases
+          slugs={pillar.relatedCaseSlugs}
+          preferSystem={['sistemas-sob-medida', 'bi-dados', 'integracoes-automacao'].includes(pillar.slug)}
+        />
         <RelatedBlogPosts slugs={pillar.relatedBlogSlugs} />
         <FaqSection faq={pillar.faq} />
         <SeoCta />

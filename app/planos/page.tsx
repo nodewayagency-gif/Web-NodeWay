@@ -17,13 +17,7 @@ import {
   BarChart3,
   ShoppingCart,
   Lightbulb,
-  Puzzle,
-  Target,
-  ClipboardList,
-  Code2,
-  Rocket,
   ChevronRight,
-  Clock,
   ExternalLink,
 } from 'lucide-react';
 import { Navigation } from '@/components/landing/navigation';
@@ -46,9 +40,8 @@ export const metadata: Metadata = {
     'controle de comissões',
     'gestão de clientes',
     'controle de estoque',
-    'sistema integrado com Bling',
+    'CRM com maquininha Point',
     'sistema de gestão para PME',
-    'ERP Omie Tiny',
     'criação de landing page',
     'landing page com SEO',
     'relatórios em BI',
@@ -107,13 +100,13 @@ const modules = [
   {
     icon: Plug,
     title: 'Equipe de vendas e compras',
-    desc: 'Controle de usuários, pedidos de compras e comissões da equipe.',
+    desc: 'Vendedores com metas mensais e ranking, comissões e pedidos de compra.',
     plan: 'Pro e Enterprise',
   },
   {
     icon: Bot,
     title: 'Maquininha Point e automações',
-    desc: 'Integrações de pagamento e suporte dedicado para operações de alto volume.',
+    desc: 'Cobrança do pedido na maquininha e automações de estoque, financeiro e agenda.',
     plan: 'Pro e Enterprise',
   },
 ];
@@ -243,56 +236,6 @@ const trustBadges = [
   'Sem fidelidade no CRM',
 ];
 
-// ── Diferenciais (por que a Nodeway) ────────────────────────────────────────
-const differentials = [
-  {
-    icon: Puzzle,
-    title: 'Soluções sob medida',
-    desc: 'Nada de fórmula pronta. Cada projeto é pensado para o seu cenário real — o sistema se adapta à empresa, não o contrário.',
-  },
-  {
-    icon: Target,
-    title: 'Foco em resultado e conversão',
-    desc: 'Bonito e funcional não se excluem. Construímos com foco em performance e em gerar resultado mensurável.',
-  },
-  {
-    icon: Plug,
-    title: 'Integração com o que você já usa',
-    desc: 'Conectamos ERPs, gateways, bancos de dados e APIs. Sua operação unificada, sem retrabalho.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Estratégia + execução técnica',
-    desc: 'Pensamos o negócio antes de escrever a primeira linha de código. Visão de produto com mão na massa.',
-  },
-];
-
-// ── Como funciona (linhas sob consulta) ─────────────────────────────────────
-const processSteps = [
-  {
-    n: '1',
-    title: 'Fale com a gente',
-    desc: 'Conte seu desafio pelo WhatsApp. Respondemos rápido, sem robô e sem compromisso.',
-  },
-  {
-    n: '2',
-    title: 'Diagnóstico e proposta',
-    desc: 'Em até 24h enviamos o diagnóstico com escopo, prazo e valor — de graça e sem compromisso.',
-  },
-  {
-    n: '3',
-    title: 'Desenvolvimento sob medida',
-    desc: 'Construímos com validações no caminho, para o resultado sair exatamente como o combinado.',
-  },
-  {
-    n: '4',
-    title: 'Entrega e suporte',
-    desc: 'Publicamos, orientamos o uso e seguimos com suporte e acompanhamento contínuo.',
-  },
-];
-
-const processIcons = [WhatsAppIcon, ClipboardList, Code2, Rocket];
-
 // ── Prova social: clientes e resultados reais (fonte: lib/data.ts cases) ─────
 const clientNames = [
   'ILC',
@@ -309,11 +252,11 @@ const clientNames = [
 type Proof = { slug: string; client: string; tag: string; icon: typeof Users; result: string };
 const featuredProof: Proof[] = [
   {
-    slug: 'newflexo-crm',
+    slug: 'sistema-orcamento-etiquetas',
     client: 'Newflexo',
-    tag: 'CRM sob medida',
+    tag: 'Orçamento e CRM sob medida',
     icon: Users,
-    result: 'Funil de vendas centralizado e fim dos leads esquecidos sem retorno.',
+    result: 'Orçamento de etiquetas em segundos e fim das propostas esquecidas sem retorno.',
   },
   {
     slug: 'carmax-baterias',
@@ -354,7 +297,7 @@ const plans: Plan[] = [
     name: 'Starter',
     price: '69,90',
     summary:
-      'Ideal para profissionais autônomos e pequenos negócios que buscam organização e controle comercial completo.',
+      'Para autônomos e pequenos negócios.',
     features: [
       'Até 200 produtos cadastrados',
       '1 usuário de acesso',
@@ -368,13 +311,14 @@ const plans: Plan[] = [
     name: 'Pro',
     price: '149,90',
     summary:
-      'A solução mais completa e escolhida por empresas e franquias ativas que buscam escala comercial e automação.',
+      'Para equipes de vendas em crescimento.',
     featuresPrefix: 'Tudo do Starter, e mais:',
     features: [
       'Até 1.000 produtos cadastrados',
       'Até 8 usuários na equipe',
-      'Equipe de vendas e Comissões avançadas',
+      'Equipe de vendas, metas e comissões avançadas',
       'Gestão de Compras e Estoque avançado',
+      'Integração com o Bling (em breve)',
       'Integração com maquininha Point',
       'Branding avançado e CRM Atividades',
       'Suporte prioritário',
@@ -386,11 +330,12 @@ const plans: Plan[] = [
     name: 'Enterprise',
     price: '299,90',
     summary:
-      'Capacidade máxima para redes de franquias, grandes operações e equipes robustas com suporte dedicado.',
+      'Para redes, franquias e grandes operações.',
     featuresPrefix: 'Tudo do Pro, e mais:',
     features: [
       'Até 10.000 produtos cadastrados',
       'Até 50 usuários na equipe',
+      'Integração com Bling, Omie e Tiny (em breve)',
       'Capacidade máxima para franquias e redes',
       'Operações em larga escala',
       'Suporte dedicado e prioritário',
@@ -407,9 +352,10 @@ const comparison: { feature: string; starter: Cell; pro: Cell; enterprise: Cell 
   { feature: 'Orçamentos e Pedidos em PDF', starter: true, pro: true, enterprise: true },
   { feature: 'Controle de Estoque', starter: true, pro: true, enterprise: true },
   { feature: 'Financeiro (receber e pagar)', starter: true, pro: true, enterprise: true },
-  { feature: 'Equipe de Vendas', starter: false, pro: true, enterprise: true },
+  { feature: 'Equipe de Vendas e metas', starter: false, pro: true, enterprise: true },
   { feature: 'Comissão avançada por produto', starter: false, pro: true, enterprise: true },
   { feature: 'Gestão de Compras', starter: false, pro: true, enterprise: true },
+  { feature: 'Integração com ERP', starter: false, pro: 'Bling (em breve)', enterprise: 'Bling, Omie e Tiny (em breve)' },
   { feature: 'Maquininha Point', starter: false, pro: true, enterprise: true },
   { feature: 'Branding avançado', starter: false, pro: true, enterprise: true },
   { feature: 'CRM Atividades', starter: false, pro: true, enterprise: true },
@@ -445,7 +391,7 @@ const faq = [
   {
     question: 'O CRM substitui o meu ERP?',
     answer:
-      'Não. Ele cuida da gestão comercial do dia a dia e se conecta ao seu ERP. A emissão de NF-e e os pagamentos continuam no ERP; nós sincronizamos os dados.',
+      'Não. Ele cuida da gestão comercial do dia a dia; a emissão de NF-e continua no seu ERP. A integração com Bling, Omie e Tiny está em desenvolvimento.',
   },
   {
     question: 'Posso trocar de plano do CRM depois?',
@@ -566,17 +512,8 @@ export default function PlanosPage() {
             Soluções sob medida, do <span className="brand-gradient">CRM ao e-commerce</span>
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-            CRM com planos a partir de R$ 69,90/mês e as demais soluções com orçamento sob medida —
-            tudo com clareza e atendimento direto.
+            CRM pronto a partir de R$ 69,90/mês. Demais soluções sob medida, com orçamento grátis em 24h.
           </p>
-
-          <div className="mt-8 inline-flex items-start gap-3 rounded-2xl border border-primary/25 bg-primary/5 px-5 py-4 text-sm text-muted-foreground">
-            <Sparkles className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-            <p>
-              <span className="text-foreground font-medium">Nodeway CRM com 7 dias grátis</span> na
-              plataforma oficial e projetos sob medida para sua operação.
-            </p>
-          </div>
         </div>
 
         {/* ── Selos de confiança ───────────────────────────────── */}
@@ -653,95 +590,10 @@ export default function PlanosPage() {
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   )}
-                  {s.cta.external && !s.title.includes('CRM') && (
-                    <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted-foreground/80">
-                      <Clock className="w-3.5 h-3.5 text-primary/80 shrink-0" />
-                      Diagnóstico e orçamento grátis em 24h
-                    </p>
-                  )}
                 </div>
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* ── Diferenciais ───────────────────────────────────────── */}
-      <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
-        <div className="max-w-3xl mb-10 lg:mb-12">
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-            <span className="w-8 h-px brand-gradient-bg" />
-            Por que a Nodeway
-          </span>
-          <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground leading-tight">
-            Tecnologia sob medida, feita para <span className="brand-gradient">gerar resultado</span>
-          </h2>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {differentials.map((d) => {
-            const Icon = d.icon;
-            return (
-              <div
-                key={d.title}
-                className="flex flex-col rounded-2xl border border-border bg-card/30 p-6 hover:bg-card/50 transition-colors"
-              >
-                <div className="w-11 h-11 rounded-xl border border-border flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-display text-foreground mb-2">{d.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ── Como funciona (linhas sob consulta) ────────────────── */}
-      <section className="pb-16 lg:pb-24 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
-        <div className="max-w-3xl mb-10 lg:mb-12">
-          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-            <span className="w-8 h-px brand-gradient-bg" />
-            Como funciona
-          </span>
-          <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground mb-4 leading-tight">
-            Do primeiro contato à entrega, sem enrolação
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Para as linhas com orçamento sob consulta, o caminho é simples e transparente. E o CRM,
-            você já assina e começa a usar online na hora.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {processSteps.map((s, i) => {
-            const Icon = processIcons[i];
-            return (
-              <div key={s.n} className="relative rounded-2xl border border-border bg-card/30 p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full brand-gradient-bg text-white font-display shrink-0">
-                    {s.n}
-                  </span>
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-display text-foreground mb-2">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-        <div className="mt-8">
-          <a
-            href={budgetLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-primary inline-flex items-center justify-center gap-2.5 font-medium px-8 h-13 rounded-full"
-          >
-            <WhatsAppIcon className="w-5 h-5" />
-            Pedir um orçamento sob medida
-          </a>
-          <p className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground">
-            <Clock className="w-4 h-4 text-primary/80 shrink-0" />
-            Diagnóstico e orçamento grátis, sem compromisso, em até 24h.
-          </p>
         </div>
       </section>
 
@@ -760,8 +612,7 @@ export default function PlanosPage() {
               Escolha o plano que <span className="brand-gradient">cresce com o seu negócio</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Gestão comercial completa — orçamentos, pedidos, estoque, financeiro, equipe de vendas e
-              comissões. Teste grátis por 7 dias.
+              Teste grátis por 7 dias, sem fidelidade.
             </p>
           </div>
 
@@ -910,40 +761,12 @@ export default function PlanosPage() {
             Um sistema de gestão comercial completo, do orçamento à comissão
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Reúna <strong className="text-foreground font-medium">CRM</strong>, orçamentos, pedidos,
-            cadastro de clientes e produtos, controle de estoque, financeiro e comissões de
-            vendedores em uma única plataforma — conectada ao seu ERP. É a gestão comercial do dia a
-            dia da sua empresa, sem planilhas soltas.
-          </p>
-          <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-            Sem burocracia fiscal: <strong className="text-foreground font-medium">não emitimos
-            NF-e nem processamos pagamentos</strong> — isso continua no seu ERP (Bling, Omie ou
-            Tiny). Nós cuidamos da operação comercial e sincronizamos os dados.
+            CRM, orçamentos, pedidos, estoque, financeiro e comissões numa só plataforma, com cobrança
+            na maquininha Point. A nota fiscal continua no seu ERP.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {modules.map((m) => {
-            const Icon = m.icon;
-            return (
-              <div
-                key={m.title}
-                className="flex flex-col rounded-2xl border border-border bg-card/30 p-6 hover:bg-card/50 transition-colors"
-              >
-                <div className="w-11 h-11 rounded-xl border border-border flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-display text-foreground mb-2">{m.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{m.desc}</p>
-                <span className="mt-4 inline-flex w-fit items-center rounded-full border border-border px-2.5 py-1 text-[11px] font-mono text-muted-foreground">
-                  {m.plan}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-4 items-center">
+        <div className="flex flex-wrap gap-4 items-center">
           <a
             href={CRM_PLANOS_URL}
             target="_blank"
@@ -973,10 +796,6 @@ export default function PlanosPage() {
           <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground mb-4 leading-tight">
             Resultados reais, <span className="brand-gradient">clientes reais</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Não falamos de tecnologia no vácuo. Veja o que já construímos para empresas como a
-            sua — do CRM ao e-commerce.
-          </p>
         </div>
 
         {/* Faixa de clientes */}
@@ -1058,8 +877,7 @@ export default function PlanosPage() {
               Pronto para tirar seu projeto do papel?
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Comece o CRM com 7 dias grátis na plataforma oficial ou peça um orçamento sob medida para as demais linhas —
-              a gente responde no WhatsApp.
+              Teste o CRM grátis por 7 dias ou peça um orçamento sob medida no WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a

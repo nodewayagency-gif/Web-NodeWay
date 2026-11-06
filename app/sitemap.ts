@@ -33,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/sobre`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
       url: `${baseUrl}/planos`,
       lastModified,
       changeFrequency: 'monthly',

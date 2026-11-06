@@ -9,6 +9,6 @@ export default function Image() {
   return renderOgImage({
     eyebrow: 'Planos e Soluções',
     title: 'CRM, Landing Pages, BI e E-commerce sob medida',
-    subtitle: 'CRM a partir de R$ 99/mês · demais linhas com orçamento sob consulta',
+    subtitle: 'CRM a partir de R$ 69,90/mês · demais linhas com orçamento sob consulta',
   });
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, ExternalLink } from 'lucide-react';
 import { cases } from '@/lib/data';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
+import { SiteScreenshot } from '@/components/landing/site-screenshot';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 import { RelatedServices, RelatedCases } from '@/components/seo/related-links';
@@ -136,6 +137,25 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
             </a>
           )}
         </header>
+
+        {caseData.images && caseData.images.length > 0 && (
+          <div className="mb-16 space-y-8">
+            {caseData.images.map((img, i) => (
+              <figure key={img.src} className="m-0">
+                <SiteScreenshot
+                  src={img.src}
+                  width={img.width}
+                  height={img.height}
+                  alt={`${img.label} — ${caseData.client}, desenvolvido pela Nodeway`}
+                  url={img.width === 1200 ? caseData.url : undefined}
+                  sizes="(min-width: 1000px) 1000px, 100vw"
+                  priority={i === 0}
+                />
+                <figcaption className="mt-2 text-xs text-muted-foreground">{img.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
 
         <div className="prose prose-invert prose-lg max-w-none text-muted-foreground">
           

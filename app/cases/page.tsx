@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { cases } from '@/lib/data';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
+import { SiteScreenshot } from '@/components/landing/site-screenshot';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 
@@ -49,6 +50,16 @@ export default function CasesPage() {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full blur-3xl group-hover:bg-primary/20 transition-all duration-500" />
               
+              {c.images?.[0] && (
+                <SiteScreenshot
+                  cover
+                  src={c.images[0].src}
+                  alt={`${c.images[0].label} — ${c.client}, desenvolvido pela Nodeway`}
+                  url={c.images[0].width === 1200 ? c.url : undefined}
+                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                  className="z-10 mb-6 transition-transform duration-500 group-hover:-translate-y-1"
+                />
+              )}
               <div className="flex-1 z-10">
                 <span className="text-xs font-mono text-primary mb-4 block uppercase tracking-wider">{c.category}</span>
                 <h2 className="text-2xl font-display text-foreground mb-3">{c.client}</h2>

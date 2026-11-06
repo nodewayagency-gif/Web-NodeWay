@@ -6,6 +6,8 @@ import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 import { FaqSection } from '@/components/seo/faq-section';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
+import { SiteScreenshot } from '@/components/landing/site-screenshot';
+import { StickyMobileCta } from '@/components/landing/sticky-mobile-cta';
 import { offers, getOffer } from '@/lib/offers';
 import { getCaseBySlug } from '@/lib/data';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
@@ -71,6 +73,10 @@ export default async function OfferLandingPage({
   const Icon = offer.icon;
   const ctaLink = wa(offer.whatsappMessage);
   const proofCases = offer.caseSlugs.map(getCaseBySlug).filter(Boolean);
+  // Em ofertas de sistema, mostra o print do sistema (quando houver) em vez da landing page.
+  const prefersSystem = ['crm', 'bi', 'sistemas-sob-medida', 'automacao'].includes(offer.slug);
+  const proofImage = (c: NonNullable<(typeof proofCases)[number]>) =>
+    (prefersSystem && c.images?.find((i) => i.label.startsWith('Sistema'))) || c.images?.[0];
 
   const trustChips = [
     { icon: Clock, label: offer.priceNote },
@@ -274,13 +280,23 @@ export default async function OfferLandingPage({
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
+          <div className={`grid sm:grid-cols-2 gap-4 lg:gap-6 ${proofCases.length === 3 ? 'lg:grid-cols-3' : ''}`}>
             {proofCases.map((c) => (
               <Link
                 key={c!.slug}
                 href={`/cases/${c!.slug}`}
                 className="group flex flex-col rounded-2xl border border-border bg-card/30 p-6 lg:p-7 hover:bg-card/50 hover:border-primary/40 transition-colors"
               >
+                {proofImage(c!) && (
+                  <SiteScreenshot
+                    cover
+                    src={proofImage(c!)!.src}
+                    alt={`${proofImage(c!)!.label} — ${c!.client}, desenvolvido pela Nodeway`}
+                    url={proofImage(c!)!.label === 'Landing page' ? c!.url : undefined}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="mb-5 shadow-none"
+                  />
+                )}
                 <span className="text-[11px] font-mono uppercase tracking-widest text-primary mb-4">
                   {c!.client}
                 </span>
@@ -352,17 +368,7 @@ export default async function OfferLandingPage({
       <FooterSection />
 
       {/* ── Barra de CTA fixa (mobile) ───────────────────────── */}
-      <div className="fixed bottom-0 inset-x-0 z-40 lg:hidden border-t border-border bg-background/95 backdrop-blur px-4 py-3">
-        <a
-          href={ctaLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cta-primary inline-flex w-full items-center justify-center gap-2.5 h-12 rounded-full"
-        >
-          <WhatsAppIcon className="w-5 h-5" />
-          {offer.ctaLabel}
-        </a>
-      </div>
+      <StickyMobileCta href={ctaLink} label={offer.ctaLabel} />
     </main>
   );
 }

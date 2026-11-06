@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
-  Check,
   Users,
   FileText,
   Boxes,
@@ -18,12 +17,13 @@ import { FooterSection } from '@/components/landing/footer-section';
 import { FaqSection } from '@/components/seo/faq-section';
 import { RelatedBlogPosts } from '@/components/seo/related-links';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
+import { SiteScreenshot } from '@/components/landing/site-screenshot';
 import { siteConfig, absoluteUrl, CRM_PLANOS_URL } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Sistema de Gestão Comercial e CRM',
   description:
-    'CRM e gestão comercial: orçamentos, pedidos, estoque, financeiro e comissões, integrado ao seu ERP (Bling, Omie, Tiny). Não substitui o ERP fiscal.',
+    'CRM e gestão comercial: leads, orçamentos, pedidos, estoque, financeiro, comissões e cobrança na maquininha Point. Teste grátis por 7 dias.',
   keywords: [
     'sistema de gestão comercial',
     'CRM',
@@ -32,34 +32,34 @@ export const metadata: Metadata = {
     'controle de comissões',
     'gestão de clientes',
     'controle de estoque',
-    'sistema integrado com Bling',
+    'CRM com maquininha Point',
     'sistema de gestão para PME',
   ],
   alternates: { canonical: absoluteUrl('/sistema-de-gestao-comercial') },
   openGraph: {
     title: `Sistema de Gestão Comercial e CRM | ${siteConfig.name}`,
     description:
-      'CRM, orçamentos, pedidos, estoque, financeiro e comissões em uma plataforma, conectada ao seu ERP. Teste grátis por 7 dias.',
+      'CRM, orçamentos, pedidos, estoque, financeiro e comissões em uma plataforma, com cobrança na maquininha Point. Teste grátis por 7 dias.',
     url: absoluteUrl('/sistema-de-gestao-comercial'),
   },
 };
 
 const modules = [
-  { icon: Users, title: 'CRM e cadastro de clientes', desc: 'Centralize clientes e acompanhe cada oportunidade, do primeiro contato ao fechamento.' },
+  { icon: Users, title: 'CRM e funil de leads', desc: 'Cadastro do cliente pelo CNPJ e funil em colunas, do primeiro contato ao fechamento.' },
   { icon: FileText, title: 'Orçamentos e pedidos em PDF', desc: 'Monte o orçamento, converta em pedido e gere o PDF pronto para enviar.' },
-  { icon: Percent, title: 'Comissões de vendedores', desc: 'Comissão básica em todos os planos e avançada por produto no Pro e Enterprise.' },
-  { icon: CalendarClock, title: 'Agenda de atendimentos', desc: 'Organize retornos e compromissos junto do histórico comercial.' },
-  { icon: Boxes, title: 'Controle de estoque', desc: 'Movimentações de entrada e saída com saldos sempre atualizados.' },
-  { icon: Wallet, title: 'Financeiro', desc: 'Contas a receber e a pagar para acompanhar o caixa da operação comercial.' },
-  { icon: Plug, title: 'Integração com ERP', desc: 'Sincronize com Bling, Omie ou Tiny para emissão fiscal centralizada.' },
-  { icon: Bot, title: 'Equipe de vendas e maquininha', desc: 'Gestão de usuários, metas, controle de comissões e integração com Point.' },
+  { icon: Percent, title: 'Equipe de vendas e metas', desc: 'Vendedores com meta mensal, ranking de desempenho e comissões calculadas sozinhas.' },
+  { icon: CalendarClock, title: 'Agenda de atendimentos', desc: 'Compromissos por vendedor, com WhatsApp e rota no Maps em cada atendimento.' },
+  { icon: Boxes, title: 'Controle de estoque', desc: 'Estoque mínimo, alerta de item zerado e bloqueio de venda sem saldo.' },
+  { icon: Wallet, title: 'Financeiro', desc: 'Contas a receber e a pagar, fluxo de caixa e exportação em CSV.' },
+  { icon: Bot, title: 'Maquininha Point', desc: 'Cobre o pedido direto na maquininha do Mercado Pago.' },
+  { icon: Plug, title: 'Compras e fornecedores', desc: 'Solicitações, cotações e fornecedores, até o recebimento no estoque.' },
 ];
 
 const steps = [
   { n: '1', title: 'Cadastre clientes e produtos', desc: 'Uma base única, sem redigitar a mesma informação em vários lugares.' },
   { n: '2', title: 'Monte o orçamento', desc: 'Preços e produtos certos, com PDF pronto para enviar ao cliente.' },
   { n: '3', title: 'Converta em pedido', desc: 'Orçamento aprovado vira pedido com um clique, e o estoque acompanha.' },
-  { n: '4', title: 'Sincronize com o ERP', desc: 'Os dados vão para o seu Bling/Omie/Tiny, onde a NF-e é emitida.' },
+  { n: '4', title: 'Cobre e acompanhe', desc: 'Cobre na maquininha Point e acompanhe o recebimento no financeiro.' },
 ];
 
 const faq = [
@@ -76,7 +76,7 @@ const faq = [
   {
     question: 'Substitui o meu ERP?',
     answer:
-      'Não. Ele cuida da gestão comercial e se integra ao seu ERP (Bling, Omie ou Tiny). A emissão de NF-e e os pagamentos continuam no ERP.',
+      'Não. Ele cuida da gestão comercial; a emissão de NF-e continua no seu ERP. A integração com Bling, Omie e Tiny está em desenvolvimento.',
   },
   {
     question: 'Quais são os planos disponíveis?',
@@ -91,6 +91,15 @@ const faq = [
 
 const trialLink = CRM_PLANOS_URL;
 
+/** Prints reais do sistema, tirados de uma conta de demonstração com dados fictícios. */
+const crmShot = { width: 800, height: 461, url: 'crm.nodewayagency.com.br' };
+const screens = [
+  { src: '/crm/leads.webp', title: 'Funil de leads', desc: 'Cada oportunidade em uma coluna, com origem e taxa de conversão.' },
+  { src: '/crm/pedidos.webp', title: 'Pedidos', desc: 'Orçamento aprovado vira pedido, com faturamento e ticket médio.' },
+  { src: '/crm/estoque.webp', title: 'Estoque', desc: 'Saldo por produto, estoque mínimo e alerta de item zerado.' },
+  { src: '/crm/financeiro.webp', title: 'Financeiro', desc: 'Contas a receber geradas pelos pedidos, prontas para dar baixa.' },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -99,7 +108,7 @@ const jsonLd = {
   operatingSystem: 'Web',
   url: absoluteUrl('/sistema-de-gestao-comercial'),
   description:
-    'Sistema de gestão comercial com CRM: orçamentos, pedidos, clientes, produtos, estoque, financeiro, comissões e equipe de vendas. Não emite NF-e nem processa pagamentos.',
+    'Sistema de gestão comercial com CRM: leads, orçamentos, pedidos, clientes, produtos, estoque, compras, financeiro, comissões, equipe de vendas com metas e cobrança na maquininha Point. Não emite NF-e.',
   featureList: modules.map((m) => m.title),
   publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
   offers: {
@@ -151,7 +160,7 @@ export default function SistemaGestaoComercialPage() {
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8">
             Orçamentos, pedidos, clientes, produtos, estoque, financeiro e comissões em uma única
-            plataforma — conectada ao seu ERP. A gestão do dia a dia da sua empresa, sem planilhas
+            plataforma, com cobrança na maquininha Point. A gestão do dia a dia da sua empresa, sem planilhas
             soltas e sem trocar o seu sistema fiscal.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -175,6 +184,23 @@ export default function SistemaGestaoComercialPage() {
             </a>
           </div>
         </div>
+
+        <div className="relative mt-12 lg:mt-16 max-w-[900px]">
+          <div className="absolute -inset-4 rounded-[32px] brand-gradient-bg opacity-15 blur-3xl" />
+          <SiteScreenshot
+            src="/crm/painel.webp"
+            alt="Painel inicial do Nodeway CRM com faturamento, contas a receber, valor em negociação e alerta de estoque"
+            url={crmShot.url}
+            width={crmShot.width}
+            height={crmShot.height}
+            priority
+            sizes="(min-width: 1200px) 1100px, 100vw"
+            className="relative"
+          />
+          <p className="mt-3 text-xs text-muted-foreground text-center">
+            Tela real do sistema, em uma conta de demonstração com dados fictícios.
+          </p>
+        </div>
       </section>
 
       {/* ── O que é ──────────────────────────────────────────── */}
@@ -190,9 +216,9 @@ export default function SistemaGestaoComercialPage() {
             o estoque, o financeiro e as comissões.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed">
-            <strong className="text-foreground font-medium">Não emitimos NF-e nem processamos
-            pagamentos</strong> — isso continua no seu ERP (Bling, Omie ou Tiny). Nós cuidamos da
-            operação comercial e sincronizamos os dados com ele.
+            <strong className="text-foreground font-medium">Não emitimos NF-e</strong> — a nota
+            continua no seu ERP. Nós cuidamos da operação comercial, do primeiro contato à cobrança
+            na maquininha Point.
           </p>
         </div>
       </section>
@@ -219,6 +245,32 @@ export default function SistemaGestaoComercialPage() {
         </div>
       </section>
 
+      {/* ── Por dentro do sistema ─────────────────────────────── */}
+      <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
+        <h2 className="text-3xl font-display text-foreground mb-3">Por dentro do sistema</h2>
+        <p className="text-muted-foreground mb-8">
+          Telas reais do Nodeway CRM, com dados fictícios de demonstração.
+        </p>
+        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
+          {screens.map((sc) => (
+            <figure key={sc.src}>
+              <SiteScreenshot
+                src={sc.src}
+                alt={`${sc.title} no Nodeway CRM`}
+                url={crmShot.url}
+                width={crmShot.width}
+                height={crmShot.height}
+                sizes="(min-width: 640px) 560px, 100vw"
+              />
+              <figcaption className="mt-3">
+                <span className="block text-foreground font-medium">{sc.title}</span>
+                <span className="block text-sm text-muted-foreground">{sc.desc}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       {/* ── Como funciona ────────────────────────────────────── */}
       <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
         <h2 className="text-3xl font-display text-foreground mb-8">
@@ -240,19 +292,22 @@ export default function SistemaGestaoComercialPage() {
       {/* ── Integração com ERP ───────────────────────────────── */}
       <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1200px] mx-auto">
         <div className="rounded-3xl border border-border bg-card/30 p-8 lg:p-12">
+          <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary font-medium mb-4">
+            Em breve
+          </span>
           <h2 className="text-3xl font-display text-foreground mb-5">Integração com o seu ERP</h2>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mb-6">
-            Cliente, produto e pedido cadastrados no sistema são sincronizados com o seu ERP — sem
-            digitar a mesma coisa duas vezes. A nota fiscal e os pagamentos permanecem no ERP.
+            Estamos desenvolvendo a sincronização de clientes, produtos e pedidos com o seu ERP, para
+            ninguém digitar a mesma coisa duas vezes. A nota fiscal continua no ERP.
           </p>
           <ul className="grid sm:grid-cols-3 gap-4 max-w-3xl">
             {[
-              { erp: 'Bling', plano: 'Planos Pro e Enterprise' },
-              { erp: 'Omie', plano: 'Plano Enterprise' },
-              { erp: 'Tiny', plano: 'Plano Enterprise' },
+              { erp: 'Bling', plano: 'Em breve · Pro e Enterprise' },
+              { erp: 'Omie', plano: 'Em breve · Enterprise' },
+              { erp: 'Tiny', plano: 'Em breve · Enterprise' },
             ].map((i) => (
               <li key={i.erp} className="flex items-start gap-3 rounded-2xl border border-border bg-background/40 p-4">
-                <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <Plug className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                 <span>
                   <span className="block text-foreground font-medium">{i.erp}</span>
                   <span className="block text-xs text-muted-foreground">{i.plano}</span>

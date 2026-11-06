@@ -9,6 +9,6 @@ export default function Image() {
   return renderOgImage({
     eyebrow: 'Produto',
     title: 'Sistema de Gestão Comercial e CRM',
-    subtitle: 'Orçamentos, pedidos, estoque, financeiro e comissões, integrado ao seu ERP',
+    subtitle: 'Orçamentos, pedidos, estoque, financeiro, comissões e maquininha Point',
   });
 }

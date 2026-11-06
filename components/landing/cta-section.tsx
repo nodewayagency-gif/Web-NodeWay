@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, CheckCircle2, Clock, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Clock, Mail, MapPin, Sparkles } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { siteConfig, WHATSAPP_URL, WHATSAPP_URL_SHORT, MAILTO } from "@/lib/site-config";
 
@@ -46,18 +46,16 @@ export function CtaSection() {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-xs font-medium text-primary mb-5">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Atendimento humano · Direto de Cascavel/PR para todo o Brasil
+                  Atendimento humano, sem robôs
                 </div>
 
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display tracking-tight leading-[1.08] text-foreground mb-4">
-                  Vamos conversar sobre o próximo passo da{" "}
-                  <span className="brand-gradient italic">sua empresa?</span>
+                  Conte onde sua rotina trava.{" "}
+                  <span className="brand-gradient italic">A gente desenha a saída.</span>
                 </h2>
 
                 <p className="text-xs sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl">
-                  Você não precisa saber qual tecnologia escolher nem ter um projeto pronto no papel.
-                  Conte para a gente o que está travando a sua rotina hoje e nós desenhamos o
-                  caminho mais simples — sem compromisso.
+                  Sem compromisso e sem precisar de projeto pronto.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -70,7 +68,7 @@ export function CtaSection() {
                     <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 shrink-0">
                       <WhatsAppIcon className="w-3.5 h-3.5" />
                     </span>
-                    Chamar especialista no WhatsApp
+                    Falar no WhatsApp
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                   </a>
 
@@ -79,7 +77,7 @@ export function CtaSection() {
                     className="inline-flex items-center justify-center gap-2.5 rounded-full h-12 sm:h-14 px-6 border border-border bg-background/50 text-foreground text-xs sm:text-sm font-medium hover:bg-card/80 hover:border-primary/30 transition-all w-full sm:w-auto"
                   >
                     <Mail className="w-4 h-4 text-muted-foreground shrink-0" />
-                    Prefiro enviar um e-mail
+                    Enviar e-mail
                   </a>
                 </div>
               </div>
@@ -91,7 +89,7 @@ export function CtaSection() {
                     <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shrink-0" />
                     <div>
                       <p className="text-xs sm:text-sm font-medium text-foreground">
-                        Time Nodeway disponível agora
+                        Time Nodeway
                       </p>
                       <p className="text-[11px] sm:text-xs text-muted-foreground">
                         Segunda a sexta, das 09h às 18h
@@ -101,16 +99,12 @@ export function CtaSection() {
 
                   <ul className="space-y-2.5 text-xs sm:text-sm">
                     <li className="flex items-start gap-2.5 text-foreground/90">
-                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                      <span>Você fala direto com quem entende e constrói a solução (sem robôs)</span>
-                    </li>
-                    <li className="flex items-start gap-2.5 text-foreground/90">
                       <Clock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>Diagnóstico e proposta gratuita entregue em até 24h</span>
+                      <span>Diagnóstico gratuito e proposta em até 24h</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-foreground/90">
                       <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>Reunião presencial em Cascavel/região ou por vídeo em todo o Brasil</span>
+                      <span>Presencial na região de Cascavel ou por vídeo</span>
                     </li>
                   </ul>
 
@@ -121,7 +115,10 @@ export function CtaSection() {
                       rel="noopener noreferrer"
                       className="rounded-xl bg-card/80 border border-border/60 p-3 hover:border-primary/40 transition-colors"
                     >
-                      <span className="text-muted-foreground block text-[11px] mb-0.5">WhatsApp Direto</span>
+                      <span className="text-muted-foreground flex items-center gap-1.5 text-[11px] mb-0.5">
+                        <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                        WhatsApp Direto
+                      </span>
                       <span className="font-semibold text-primary">{siteConfig.contact.phoneDisplay}</span>
                     </a>
                     <a

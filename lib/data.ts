@@ -1,3 +1,19 @@
+export interface CaseImage {
+  src: string;
+  width: number;
+  height: number;
+  /** Legenda curta, ex.: "Landing page" ou "Sistema (dados ocultados)". */
+  label: string;
+}
+
+const site = (file: string): CaseImage => ({ src: `/cases/${file}`, width: 1200, height: 750, label: 'Landing page' });
+const system = (file: string, height: number): CaseImage => ({
+  src: `/cases/${file}`,
+  width: 1600,
+  height,
+  label: 'Sistema (dados de clientes ocultados)',
+});
+
 export interface CaseStudy {
   id: string;
   slug: string;
@@ -6,6 +22,8 @@ export interface CaseStudy {
   description: string;
   category: string;
   url?: string;
+  /** Prints do projeto em /public/cases. O primeiro é a capa do card. */
+  images?: CaseImage[];
   city?: string;
   state?: string;
   serviceTags?: string[];
@@ -18,6 +36,8 @@ export interface BlogPost {
   id: string;
   slug: string;
   title: string;
+  /** Título curto para o Google (aba e resultado de busca). Se vazio, usa `title`. */
+  seoTitle?: string;
   excerpt: string;
   content: string;
   /** Data exibida na tela (texto livre em PT). */
@@ -37,8 +57,9 @@ export const cases: CaseStudy[] = [
     client: "ILC - Instituto Legado e Conforto",
     title: "Plataforma digital acolhedora e sensível sobre luto e memória",
     description: "Desenvolvimento de um espaço seguro e acolhedor para conectar e apoiar pessoas passando por momentos de perda, focado no legado da vida.",
-    category: "Plataforma Web",
+    category: "Landing Page + Sistema",
     url: "https://legadoeconforto.com.br/",
+    images: [site("legado-e-conforto.webp")],
     city: "Cascavel",
     state: "PR",
     serviceTags: ["desenvolvimento-web"],
@@ -58,6 +79,7 @@ export const cases: CaseStudy[] = [
     description: "Landing page otimizada para conversão e campanhas de tráfego pago, com foco em urgência e SEO local no setor automotivo de Cascavel.",
     category: "Landing Pages + Tráfego",
     url: "https://www.carmaxbaterias.com.br/",
+    images: [site("carmax-baterias.webp")],
     city: "Cascavel",
     state: "PR",
     serviceTags: ["landing-pages", "desenvolvimento-web"],
@@ -72,17 +94,21 @@ export const cases: CaseStudy[] = [
   {
     id: "3",
     slug: "sistema-orcamento-etiquetas",
-    client: "Indústria Gráfica",
-    title: "Solução customizada de orçamento inteligente para etiquetas",
-    description: "Desenvolvimento de um sistema sob medida para calcular custos e viabilidade de impressão de etiquetas em tempo real.",
+    client: "Newflexo",
+    title: "Orçamento inteligente de etiquetas e CRM comercial",
+    description: "Sistema sob medida para a Newflexo, indústria gráfica de etiquetas em Cascavel/PR: orçamento com cálculo de custos em tempo real e CRM para acompanhar cada proposta.",
     category: "Desenvolvimento Sob Medida",
+    city: "Cascavel",
+    state: "PR",
+    images: [system("newflexo.webp", 765)],
     serviceTags: ["sistemas-sob-medida"],
-    challenge: "O processo de orçar etiquetas envolvia dezenas de variáveis (tipo de papel, tamanho, faca, cores, tiragem) e levava muito tempo do setor comercial, além da alta margem para erro humano nos cálculos.",
-    solution: "A Nodeway Agency construiu um software de orçamento embutido, que processa a matriz de custos instantaneamente. O cliente preenche as dimensões e especificações, e o sistema entrega o preço exato baseado no markup da empresa.",
+    challenge: "Orçar etiquetas envolvia dezenas de variáveis (tipo de papel, tamanho, faca, cores, tiragem) e tomava muito tempo do comercial, com alta margem de erro nos cálculos. Depois de enviadas, as propostas ficavam em planilhas e anotações soltas, e muitos clientes ficavam sem retorno.",
+    solution: "Construímos um software de orçamento que processa a matriz de custos na hora: o vendedor informa as especificações e recebe o preço exato, com base no markup da empresa. Junto, um CRM sob medida com pipeline, histórico de cada cliente e alertas de follow-up para nenhuma proposta esfriar.",
     results: [
-      "Processo de orçamentação reduzido de horas para segundos",
+      "Orçamentação de horas para segundos",
       "Zero erros de cálculo comercial",
-      "Aumento da taxa de fechamento por resposta imediata ao cliente"
+      "Pipeline centralizado e fim dos clientes esquecidos sem retorno",
+      "Maior taxa de fechamento pela resposta imediata"
     ]
   },
   {
@@ -94,6 +120,7 @@ export const cases: CaseStudy[] = [
     category: "Dados & BI",
     city: "Toledo",
     state: "PR",
+    images: [{ src: "/cases/transporte-mauricio.webp", width: 1200, height: 676, label: "Sistema — tela inicial" }],
     serviceTags: ["bi-dados"],
     challenge: "A transportadora possuía um volume gigantesco de dados brutos espalhados em sistemas antigos e planilhas, dificultando a visão dos custos operacionais e margem de lucro por rota.",
     solution: "Conectamos os bancos de dados através de pipelines automatizados e montamos painéis visuais interativos. Os gestores agora conseguem ver, em tempo real, os indicadores de manutenção, abastecimento e tempo de trânsito.",
@@ -111,6 +138,7 @@ export const cases: CaseStudy[] = [
     description: "Uma loja virtual híbrida que funciona como vitrine de luxo, canalizando o cliente para atendimento VIP humano.",
     category: "E-commerce",
     url: "https://jpbjoias.com.br/",
+    images: [site("jpb-joias.webp")],
     city: "Cascavel",
     state: "PR",
     serviceTags: ["e-commerce"],
@@ -130,6 +158,7 @@ export const cases: CaseStudy[] = [
     description: "Plataforma completa de ponta a ponta com integrações robustas de logística e pagamentos.",
     category: "E-commerce",
     url: "https://www.jpbstorex.com.br/",
+    images: [site("jpb-storex.webp")],
     city: "Cascavel",
     state: "PR",
     serviceTags: ["e-commerce", "integracoes-automacao"],
@@ -142,32 +171,16 @@ export const cases: CaseStudy[] = [
     ]
   },
   {
-    id: "7",
-    slug: "newflexo-crm",
-    client: "Consultor Newflexo",
-    title: "CRM sob medida para gestão comercial e relacionamento",
-    description: "Sistema de CRM personalizado para organizar pipeline de vendas, follow-ups e gestão de clientes em Cascavel.",
-    category: "Desenvolvimento Sob Medida",
-    city: "Cascavel",
-    state: "PR",
-    serviceTags: ["sistemas-sob-medida"],
-    challenge: "A operação comercial dependia de planilhas e anotações dispersas, dificultando o acompanhamento de leads, propostas enviadas e retornos de clientes em diferentes estágios do funil.",
-    solution: "Desenvolvemos um CRM sob medida alinhado ao processo comercial do consultor, com gestão de pipeline, histórico de interações, alertas de follow-up e visão clara de oportunidades em aberto.",
-    results: [
-      "Pipeline comercial centralizado e organizado",
-      "Redução de leads esquecidos sem retorno",
-      "Visibilidade total do funil de vendas"
-    ]
-  },
-  {
     id: "8",
     slug: "formento-playgrounds",
     client: "Formento Indústria e Comércio de Playgrounds",
     title: "Sistema de orçamentos, kits de produtos e geração de pedidos",
     description: "Plataforma sob medida para orçamentação dinâmica, montagem de kits de playgrounds, pedidos e painéis de indicadores em Blumenau/SC.",
-    category: "Desenvolvimento Sob Medida",
+    category: "Landing Page + Sistema",
     city: "Blumenau",
     state: "SC",
+    url: "https://www.formento.com.br/",
+    images: [site("formento-playgrounds.webp")],
     serviceTags: ["sistemas-sob-medida", "bi-dados"],
     challenge: "O processo comercial envolvia orçamentos complexos com combinações de produtos, montagem manual de kits e falta de visibilidade sobre pedidos e indicadores de performance da operação.",
     solution: "Construímos um sistema integrado com módulo de orçamentos dinâmicos, criação automatizada de kits de produtos, geração de pedidos e painéis de indicadores para acompanhar vendas e produção em tempo real.",
@@ -183,9 +196,11 @@ export const cases: CaseStudy[] = [
     client: "Primardi Saúde",
     title: "Sistema integrado para distribuição de medicamentos na Bahia",
     description: "Solução completa com teleatendimento, licitações, faturamento fiscal e compras para distribuidora em Guanambi/BA.",
-    category: "Desenvolvimento Sob Medida",
+    category: "Landing Page + Sistema",
     city: "Guanambi",
     state: "BA",
+    url: "https://web-primardi.vercel.app/",
+    images: [site("primardi-lp.webp"), system("primardi-sistema.webp", 769)],
     serviceTags: ["sistemas-sob-medida", "integracoes-automacao"],
     challenge: "A operação da distribuidora envolvia múltiplos setores desconectados — atendimento, licitações públicas, faturamento fiscal e compras — gerando retrabalho e lentidão na resposta ao mercado.",
     solution: "Desenvolvemos um sistema integrado com módulo de teleatendimento, gestão de licitações, faturamento e controle fiscal, além de fluxo de compras conectado à operação comercial da Primardi Saúde.",
@@ -204,6 +219,7 @@ export const cases: CaseStudy[] = [
     category: "Desenvolvimento Sob Medida",
     city: "Guanambi",
     state: "BA",
+    images: [system("vivre.webp", 763)],
     serviceTags: ["sistemas-sob-medida", "integracoes-automacao"],
     challenge: "A Vivre precisava digitalizar processos críticos do comércio de produtos hospitalares, desde o atendimento remoto até a conformidade fiscal e participação em licitações, sem depender de planilhas.",
     solution: "Implementamos módulos de teleatendimento integrado, gestão de licitações, faturamento com regras fiscais do setor e controle de compras, adaptados à realidade da distribuição hospitalar no interior da Bahia.",
@@ -211,6 +227,24 @@ export const cases: CaseStudy[] = [
       "Operação hospitalar digitalizada ponta a ponta",
       "Conformidade fiscal integrada ao fluxo de vendas",
       "Gestão de licitações e compras sem retrabalho manual"
+    ]
+  },
+  {
+    id: "11",
+    slug: "diretorfit",
+    client: "DiretorFit",
+    title: "Plataforma para personal trainers: treinos, app do aluno e cobranças",
+    description: "Sistema completo para consultorias fitness, com prescrição de treinos, portal do aluno no celular e módulo financeiro, além da landing page de vendas.",
+    category: "Landing Page + Sistema",
+    url: "https://www.diretorfit.com.br/",
+    images: [site("diretorfit.webp")],
+    serviceTags: ["sistemas-sob-medida", "landing-pages"],
+    challenge: "Personal trainers e consultorias montavam treinos em planilhas, mandavam PDFs pelo WhatsApp e controlavam mensalidades de cabeça, perdendo horas e pagamentos.",
+    solution: "Construímos uma plataforma única: prescrição de treinos com biblioteca de exercícios e vídeos, portal do aluno em Web App (sem download) e módulo financeiro com status de cada mensalidade. A landing page apresenta o produto e leva ao teste grátis.",
+    results: [
+      "Treinos montados e duplicados em poucos cliques",
+      "Aluno acessa treino, vídeos e cronômetro no celular",
+      "Mensalidades em dia, pendentes e vencidas numa só tela"
     ]
   }
 ];
@@ -220,6 +254,7 @@ export const blogPosts: BlogPost[] = [
     id: "8",
     slug: "o-custo-de-nao-investir-no-sistema-certo",
     title: "O custo da inação: quanto sua empresa perde por não investir no sistema certo",
+    seoTitle: "Quanto custa não investir no sistema certo",
     excerpt: "Não investir também tem preço — só que ele não aparece na planilha. Veja onde o dinheiro vaza quando a empresa insiste numa plataforma que não atende.",
     date: "30 de Julho de 2026",
     datePublished: "2026-07-30T09:00:00-03:00",
@@ -263,6 +298,7 @@ O que não dá é seguir pagando a conta da inação sem nem saber o tamanho del
     id: "1",
     slug: "por-que-sistema-sob-medida-escala-sua-empresa",
     title: "Por que um sistema sob medida é o segredo para escalar sua operação?",
+    seoTitle: "Sistema sob medida: como ele ajuda a escalar",
     excerpt: "Sistemas de prateleira funcionam até a página dois. Descubra como criar um software que se adapta ao seu processo, e não o contrário.",
     date: "10 de Maio de 2025",
     datePublished: "2025-05-10T09:00:00-03:00",
@@ -287,7 +323,7 @@ Com a engenharia de software moderna e bancos de dados em nuvem, o custo e o tem
   {
     id: "2",
     slug: "landing-pages-alta-conversao",
-    title: "Anatomia de uma Landing Page que converte até 5x mais",
+    title: "Anatomia de uma landing page que converte",
     excerpt: "Não basta ter tráfego. Se a sua landing page é confusa ou lenta, você está jogando dinheiro fora no Google Ads.",
     date: "22 de Abril de 2025",
     datePublished: "2025-04-22T09:00:00-03:00",
@@ -317,6 +353,7 @@ No Brasil, o WhatsApp é rei. Para muitos nichos (como E-commerce de alto ticket
     id: "3",
     slug: "bi-dados-decisoes-estrategicas",
     title: "Business Intelligence: Como parar de achar e começar a ter certeza",
+    seoTitle: "BI: decisões com dados, não com achismo",
     excerpt: "O volume de dados gerados pela sua empresa hoje é gigante. Se você não os está usando para ver o futuro, seu concorrente está.",
     date: "05 de Abril de 2025",
     datePublished: "2025-04-05T09:00:00-03:00",
@@ -338,6 +375,7 @@ Ao conectar seu banco de dados a painéis visuais e dashboards customizados sob 
     id: "4",
     slug: "o-que-e-crm-quando-empresa-precisa",
     title: "O que é um CRM e quando sua empresa realmente precisa de um",
+    seoTitle: "O que é CRM e quando sua empresa precisa de um",
     excerpt: "CRM é mais do que uma agenda de contatos. Entenda o que um sistema de CRM faz, quando ele deixa de ser opcional e como ele se conecta à sua operação comercial.",
     date: "01 de Julho de 2026",
     datePublished: "2026-07-01T09:00:00-03:00",
@@ -371,7 +409,7 @@ Se dois ou mais desses pontos soam familiares, é hora de estruturar.
 ## CRM e o resto da operação
 O ponto que muita empresa descobre tarde: o CRM não vive isolado. Ele conversa com estoque, financeiro e com o seu ERP.
 
-No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), o CRM vem junto do fluxo de **orçamento → pedido → PDF**, do controle de estoque e do financeiro (contas a receber e a pagar). E ele se integra ao seu ERP (Bling, Omie ou Tiny) para manter os dados sincronizados — a emissão de NF-e e os pagamentos continuam no ERP, como devem ser.
+No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), o CRM vem junto do fluxo de **orçamento → pedido → PDF**, do controle de estoque e do financeiro (contas a receber e a pagar). A emissão de NF-e continua no seu ERP, como deve ser, e a integração com Bling, Omie e Tiny está em desenvolvimento.
 
 Quer ver na prática? Compare os [planos e preços](/planos) e comece com 7 dias grátis.
     `
@@ -380,6 +418,7 @@ Quer ver na prática? Compare os [planos e preços](/planos) e comece com 7 dias
     id: "5",
     slug: "sistema-de-gestao-vs-planilha",
     title: "Sistema de gestão comercial vs. planilha: quando dar o salto",
+    seoTitle: "Sistema de gestão comercial vs. planilha",
     excerpt: "A planilha resolve no começo — até virar gargalo. Veja os sinais de que sua operação comercial já pede um sistema de gestão de verdade.",
     date: "24 de Junho de 2026",
     datePublished: "2026-06-24T09:00:00-03:00",
@@ -402,7 +441,7 @@ Mais importante: o dado é único. Você cadastra o cliente uma vez e ele aparec
 ## "Mas eu já tenho um ERP"
 Ter ERP e ter gestão comercial não são a mesma coisa. O ERP cuida do fiscal — nota, imposto, pagamento. A gestão comercial cuida do dia a dia da venda: cliente, orçamento, pedido, comissão, agenda.
 
-O ideal é que os dois conversem. O nosso [sistema](/sistema-de-gestao-comercial) não substitui o seu ERP — ele se conecta a ele (Bling, Omie, Tiny) e assume a parte comercial, deixando a NF-e e os pagamentos onde já estão.
+O ideal é que os dois conversem. O nosso [sistema](/sistema-de-gestao-comercial) não substitui o seu ERP — ele assume a parte comercial e deixa a NF-e onde já está. A integração com Bling, Omie e Tiny está em desenvolvimento.
 
 ## Quando dar o salto
 Se a sua planilha já tem abas demais, fórmulas que só uma pessoa entende e um "cuidado pra não bagunçar", o momento é agora. Veja os [planos e preços](/planos) — dá para começar pequeno e crescer.
@@ -425,14 +464,14 @@ Quando a venda acontece num lugar e a nota noutro, o dado é digitado duas vezes
 
 A integração resolve isso: cliente, produto e pedido cadastrados no sistema de gestão são sincronizados com o Bling — e a nota sai lá, sem redigitação.
 
-## Como a integração funciona no nosso sistema
-No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), a integração com o Bling está disponível nos planos **Pro e Business**. Na prática:
+## Como vai funcionar no nosso sistema
+A integração com o Bling está em desenvolvimento no nosso [sistema de gestão comercial](/sistema-de-gestao-comercial) e vai chegar aos planos **Pro e Enterprise**. A ideia:
 
 - Você gerencia clientes, orçamentos, pedidos, estoque e comissões no sistema
 - Os dados são sincronizados com o Bling
-- A **emissão de NF-e e os pagamentos continuam no Bling** — não emitimos nota nem processamos pagamento, isso é papel do ERP
+- A **emissão de NF-e continua no Bling**, que é o papel do ERP
 
-Precisa de mais? O plano Business adiciona conectores para **Omie e Tiny**, além de multi-loja e assistente de IA.
+No plano Enterprise, a integração também vai cobrir **Omie e Tiny**. Se a sua empresa precisa dessa integração agora, fazemos [sob medida](/servicos/integracoes-automacao).
 
 ## O melhor dos dois mundos
 Você não troca o seu ERP — você tira dele o peso da operação comercial. O Bling faz o que faz bem (fiscal), e o sistema de gestão faz o que ele não foi feito para fazer (o dia a dia da venda).
@@ -444,6 +483,7 @@ Veja como isso se encaixa no seu caso nos [planos e preços](/planos).
     id: "7",
     slug: "orcamento-pedido-comissao-processo-comercial",
     title: "Orçamento, pedido e comissão: como organizar o processo comercial",
+    seoTitle: "Como organizar orçamento, pedido e comissão",
     excerpt: "Do orçamento ao pagamento da comissão, um processo comercial organizado vende mais e discute menos. Veja como estruturar cada etapa.",
     date: "10 de Junho de 2026",
     datePublished: "2026-06-10T09:00:00-03:00",
@@ -464,7 +504,7 @@ Orçamento aprovado precisa virar pedido sem retrabalho — sem redigitar tudo e
 A comissão é onde nascem as discussões. Cálculo manual gera dúvida e desconfiança. Com regras claras — **comissão básica** ou **avançada por produto** — o número sai sozinho e todo mundo confia.
 
 ## Tudo conectado
-Essas três etapas não deveriam viver em sistemas diferentes. No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), orçamento, pedido, estoque, financeiro e comissão fazem parte do mesmo fluxo — e ainda se conectam ao seu ERP (Bling, Omie, Tiny) para o fiscal.
+Essas três etapas não deveriam viver em sistemas diferentes. No nosso [sistema de gestão comercial](/sistema-de-gestao-comercial), orçamento, pedido, estoque, financeiro e comissão fazem parte do mesmo fluxo — e a nota fiscal continua no seu ERP.
 
 ## Comece pelo essencial
 Não precisa organizar tudo de uma vez. Dá para começar pelo básico — orçamento, pedido, clientes e comissão — e evoluir. Veja os [planos e preços](/planos) e teste grátis por 7 dias.

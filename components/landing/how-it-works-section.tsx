@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2,
   ClipboardCheck,
-  Clock,
   HeartHandshake,
-  MessageCircle,
+  SlidersHorizontal,
   Sparkles,
 } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
@@ -15,59 +14,63 @@ import { WHATSAPP_URL } from "@/lib/site-config";
 const steps = [
   {
     number: "01",
-    icon: MessageCircle,
-    title: "Conversa sem compromisso (e sem “tecniquês”)",
+    icon: WhatsAppIcon,
+    title: "Diagnóstico",
     duration: "15 a 30 min",
-    description:
-      "Você nos chama no WhatsApp ou agenda um bate-papo rápido. Você não precisa entender de programação: basta contar como sua empresa funciona hoje e onde está perdendo tempo ou vendas.",
+    description: "Você conta como a empresa funciona. A gente mapeia onde trava.",
     deliverables: [
-      "Ouvimos a realidade da sua operação sem empurrar pacotes prontos",
-      "Identificamos os gargalos que mais tomam tempo da sua equipe",
-      "Tiramos todas as suas dúvidas em linguagem clara e direta",
+      "Quais processos entram no sistema",
+      "Quem vai usar e o que cada um pode ver",
+      "O que resolver primeiro",
     ],
-    promise: "Atendimento humano direto com nossos especialistas.",
   },
   {
     number: "02",
     icon: ClipboardCheck,
-    title: "Diagnóstico gratuito e proposta clara em 24h",
-    duration: "Em até 24h",
-    description:
-      "Nada de orçamentos misteriosos ou cobranças surpresa. Montamos um plano visual explicando exatamente o que será construído, quanto tempo leva e o investimento fechado.",
+    title: "Escopo e proposta",
+    duration: "Até 24h",
+    description: "Escopo, prazo e valor fechados antes de começar.",
     deliverables: [
-      "Escopo detalhado em português claro (o que entra no projeto)",
-      "Cronograma com datas de entrega definidas desde o início",
-      "Valor fixo e transparente — sem letras miúdas",
+      "Telas e funções do projeto",
+      "Cronograma de entregas",
+      "Investimento fixo, sem surpresa",
     ],
-    promise: "Diagnóstico 100% gratuito e sem obrigação de fechar.",
   },
   {
     number: "03",
-    icon: Sparkles,
-    title: "Construção com você acompanhando tudo de perto",
-    duration: "Validações semanais",
-    description:
-      "Você não fica no escuro esperando meses para ver o resultado. Toda semana mostramos as telas reais funcionando para você testar, opinar e garantir que ficou do jeito da sua empresa.",
+    icon: SlidersHorizontal,
+    title: "Regras do seu negócio",
+    duration: "Construção",
+    description: "Cálculos, etapas e documentos no formato da sua empresa.",
     deliverables: [
-      "Links de teste para você clicar e validar no celular ou computador",
-      "Ajustes feitos junto com você durante o caminho",
-      "Testes rigorosos para tudo funcionar rápido e sem travar",
+      "Fórmulas de orçamento, preço e comissão",
+      "Etapas do pedido e aprovações",
+      "Modelo do PDF de orçamento e pedido",
     ],
-    promise: "Transparência total em cada etapa da construção.",
   },
   {
     number: "04",
-    icon: HeartHandshake,
-    title: "Colocamos no ar, treinamos seu time e seguimos juntos",
-    duration: "Parceria contínua",
-    description:
-      "Não entregamos o sistema e sumimos. Configuramos tudo, ensinamos sua equipe a usar sem medo e continuamos ao seu lado no suporte para evoluir conforme sua empresa cresce.",
+    icon: Sparkles,
+    title: "Validação semanal",
+    duration: "Toda semana",
+    description: "Você testa as telas reais e pede ajustes no caminho.",
     deliverables: [
-      "Publicação completa e segura no domínio da sua empresa",
-      "Orientação prática para você e sua equipe usarem com tranquilidade",
-      "Suporte próximo pelo WhatsApp para dúvidas e melhorias",
+      "Campos, telas e relatórios ajustados",
+      "Integrações com Bling, Omie ou Tiny",
+      "Links de teste no celular e no computador",
     ],
-    promise: "Sua operação segura e amparada após a entrega.",
+  },
+  {
+    number: "05",
+    icon: HeartHandshake,
+    title: "Implantação e evolução",
+    duration: "Contínuo",
+    description: "Colocamos no ar, treinamos a equipe e seguimos evoluindo.",
+    deliverables: [
+      "Publicação no domínio da sua empresa",
+      "Treinamento prático da equipe",
+      "Suporte e melhorias pelo WhatsApp",
+    ],
   },
 ];
 
@@ -100,21 +103,17 @@ export function HowItWorksSection() {
         <div className="max-w-3xl mb-10 sm:mb-14 lg:mb-20">
           <span className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-mono text-primary mb-3">
             <span className="w-6 sm:w-8 h-px brand-gradient-bg" />
-            Passo a passo transparente
+            Etapas de customização
           </span>
           <h2
             className={`text-3xl sm:text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Como <span className="brand-gradient">trabalhamos</span> juntos.
+            Seu sistema, <span className="brand-gradient">do seu jeito</span>.
             <br />
-            <span className="text-muted-foreground">Simples, humano e sem surpresas.</span>
+            <span className="text-muted-foreground">Em 5 etapas, com você junto.</span>
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
-            Do primeiro “oi” no WhatsApp até a sua equipe usando o sistema no dia a dia: veja como
-            tornamos essa jornada leve para você.
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
@@ -172,10 +171,10 @@ export function HowItWorksSection() {
                   </div>
                   <div>
                     <span className="text-[11px] font-mono text-primary uppercase tracking-wider block">
-                      Etapa {current.number} de 04
+                      Etapa {current.number} de 0{steps.length}
                     </span>
                     <span className="text-xs sm:text-sm font-medium text-foreground">
-                      O que acontece na prática
+                      {current.duration}
                     </span>
                   </div>
                 </div>
@@ -187,7 +186,7 @@ export function HowItWorksSection() {
 
               <div className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-6">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground block">
-                  O que você ganha nesta fase:
+                  O que você define nesta etapa:
                 </span>
                 {current.deliverables.map((item) => (
                   <div
@@ -200,13 +199,6 @@ export function HowItWorksSection() {
                 ))}
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 p-3.5 mb-5 sm:mb-6 flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-primary shrink-0" />
-                <p className="text-xs sm:text-sm text-foreground font-medium">
-                  {current.promise}
-                </p>
-              </div>
-
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -214,7 +206,7 @@ export function HowItWorksSection() {
                 className="cta-primary w-full h-12 sm:h-13 rounded-full inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-medium"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                Dar o primeiro passo no WhatsApp
+                Começar pelo diagnóstico
               </a>
             </div>
           </div>

@@ -1,10 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, MapPin } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
+import { BrazilMap, mapLegend } from '@/components/seo/brazil-map';
+import { WHATSAPP_URL } from '@/lib/site-config';
 import { Navigation } from '@/components/landing/navigation';
 import { FooterSection } from '@/components/landing/footer-section';
 import { PresenceBadge } from '@/components/seo/presence-badge';
-import { SeoCta } from '@/components/seo/related-links';
 import { cityHubs, BASE_URL } from '@/lib/seo-data';
 
 const atendimentoDescription =
@@ -23,6 +25,9 @@ export const metadata: Metadata = {
 };
 
 export default function AtendimentoPage() {
+  const served = cityHubs.filter((c) => c.presenceStatus === 'sede' || c.presenceStatus === 'cliente_ativo');
+  const states = new Set(served.map((c) => c.state)).size;
+
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       <Navigation />
@@ -41,7 +46,63 @@ export default function AtendimentoPage() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        {/* Mapa + chamariz */}
+        <div className="grid lg:grid-cols-[1.25fr_1fr] gap-10 lg:gap-14 items-center mb-24">
+          <div className="relative rounded-3xl border border-border bg-card/30 p-4 sm:p-8 text-foreground overflow-hidden">
+            <BrazilMap />
+            <ul className="mt-2 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+              {mapLegend.map((l) => (
+                <li key={l.status} className="inline-flex items-center gap-2">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={
+                      l.status === 'em_expansao'
+                        ? { border: `1.5px dashed ${l.color}` }
+                        : { background: l.color }
+                    }
+                  />
+                  {l.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <dl className="grid grid-cols-2 gap-4 mb-8">
+              <div className="rounded-2xl border border-border bg-card/30 p-5">
+                <dt className="text-sm text-muted-foreground">Cidades com clientes</dt>
+                <dd className="text-4xl font-display brand-gradient mt-1">{served.length}</dd>
+              </div>
+              <div className="rounded-2xl border border-border bg-card/30 p-5">
+                <dt className="text-sm text-muted-foreground">Estados</dt>
+                <dd className="text-4xl font-display brand-gradient mt-1">{states}</dd>
+              </div>
+            </dl>
+
+            <div className="relative rounded-3xl border border-primary/30 bg-card/50 p-7 lg:p-9 overflow-hidden">
+              <div className="absolute -top-20 -right-20 w-56 h-56 rounded-full brand-gradient-bg opacity-20 blur-3xl" />
+              <p className="relative text-sm font-mono text-primary mb-3">Sua cidade não está no mapa?</p>
+              <h2 className="relative text-2xl lg:text-3xl font-display text-foreground mb-3">
+                Sua empresa pode ser o próximo ponto aqui.
+              </h2>
+              <p className="relative text-muted-foreground mb-7">
+                Atendemos de forma remota em todo o Brasil, com reuniões online e acompanhamento a cada entrega.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative cta-primary inline-flex items-center gap-2 h-12 px-6 rounded-full font-medium"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                Falar com a Nodeway
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cityHubs.map((city) => (
             <Link
               key={city.slug}
@@ -74,7 +135,6 @@ export default function AtendimentoPage() {
           ))}
         </div>
 
-        <SeoCta />
       </section>
       <FooterSection />
     </main>

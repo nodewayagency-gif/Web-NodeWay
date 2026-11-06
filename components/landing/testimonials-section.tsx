@@ -3,11 +3,26 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin, Sparkles } from "lucide-react";
+import { SiteScreenshot } from "@/components/landing/site-screenshot";
 
-const realStories = [
+type Story = {
+  id: string;
+  client: string;
+  location: string;
+  category: string;
+  headline: string;
+  before: string;
+  after: string;
+  results: string[];
+  metricHighlight: string;
+  image?: { src: string; width: number; height: number };
+  url?: string;
+};
+
+const realStories: Story[] = [
   {
     id: "sistema-orcamento-etiquetas",
-    client: "Indústria Gráfica",
+    client: "Newflexo",
     location: "Paraná",
     category: "Sistema Sob Medida",
     headline: "Orçamentos complexos que levavam horas agora ficam prontos em segundos.",
@@ -21,6 +36,7 @@ const realStories = [
       "Mais vendas fechadas por responder o cliente na hora",
     ],
     metricHighlight: "De horas para segundos",
+    image: { src: "/cases/newflexo.webp", width: 1600, height: 765 },
   },
   {
     id: "transporte-mauricio-bi",
@@ -38,6 +54,7 @@ const realStories = [
       "Gestão de frota 100% clara para a diretoria",
     ],
     metricHighlight: "Frota 100% visível ao vivo",
+    image: { src: "/cases/transporte-mauricio.webp", width: 1200, height: 676 },
   },
   {
     id: "jpb-joias",
@@ -55,6 +72,8 @@ const realStories = [
       "Vendedores já recebem exatamente qual peça o cliente quer",
     ],
     metricHighlight: "Venda VIP no WhatsApp",
+    image: { src: "/cases/jpb-joias.webp", width: 1200, height: 750 },
+    url: "https://jpbjoias.com.br/",
   },
   {
     id: "formento-playgrounds",
@@ -72,6 +91,8 @@ const realStories = [
       "Visão clara do comercial e da produção em tempo real",
     ],
     metricHighlight: "Pedidos em minutos",
+    image: { src: "/cases/formento-playgrounds.webp", width: 1200, height: 750 },
+    url: "https://www.formento.com.br/",
   },
   {
     id: "primardi-saude",
@@ -89,6 +110,7 @@ const realStories = [
       "Segurança fiscal e controle de compras centralizado",
     ],
     metricHighlight: "Operação 100% integrada",
+    image: { src: "/cases/primardi-sistema.webp", width: 1600, height: 769 },
   },
 ];
 
@@ -178,6 +200,18 @@ export function TestimonialsSection() {
                   </p>
                 </div>
               </div>
+
+              {active.image && (
+                <SiteScreenshot
+                  key={active.id}
+                  src={active.image.src}
+                  width={active.image.width}
+                  height={active.image.height}
+                  alt={`Projeto ${active.client} desenvolvido pela Nodeway`}
+                  url={active.url}
+                  sizes="(min-width: 1024px) 700px, 100vw"
+                />
+              )}
             </div>
 
             {/* Coluna Direita: Resultados Práticos */}

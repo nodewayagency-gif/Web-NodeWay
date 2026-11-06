@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = absoluteUrl(`/blog/${post.slug}`);
 
   return {
-    title: post.title,
+    title: post.seoTitle ?? post.title,
     description: post.excerpt,
     alternates: { canonical: url },
     openGraph: {
-      title: `${post.title} | ${siteConfig.name}`,
+      title: `${post.seoTitle ?? post.title} | ${siteConfig.name}`,
       description: post.excerpt,
       url,
       type: 'article',

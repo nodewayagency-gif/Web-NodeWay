@@ -81,7 +81,7 @@ export const servicePillars: ServicePillar[] = [
       {
         question: 'A Nodeway atende empresas fora de Cascavel?',
         answer:
-          'Sim. Temos sede em Cascavel/PR e atendemos clientes em Blumenau, Guanambi, Toledo, Curitiba e em todo o Brasil de forma remota.',
+          'Sim. Temos sede em Cascavel/PR, clientes em Blumenau, Guanambi e Toledo, e atendemos Curitiba e todo o Brasil de forma remota.',
       },
       {
         question: 'Quanto tempo leva um projeto web?',
@@ -109,7 +109,7 @@ export const servicePillars: ServicePillar[] = [
       {
         title: 'O que já entregamos',
         content:
-          'CRM para Consultor Newflexo em Cascavel, plataforma de orçamentos e kits para Formento Playgrounds em Blumenau, e sistemas integrados de teleatendimento, licitações e fiscal para Primardi Saúde e Vivre em Guanambi/BA.',
+          'Orçamento inteligente e CRM para a Newflexo em Cascavel, plataforma de orçamentos e kits para Formento Playgrounds em Blumenau, e sistemas integrados de teleatendimento, licitações e fiscal para Primardi Saúde e Vivre em Guanambi/BA.',
       },
       {
         title: 'Tecnologia e escala',
@@ -130,7 +130,6 @@ export const servicePillars: ServicePillar[] = [
       },
     ],
     relatedCaseSlugs: [
-      'newflexo-crm',
       'formento-playgrounds',
       'primardi-saude',
       'vivre-produtos-hospitalares',
@@ -287,7 +286,7 @@ export const cityHubs: CityHub[] = [
       {
         title: 'E-commerce, CRM e conversão: cases reais em Cascavel',
         content:
-          'Como agência sediada na cidade, nossos projetos nascem perto de quem contrata. Para a JPB Joias e a JPB StoreX desenvolvemos e-commerces completos, com Mercado Pago, Melhor Envio e checkout automatizado — a estrutura que o varejo de Cascavel precisa para vender online com frete e pagamento resolvidos. Para o Consultor Newflexo entregamos um CRM sob medida, com pipeline de vendas e controle de follow-ups. Já a Carmax Baterias, do setor automotivo, conta com landing page de conversão e SEO local para captar clientes na cidade. E o ILC — Instituto Legado e Conforto opera uma plataforma web de alto desempenho voltada à saúde emocional, mostrando nossa faixa de atuação em Cascavel.',
+          'Como agência sediada na cidade, nossos projetos nascem perto de quem contrata. Para a JPB Joias e a JPB StoreX desenvolvemos e-commerces completos, com Mercado Pago, Melhor Envio e checkout automatizado — a estrutura que o varejo de Cascavel precisa para vender online com frete e pagamento resolvidos. Para a Newflexo, indústria gráfica de etiquetas, entregamos um sistema de orçamento que calcula o preço em segundos e um CRM com pipeline e controle de follow-ups. Já a Carmax Baterias, do setor automotivo, conta com landing page de conversão e SEO local para captar clientes na cidade. E o ILC — Instituto Legado e Conforto opera uma plataforma web de alto desempenho voltada à saúde emocional, mostrando nossa faixa de atuação em Cascavel.',
       },
       {
         title: 'Integrações e automação para empresas do Oeste do Paraná',
@@ -326,10 +325,10 @@ export const cityHubs: CityHub[] = [
         relatedServiceSlugs: ['e-commerce', 'integracoes-automacao'],
       },
       {
-        clientName: 'Consultor Newflexo',
-        sector: 'Consultoria comercial',
-        solutions: ['CRM sob medida', 'Pipeline de vendas', 'Gestão de follow-ups'],
-        caseSlug: 'newflexo-crm',
+        clientName: 'Newflexo',
+        sector: 'Indústria gráfica',
+        solutions: ['Orçamento inteligente', 'CRM sob medida', 'Gestão de follow-ups'],
+        caseSlug: 'sistema-orcamento-etiquetas',
         relatedServiceSlugs: ['sistemas-sob-medida'],
       },
       {

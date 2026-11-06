@@ -1,14 +1,16 @@
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
-import { siteConfig, absoluteUrl } from "@/lib/site-config";
+import Link from 'next/link';
+import { siteConfig, absoluteUrl, MAILTO } from '@/lib/site-config';
+import { LegalPage, companyIdentity } from '@/components/legal/legal-page';
+
+const description = `Condições de uso do site da ${siteConfig.name}.`;
 
 export const metadata = {
   title: 'Termos de Uso',
-  description: `Leia os termos de uso e condições para contratação dos serviços da ${siteConfig.name}.`,
+  description,
   alternates: { canonical: absoluteUrl('/termos') },
   openGraph: {
     title: `Termos de Uso | ${siteConfig.name}`,
-    description: `Leia os termos de uso e condições para contratação dos serviços da ${siteConfig.name}.`,
+    description,
     url: absoluteUrl('/termos'),
     type: 'website',
   },
@@ -16,56 +18,87 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="relative min-h-screen noise-overlay">
-      <Navigation />
-      <div className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-display brand-gradient mb-12">Termos de Uso</h1>
-        
-        <div className="prose prose-invert prose-blue max-w-none space-y-8 text-muted-foreground">
-          <section>
-            <h2 className="text-2xl font-display text-foreground mb-4">1. Aceitação dos Termos</h2>
-            <p>
-              Ao acessar o site da Nodeway Agency, você concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis.
-            </p>
-          </section>
+    <LegalPage title="Termos de Uso" updatedAt="6 de novembro de 2026">
+      <section>
+        <h2>1. Sobre este site</h2>
+        <p>
+          Este site é mantido pela <strong>{companyIdentity()}</strong>. Ele apresenta nossos
+          serviços (sites, sistemas sob medida, e-commerce, BI e integrações), nossos cases e o
+          Nodeway CRM. Ao usar o site, você concorda com estes termos.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-2xl font-display text-foreground mb-4">2. Uso de Licença</h2>
-            <p>
-              É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site da Nodeway Agency, apenas para visualização transitória pessoal e não comercial.
-            </p>
-          </section>
+      <section>
+        <h2>2. Conteúdo informativo</h2>
+        <p>
+          As informações do site são de caráter geral. Prazos, escopo e valores de cada projeto só
+          valem depois de uma proposta enviada por nós e aceita por você. Os preços do Nodeway CRM
+          seguem a página oficial de planos no momento da contratação.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-2xl font-display text-foreground mb-4">3. Isenção de Responsabilidade</h2>
-            <p>
-              Os materiais no site da Nodeway Agency são fornecidos 'como estão'. A Nodeway Agency não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.
-            </p>
-          </section>
+      <section>
+        <h2>3. Nodeway CRM</h2>
+        <p>
+          A assinatura e o uso do Nodeway CRM são regidos pelas condições exibidas na própria
+          plataforma, em crm.nodewayagency.com.br, no momento da contratação.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-2xl font-display text-foreground mb-4">4. Limitações</h2>
-            <p>
-              Em nenhum caso a Nodeway Agency ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em nosso site.
-            </p>
-          </section>
+      <section>
+        <h2>4. Propriedade intelectual</h2>
+        <p>
+          Textos, marca, layout e código deste site pertencem à {siteConfig.name}. Marcas, logos e
+          imagens de clientes são exibidos com a finalidade de apresentar trabalhos realizados e
+          continuam pertencendo aos seus titulares. Nos prints de sistemas, dados de clientes foram
+          ocultados.
+        </p>
+        <p className="mt-3">
+          Você pode compartilhar links para as nossas páginas, mas não pode copiar ou reutilizar o
+          conteúdo para fins comerciais sem autorização.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-2xl font-display text-foreground mb-4">5. Precisão dos Materiais</h2>
-            <p>
-              Os materiais exibidos no site da Nodeway Agency podem incluir erros técnicos, tipográficos ou fotográficos. Não garantimos que qualquer material em nosso site seja preciso, completo ou atual.
-            </p>
-          </section>
+      <section>
+        <h2>5. Links externos</h2>
+        <p>
+          O site tem links para sites de clientes, para o WhatsApp e para outras plataformas. Não
+          controlamos esses sites e não respondemos pelo conteúdo ou pelas práticas deles.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-2xl font-display text-foreground mb-4">6. Links</h2>
-            <p>
-              A Nodeway Agency não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso pela Nodeway Agency do site.
-            </p>
-          </section>
-        </div>
-      </div>
-      <FooterSection />
-    </main>
+      <section>
+        <h2>6. Responsabilidade</h2>
+        <p>
+          Trabalhamos para manter o site no ar e as informações corretas, mas ele pode ficar
+          indisponível ou conter erros pontuais. Não nos responsabilizamos por decisões tomadas
+          apenas com base no conteúdo do site, sem uma conversa ou proposta formal.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Privacidade</h2>
+        <p>
+          O tratamento de dados pessoais é descrito na nossa{' '}
+          <Link href="/privacidade">Política de Privacidade</Link>.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Lei e foro</h2>
+        <p>
+          Estes termos seguem a lei brasileira. Fica eleito o foro da comarca de{' '}
+          {siteConfig.business.address.locality}/{siteConfig.business.address.region}, salvo quando a
+          lei garantir ao consumidor o foro do seu domicílio.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Contato</h2>
+        <p>
+          Dúvidas sobre estes termos: <a href={MAILTO}>{siteConfig.contact.email}</a>.
+        </p>
+      </section>
+    </LegalPage>
   );
 }
