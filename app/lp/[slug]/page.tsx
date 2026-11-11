@@ -8,6 +8,7 @@ import { FaqSection } from '@/components/seo/faq-section';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { SiteScreenshot } from '@/components/landing/site-screenshot';
 import { StickyMobileCta } from '@/components/landing/sticky-mobile-cta';
+import { LeadForm } from '@/components/lead-form';
 import { offers, getOffer } from '@/lib/offers';
 import { getCaseBySlug } from '@/lib/data';
 import { siteConfig, absoluteUrl } from '@/lib/site-config';
@@ -45,7 +46,7 @@ function wa(message: string) {
 
 // Passos genéricos (iguais para toda oferta sob consulta).
 const steps = [
-  { n: '1', title: 'Fale no WhatsApp', desc: 'Conte o seu desafio. Sem robô, sem formulário chato.' },
+  { n: '1', title: 'Fale no WhatsApp', desc: 'Conte o seu desafio. Atendimento humano, sem robô.' },
   { n: '2', title: 'Diagnóstico em 24h', desc: 'Analisamos e enviamos escopo, prazo e valor — de graça.' },
   { n: '3', title: 'Mão na massa', desc: 'Aprovou? A gente constrói e acompanha até entregar.' },
 ];
@@ -331,9 +332,9 @@ export default async function OfferLandingPage({
         </div>
       </section>
 
-      {/* ── CTA final ────────────────────────────────────────── */}
-      <section className="pb-16 lg:pb-24 px-5 sm:px-8 lg:px-16 max-w-[1000px] mx-auto">
-        <div className="relative overflow-hidden rounded-3xl brand-border p-8 sm:p-14 text-center">
+      {/* ── CTA final + formulário de lead ──────────────────── */}
+      <section id="contato" className="pb-16 lg:pb-24 px-5 sm:px-8 lg:px-16 max-w-[1100px] mx-auto scroll-mt-24">
+        <div className="relative overflow-hidden rounded-3xl brand-border p-6 sm:p-10 lg:p-12">
           <div
             className="absolute inset-0 pointer-events-none"
             aria-hidden="true"
@@ -342,20 +343,23 @@ export default async function OfferLandingPage({
                 'radial-gradient(ellipse 60% 100% at 50% 0%, rgba(0,194,203,0.12) 0%, transparent 70%)',
             }}
           />
-          <div className="relative z-10">
-            <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground mb-4">
-              Vamos tirar isso do papel?
-            </h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">{offer.priceNote}</p>
-            <a
-              href={ctaLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-primary inline-flex items-center justify-center gap-2.5 px-8 h-14 rounded-full hover:-translate-y-0.5"
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              {offer.ctaLabel}
-            </a>
+          <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl lg:text-4xl font-display tracking-tight text-foreground mb-4">
+                Vamos tirar isso do papel?
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">{offer.priceNote}</p>
+              <a
+                href={ctaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-primary inline-flex items-center justify-center gap-2.5 px-8 h-14 rounded-full hover:-translate-y-0.5"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                {offer.ctaLabel}
+              </a>
+            </div>
+            <LeadForm />
           </div>
         </div>
       </section>
