@@ -6,6 +6,7 @@ import { FooterSection } from '@/components/landing/footer-section';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { SiteScreenshot } from '@/components/landing/site-screenshot';
 import { InstagramStrip } from '@/components/landing/instagram-strip';
+import { FaqSection } from '@/components/seo/faq-section';
 import { cases } from '@/lib/data';
 import { siteConfig, absoluteUrl, WHATSAPP_URL } from '@/lib/site-config';
 
@@ -39,6 +40,36 @@ const principles = [
   {
     title: 'Parceria depois da entrega',
     desc: 'Treinamos a equipe e seguimos evoluindo o sistema com a empresa.',
+  },
+];
+
+/**
+ * Garantias ao contratar — responde, com fatos confirmados pela empresa, as
+ * dúvidas que clientes (e buscadores/IAs) levantam antes de fechar.
+ * Renderizado como FAQ (HTML + schema FAQPage) para ser indexável e citável.
+ */
+const { business } = siteConfig;
+const incorporationYear = new Date(`${business.incorporationDate}T12:00:00`).getFullYear();
+const guarantees = [
+  {
+    question: 'A Nodeway é uma empresa formalizada?',
+    answer: `Sim. A ${business.legalName} tem CNPJ ${business.cnpj} e sede em ${business.address.locality}/${business.address.region}. Contrato, nota fiscal e pagamento são sempre em nome da empresa. Atendemos clientes desde ${business.foundingYear} e formalizamos a operação em ${incorporationYear}.`,
+  },
+  {
+    question: 'Escopo, prazo e valor ficam definidos antes de começar?',
+    answer: 'Sim. Escopo, entregas, prazo e valor ficam por escrito no contrato antes do início. Durante o projeto, você valida o que foi feito toda semana.',
+  },
+  {
+    question: 'Como funciona o pagamento?',
+    answer: 'Varia conforme o projeto e é combinado em contrato antes de começar. Os formatos mais comuns são entrada mais pagamentos por etapa entregue, ou mensalidade. Os pagamentos acompanham o andamento do projeto.',
+  },
+  {
+    question: 'De quem é o código e os dados?',
+    answer: 'Em sistemas sob medida, o código-fonte é da sua empresa. No Nodeway CRM, você usa o sistema por assinatura e pode exportar os seus dados. Em todos os casos, os dados são do cliente.',
+  },
+  {
+    question: 'E se aparecer um defeito depois da entrega?',
+    answer: 'Enquanto o contrato de suporte estiver ativo, corrigimos defeitos sem custo adicional.',
   },
 ];
 
@@ -86,7 +117,7 @@ export default function SobrePage() {
 
         <dl className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl">
           <div className="rounded-2xl border border-border bg-card/30 p-5">
-            <dt className="text-xs text-muted-foreground">Desde</dt>
+            <dt className="text-xs text-muted-foreground">Atendendo desde</dt>
             <dd className="text-2xl font-display text-foreground">{siteConfig.business.foundingYear}</dd>
           </div>
           <div className="rounded-2xl border border-border bg-card/30 p-5">
@@ -98,6 +129,16 @@ export default function SobrePage() {
             <dd className="text-2xl font-display text-foreground">{states.size} estados</dd>
           </div>
         </dl>
+
+        {siteConfig.business.legalName && siteConfig.business.cnpj && (
+          <p className="mt-6 text-sm text-muted-foreground max-w-2xl">
+            Atendemos clientes desde {siteConfig.business.foundingYear}. Em{' '}
+            {new Date(`${siteConfig.business.incorporationDate}T12:00:00`).getFullYear()} formalizamos a operação
+            como <strong className="text-foreground font-medium">{siteConfig.business.legalName}</strong>, CNPJ{' '}
+            {siteConfig.business.cnpj}, com sede em {siteConfig.business.address.locality}/
+            {siteConfig.business.address.region}. Toda nota fiscal e todo contrato saem em nome dessa empresa.
+          </p>
+        )}
       </section>
 
       <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1100px] mx-auto">
@@ -122,6 +163,10 @@ export default function SobrePage() {
           Ver as 5 etapas de customização
           <ArrowRight className="w-4 h-4" />
         </Link>
+      </section>
+
+      <section id="garantias" className="scroll-mt-24 px-5 sm:px-8 lg:px-16 max-w-[1100px] mx-auto">
+        <FaqSection faq={guarantees} title="Suas garantias ao contratar" />
       </section>
 
       <section className="pb-16 lg:pb-20 px-5 sm:px-8 lg:px-16 max-w-[1100px] mx-auto">

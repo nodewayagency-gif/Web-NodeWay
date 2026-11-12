@@ -139,10 +139,13 @@ export function FooterSection() {
         {/* Barra final */}
         <div className="py-6 border-t border-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-muted-foreground">
           <p>
-            © {year} {siteConfig.name}
+            © {year} {siteConfig.business.legalName || siteConfig.name}
             {siteConfig.business.cnpj ? ` · CNPJ ${siteConfig.business.cnpj}` : ""}
           </p>
           <div className="flex items-center gap-5">
+            <Link href="/sobre#garantias" className="hover:text-foreground transition-colors">
+              Garantias
+            </Link>
             <Link href="/privacidade" className="hover:text-foreground transition-colors">
               Privacidade
             </Link>

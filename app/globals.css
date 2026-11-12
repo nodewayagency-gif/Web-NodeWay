@@ -142,6 +142,11 @@
     width: max-content;
     will-change: transform;
   }
+  /* Com "Reduzir movimento" a faixa de resultados só desacelera (parada, ela
+     ficava cortada na lateral e parecia quebrada). */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-marquee { animation-duration: 90s; }
+  }
   
   .line-reveal {
     clip-path: inset(0 100% 0 0);
@@ -249,7 +254,6 @@
 
     .marquee,
     .marquee-reverse,
-    .hero-marquee,
     .logo-glow,
     .animate-char-in {
       animation: none !important;
@@ -305,3 +309,29 @@
   border-color: color-mix(in oklab, var(--primary) 55%, var(--border));
   color: var(--primary);
 }
+
+/* ── Seção em tom alternativo ───────────────────────────────────────────────
+   Grafite neutro (menos azul) para quebrar a sequência de azul-marinho sem
+   o choque de uma seção branca. As bordas superior e inferior fazem um
+   degradê a partir do navy da página, então não há linha dura entre seções.
+   Como as utilities do Tailwind leem as variáveis, todo o conteúdo da seção
+   acompanha (cards, bordas, textos secundários). */
+.theme-alt {
+  --section-base: #10141b;
+  --card: #171c24;
+  --popover: #171c24;
+  --secondary: #1b212a;
+  --muted: #1b212a;
+  --muted-foreground: #8e98a6;
+  --border: #272e39;
+  --input: #272e39;
+  background: linear-gradient(
+    to bottom,
+    var(--page-bg) 0,
+    var(--section-base) 160px,
+    var(--section-base) calc(100% - 160px),
+    var(--page-bg) 100%
+  );
+}
+.theme-alt { --background: var(--section-base); }
+:root { --page-bg: oklch(0.11 0.03 240); } /* = --background do tema */

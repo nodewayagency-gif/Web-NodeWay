@@ -79,7 +79,7 @@ export const siteConfig = {
   // ── Dados da empresa (SEO local / JSON-LD Organization) ───────────────────
   business: {
     /** Razão social e CNPJ — exibidos na Política de Privacidade e nos Termos. Deixe '' para ocultar. */
-    legalName: '',
+    legalName: 'Nodeway Agency Ltda',
     cnpj: '67.052.221/0001-84',
     priceRange: '$$',
     address: {
@@ -93,8 +93,10 @@ export const siteConfig = {
       opens: '09:00',
       closes: '18:00',
     },
-    /** Ano de fundação — usado no copyright do rodapé. */
+    /** Ano em que começamos a atender clientes (antes da formalização). */
     foundingYear: 2025,
+    /** Data de abertura do CNPJ (Nodeway Agency Ltda) — fonte: Receita Federal. */
+    incorporationDate: '2026-05-28',
   },
 
   // ── Marca: cores (hex) ────────────────────────────────────────────────────

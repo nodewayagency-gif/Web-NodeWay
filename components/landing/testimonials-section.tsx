@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin, Sparkles } from "lucide-react";
 import { SiteScreenshot } from "@/components/landing/site-screenshot";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
+import { WHATSAPP_URL } from "@/lib/site-config";
 
 type Story = {
   id: string;
@@ -119,7 +121,7 @@ export function TestimonialsSection() {
   const active = realStories[activeIndex];
 
   return (
-    <section id="cases" className="relative py-16 sm:py-20 lg:py-28 border-t border-border bg-card/20 overflow-x-hidden">
+    <section id="cases" className="relative py-16 sm:py-20 lg:py-28 overflow-x-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16">
         {/* Cabeçalho */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16">
@@ -248,6 +250,20 @@ export function TestimonialsSection() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Chamada no fim da seção: quem viu o resultado já pode pedir o seu */}
+        <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 text-center">
+          <p className="text-base sm:text-lg font-display text-foreground">Quer um resultado assim na sua empresa?</p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-primary inline-flex items-center gap-2 h-12 px-6 rounded-full text-sm"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+            Pedir diagnóstico grátis
+          </a>
         </div>
       </div>
     </section>

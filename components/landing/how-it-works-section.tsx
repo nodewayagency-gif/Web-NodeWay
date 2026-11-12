@@ -97,7 +97,7 @@ export function HowItWorksSection() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative py-16 sm:py-20 lg:py-28 overflow-x-hidden"
+      className="theme-alt relative py-16 sm:py-20 lg:py-28 overflow-x-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16">
         <div className="max-w-3xl mb-10 sm:mb-14 lg:mb-20">
@@ -147,7 +147,7 @@ export function HowItWorksSection() {
                         <h3 className="text-base sm:text-xl lg:text-2xl font-display text-foreground">
                           {step.title}
                         </h3>
-                        <span className="text-[10px] sm:text-xs font-mono text-primary bg-primary/10 px-2 py-0.5 rounded-full shrink-0">
+                        <span className="text-[11px] sm:text-xs font-mono text-primary bg-primary/10 px-2 py-0.5 rounded-full shrink-0">
                           {step.duration}
                         </span>
                       </div>

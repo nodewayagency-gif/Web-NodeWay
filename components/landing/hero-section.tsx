@@ -28,7 +28,7 @@ export function HeroSection({ projects, states }: Props) {
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Troca a palavra mesmo com "Reduzir movimento" (só sem o deslize — ver motion-reduce abaixo).
     const interval = setInterval(() => {
       setAnimating(true);
       setTimeout(() => {
@@ -62,7 +62,7 @@ export function HeroSection({ projects, states }: Props) {
           <div className="mb-6 hero-rise">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm text-primary font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              {projects} projetos entregues em {states} estados
+              + de {projects} projetos entregues em {states} estados
             </span>
           </div>
 
@@ -73,7 +73,7 @@ export function HeroSection({ projects, states }: Props) {
             <span className="block text-3xl sm:text-5xl lg:text-6xl h-[1.3em] overflow-visible">
               <span
                 className={`inline-block brand-gradient px-1.5 pb-2 transition-all duration-300 ${
-                  animating ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"
+                  animating ? "opacity-0 translate-y-3 motion-reduce:translate-y-0" : "opacity-100 translate-y-0"
                 }`}
                 style={{ lineHeight: "1.22" }}
               >
@@ -107,7 +107,7 @@ export function HeroSection({ projects, states }: Props) {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#features"
+              href="#cases"
               className="inline-flex items-center justify-center gap-2 h-13 sm:h-14 px-6 sm:px-7 text-sm sm:text-base rounded-full border border-border bg-card/60 backdrop-blur-sm text-foreground hover:border-primary/50 hover:bg-card/90 transition-all font-medium"
             >
               Ver projetos

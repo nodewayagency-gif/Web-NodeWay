@@ -32,7 +32,14 @@ function maskPhone(value: string) {
 const fieldClass =
   'w-full rounded-xl border border-border/80 bg-background/60 px-4 h-11 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary/60 focus:ring-2 focus:ring-primary/20';
 
-export function LeadForm({ className }: { className?: string }) {
+type LeadFormProps = {
+  className?: string;
+  /** 'compact' = só nome, e-mail e WhatsApp, em linha (faixa no meio da página). */
+  variant?: 'full' | 'compact';
+};
+
+export function LeadForm({ className, variant = 'full' }: LeadFormProps) {
+  const compact = variant === 'compact';
   const pathname = usePathname();
   const widgetRef = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
@@ -158,14 +165,17 @@ export function LeadForm({ className }: { className?: string }) {
           className,
         )}
       >
-        <div>
-          <p className="text-sm sm:text-base font-semibold text-foreground">Prefere que a gente te chame?</p>
-          <p className="text-xs text-muted-foreground">Deixe seus dados e retornamos em até 24h úteis.</p>
-        </div>
+        {!compact && (
+          <div>
+            <p className="text-sm sm:text-base font-semibold text-foreground">Prefere que a gente te chame?</p>
+            <p className="text-xs text-muted-foreground">Deixe seus dados e retornamos em até 24h úteis.</p>
+          </div>
+        )}
 
+        <div className={compact ? 'grid sm:grid-cols-3 gap-3' : 'space-y-3'}>
         <input name="name" required minLength={2} maxLength={120} autoComplete="name" placeholder="Seu nome" aria-label="Seu nome" className={fieldClass} />
 
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className={compact ? 'contents' : 'grid sm:grid-cols-2 gap-3'}>
           <input name="email" type="email" required maxLength={160} autoComplete="email" placeholder="E-mail" aria-label="E-mail" className={fieldClass} />
           <input
             name="phone"
@@ -183,6 +193,10 @@ export function LeadForm({ className }: { className?: string }) {
           />
         </div>
 
+        </div>
+
+        {!compact && (
+          <>
         <input name="company" maxLength={120} autoComplete="organization" placeholder="Empresa (opcional)" aria-label="Empresa" className={fieldClass} />
 
         <textarea
@@ -193,6 +207,8 @@ export function LeadForm({ className }: { className?: string }) {
           aria-label="Mensagem"
           className={cn(fieldClass, 'h-auto py-3 resize-none')}
         />
+          </>
+        )}
 
         {/* Honeypot anti-bot: escondido de humanos e leitores de tela */}
         <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">

@@ -6,6 +6,9 @@ import { HeroSection } from '@/components/landing/hero-section';
 import { SeoIntroSection } from '@/components/landing/seo-intro-section';
 import { FeaturesSection } from '@/components/landing/features-section';
 import { InstagramStrip } from '@/components/landing/instagram-strip';
+import { QuickLeadSection } from '@/components/landing/quick-lead-section';
+import { StickyMobileCta } from '@/components/landing/sticky-mobile-cta';
+import { WHATSAPP_URL } from '@/lib/site-config';
 import { cases } from '@/lib/data';
 
 const TestimonialsSection = dynamic(() =>
@@ -40,6 +43,7 @@ export default function Home() {
       <Navigation />
       <HeroSection projects={cases.length} states={states} />
       <FeaturesSection />
+      <QuickLeadSection />
       <TestimonialsSection />
       <HowItWorksSection />
       <PricingSection />
@@ -47,6 +51,7 @@ export default function Home() {
       <SeoIntroSection />
       <InstagramStrip className="py-16 lg:py-20" />
       <FooterSection />
+      <StickyMobileCta href={WHATSAPP_URL} label="Falar no WhatsApp" />
     </main>
   );
 }

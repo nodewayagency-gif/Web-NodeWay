@@ -17,9 +17,17 @@ const slides: Slide[] = [
 ];
 
 const INTERVAL = 4000;
+/** Depois que a pessoa clica num slide, espera um pouco antes de voltar a girar. */
+const RESUME_AFTER = 8000;
 
 /** Posição de cada slide em relação ao ativo: centro, laterais ou escondido. */
-function positionClass(offset: number) {
+function positionClass(offset: number, reduced: boolean) {
+  // Com "Reduzir movimento" (macOS/iOS/Windows), só troca por fade, sem deslocar.
+  if (reduced) {
+    return offset === 0
+      ? "z-20 opacity-100 [transform:translateX(-50%)]"
+      : "z-0 opacity-0 pointer-events-none [transform:translateX(-50%)]";
+  }
   switch (offset) {
     case 0:
       return "z-20 opacity-100 [transform:translateX(-50%)_scale(1)]";
@@ -34,15 +42,37 @@ function positionClass(offset: number) {
 
 export function HeroShowcase() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [pausedAt, setPausedAt] = useState(0);
+  const [reduced, setReduced] = useState(false);
   const n = slides.length;
 
   useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setActive((a) => (a + 1) % n), INTERVAL);
-    return () => clearInterval(t);
-  }, [paused, n]);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Gira sempre (antes parava com o mouse em cima ou com "Reduzir movimento"
+  // ligado, o que deixava a vitrine travada em muitos Macs). Com movimento
+  // reduzido, gira mais devagar e só com fade.
+  useEffect(() => {
+    const wait = pausedAt ? Math.max(0, RESUME_AFTER - (Date.now() - pausedAt)) : 0;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const timeout = setTimeout(() => {
+      interval = setInterval(() => setActive((a) => (a + 1) % n), reduced ? INTERVAL * 1.5 : INTERVAL);
+    }, wait);
+    return () => {
+      clearTimeout(timeout);
+      if (interval) clearInterval(interval);
+    };
+  }, [pausedAt, reduced, n]);
+
+  const goTo = (i: number) => {
+    setActive(i);
+    setPausedAt(Date.now());
+  };
 
   const offsetOf = (i: number) => {
     let d = i - active;
@@ -54,8 +84,6 @@ export function HeroShowcase() {
   return (
     <div
       className="relative mt-12 sm:mt-14"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       aria-roledescription="carrossel"
       aria-label="Projetos entregues pela Nodeway"
     >
@@ -69,11 +97,11 @@ export function HeroShowcase() {
             <button
               key={s.src}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => goTo(i)}
               tabIndex={Math.abs(offset) === 1 ? 0 : -1}
               aria-hidden={Math.abs(offset) > 1}
               aria-label={offset === 0 ? s.label : `Mostrar ${s.label}`}
-              className={`absolute left-1/2 top-0 w-full sm:w-[64%] max-w-[720px] text-left transition-all duration-700 ease-out ${positionClass(offset)} ${
+              className={`absolute left-1/2 top-0 w-full sm:w-[64%] max-w-[720px] text-left transition-all duration-700 ease-out ${positionClass(offset, reduced)} ${
                 offset === 0 ? "cursor-default" : "cursor-pointer"
               }`}
             >
@@ -105,7 +133,7 @@ export function HeroShowcase() {
             <button
               key={s.src}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => goTo(i)}
               aria-label={`Ir para ${s.label}`}
               aria-current={i === active}
               className={`h-1.5 rounded-full transition-all duration-300 ${
