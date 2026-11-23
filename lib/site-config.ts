@@ -21,13 +21,13 @@
 
 export const siteConfig = {
   // ── Identidade ────────────────────────────────────────────────────────────
-  name: 'Nodeway Agency',
-  shortName: 'Nodeway',
+  name: 'NodeWay Agency',
+  shortName: 'NodeWay',
   /** Segunda palavra do logo (ex.: "AGENCY"). Deixe '' para ocultar. */
   brandSuffix: 'AGENCY',
   tagline: 'Soluções Digitais Sob Medida',
   description:
-    'Nodeway Agency — desenvolvimento web, sistemas sob medida, e-commerce e BI. Sede em Cascavel, clientes em Blumenau, Guanambi, Toledo. Em expansão para Curitiba e todo o Brasil.',
+    'NodeWay Agency — desenvolvimento web, sistemas sob medida, e-commerce e BI. Sede em Cascavel/PR com atendimento e projetos entregues para empresas em todo o Brasil (presencial ou remoto).',
   /** Descrição curta e "vendedora" usada em Open Graph / redes sociais. */
   ogDescription:
     'Criamos sistemas, plataformas e experiências digitais personalizadas para empresas que buscam escala e performance.',

@@ -33,11 +33,13 @@ export function ExpansionSection({ compact = false }: { compact?: boolean }) {
               <PresenceBadge status={city.presenceStatus} />
             </div>
             <p className="text-sm text-muted-foreground mb-3 flex-1">
-              {city.clients.length > 0
-                ? `${city.clients.length} cliente${city.clients.length > 1 ? 's' : ''} ativo${city.clients.length > 1 ? 's' : ''}`
-                : city.presenceStatus === 'em_expansao'
-                  ? 'Aceitando novos projetos'
-                  : city.region}
+              {city.presenceStatus === 'sede'
+                ? 'Sede principal · Presencial e Remoto'
+                : city.clients.length > 0
+                  ? `Cases: ${city.clients.map((c) => c.clientName).slice(0, 2).join(', ')}`
+                  : city.presenceStatus === 'em_expansao'
+                    ? 'Aceitando novos projetos'
+                    : 'Atendimento em todo o Brasil'}
             </p>
             <span className="inline-flex items-center text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">
               Saiba mais <ArrowRight className="w-3 h-3 ml-1" />

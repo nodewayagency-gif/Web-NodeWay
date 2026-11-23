@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { InstagramIcon } from "@/components/icons/instagram-icon";
@@ -57,9 +58,27 @@ export function FooterSection() {
         <div className="py-14 lg:py-16 grid grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1.3fr] gap-x-8 gap-y-10">
           {/* Marca + chamada */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <span className="text-2xl font-display brand-gradient">{siteConfig.shortName}</span>
-              <span className="text-xs text-muted-foreground font-mono mt-1">{siteConfig.brandSuffix}</span>
+            <Link href="/" className="inline-flex items-center gap-3.5 mb-4 select-none group">
+              <Image
+                src="/icon.png"
+                alt={siteConfig.name}
+                width={46}
+                height={46}
+                className="w-11 h-11 object-contain logo-glow shrink-0"
+              />
+              <div className="flex flex-col items-center justify-center leading-none">
+                <div className="flex items-start">
+                  <span className="text-2xl font-brand font-bold tracking-[-0.02em] brand-gradient">
+                    {siteConfig.shortName}
+                  </span>
+                  <span className="text-xs font-brand font-bold text-sky-400 -mt-0.5 ml-0.5 select-none">
+                    ®
+                  </span>
+                </div>
+                <span className="text-[10px] font-brand font-bold uppercase text-white tracking-[0.26em] pl-[0.26em] mt-1">
+                  {siteConfig.brandSuffix}
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
               Sistemas, sites e painéis de dados sob medida para empresas que querem crescer com

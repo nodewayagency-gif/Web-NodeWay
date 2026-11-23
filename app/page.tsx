@@ -36,12 +36,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  // Números reais do selo do topo, calculados a partir dos cases.
-  const states = new Set(cases.map((c) => c.state).filter(Boolean)).size;
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       <Navigation />
-      <HeroSection projects={cases.length} states={states} />
+      <HeroSection />
       <FeaturesSection />
       <QuickLeadSection />
       <TestimonialsSection />

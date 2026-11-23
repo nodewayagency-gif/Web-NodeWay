@@ -84,7 +84,6 @@ const services = [
 
 export default function SobrePage() {
   const showcase = cases.filter((c) => c.images?.length).slice(0, 3);
-  const states = new Set(cases.map((c) => c.state).filter(Boolean));
 
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
@@ -105,14 +104,14 @@ export default function SobrePage() {
 
         <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
           <span className="w-8 h-px brand-gradient-bg" />
-          Sobre a Nodeway
+          Sobre a NodeWay
         </span>
         <h1 className="text-4xl lg:text-6xl font-display tracking-tight text-foreground mb-6 leading-[1.05] max-w-4xl">
           Tecnologia sob medida, <span className="brand-gradient">feita perto de quem usa</span>.
         </h1>
         <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-          Somos uma agência de desenvolvimento de Cascavel/PR. Criamos sistemas, sites, lojas virtuais
-          e painéis de dados para empresas que cansaram de planilha e de software engessado.
+          Somos uma agência de desenvolvimento de Cascavel/PR com atendimento a empresas em todo o Brasil.
+          Criamos sistemas, sites, lojas virtuais e painéis de dados para operações que buscam eficiência e escala.
         </p>
 
         <dl className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl">
@@ -121,12 +120,12 @@ export default function SobrePage() {
             <dd className="text-2xl font-display text-foreground">{siteConfig.business.foundingYear}</dd>
           </div>
           <div className="rounded-2xl border border-border bg-card/30 p-5">
-            <dt className="text-xs text-muted-foreground">Cases publicados</dt>
-            <dd className="text-2xl font-display text-foreground">{cases.length}</dd>
+            <dt className="text-xs text-muted-foreground">Sede e Presença</dt>
+            <dd className="text-2xl font-display text-foreground">Cascavel/PR</dd>
           </div>
           <div className="col-span-2 sm:col-span-1 rounded-2xl border border-border bg-card/30 p-5">
-            <dt className="text-xs text-muted-foreground">Clientes em</dt>
-            <dd className="text-2xl font-display text-foreground">{states.size} estados</dd>
+            <dt className="text-xs text-muted-foreground">Abrangência</dt>
+            <dd className="text-2xl font-display brand-gradient">Todo o Brasil</dd>
           </div>
         </dl>
 

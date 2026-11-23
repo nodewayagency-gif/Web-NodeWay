@@ -10,14 +10,14 @@ import { PresenceBadge } from '@/components/seo/presence-badge';
 import { cityHubs, BASE_URL } from '@/lib/seo-data';
 
 const atendimentoDescription =
-  'Nodeway Agency atende Cascavel (sede), Blumenau, Guanambi, Toledo, Curitiba e todo o Brasil. Clientes reais em múltiplas regiões, em expansão.';
+  'NodeWay Agency atende Cascavel (sede), Blumenau, Guanambi, Toledo, Curitiba e empresas em todo o Brasil — presencial ou remoto.';
 
 export const metadata: Metadata = {
   title: 'Onde Atendemos',
   description: atendimentoDescription,
   alternates: { canonical: `${BASE_URL}/atendimento` },
   openGraph: {
-    title: 'Onde Atendemos | Nodeway Agency',
+    title: 'Onde Atendemos | NodeWay Agency',
     description: atendimentoDescription,
     url: `${BASE_URL}/atendimento`,
     type: 'website',
@@ -26,7 +26,6 @@ export const metadata: Metadata = {
 
 export default function AtendimentoPage() {
   const served = cityHubs.filter((c) => c.presenceStatus === 'sede' || c.presenceStatus === 'cliente_ativo');
-  const states = new Set(served.map((c) => c.state)).size;
 
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
@@ -38,11 +37,11 @@ export default function AtendimentoPage() {
             Presença Nacional
           </span>
           <h1 className="text-4xl lg:text-7xl font-display tracking-tight text-foreground mb-6">
-            Onde a <span className="brand-gradient">Nodeway</span> atende
+            Onde a <span className="brand-gradient">NodeWay</span> atende
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl">
-            Sede em Cascavel/PR, clientes ativos em Blumenau, Guanambi e Toledo. Em expansão
-            para Curitiba e todo o Brasil — presencial ou remoto.
+            Sede em Cascavel/PR com atuação consolidada em múltiplos polos e atendimento remoto
+            para empresas em todo o Brasil — presencial ou a distância.
           </p>
         </div>
 
@@ -70,12 +69,12 @@ export default function AtendimentoPage() {
           <div>
             <dl className="grid grid-cols-2 gap-4 mb-8">
               <div className="rounded-2xl border border-border bg-card/30 p-5">
-                <dt className="text-sm text-muted-foreground">Cidades com clientes</dt>
-                <dd className="text-4xl font-display brand-gradient mt-1">{served.length}</dd>
+                <dt className="text-sm text-muted-foreground">Abrangência</dt>
+                <dd className="text-2xl sm:text-3xl font-display brand-gradient mt-1">Todo o Brasil</dd>
               </div>
               <div className="rounded-2xl border border-border bg-card/30 p-5">
-                <dt className="text-sm text-muted-foreground">Estados</dt>
-                <dd className="text-4xl font-display brand-gradient mt-1">{states}</dd>
+                <dt className="text-sm text-muted-foreground">Atendimento</dt>
+                <dd className="text-2xl sm:text-3xl font-display text-foreground mt-1">Presencial & Remoto</dd>
               </div>
             </dl>
 

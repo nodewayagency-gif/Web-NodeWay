@@ -297,7 +297,7 @@ export const cityHubs: CityHub[] = [
     highlights: [
       'Sede da Nodeway Agency, em Cascavel/PR',
       'Atendimento presencial na cidade e remoto para todo o Brasil',
-      '5 clientes ativos em Cascavel: ILC, JPB Joias, JPB StoreX, Newflexo e Carmax Baterias',
+      'Clientes atendidos em Cascavel: ILC, JPB Joias, JPB StoreX, Newflexo e Carmax Baterias',
       'Especialistas em software sob medida, e-commerce, CRM e landing pages de conversão',
       'Foco no Oeste do Paraná: agro, indústria, comércio e serviços',
       'Dashboards de BI e integrações para automatizar rotinas comerciais e fiscais',
@@ -447,7 +447,7 @@ export const cityHubs: CityHub[] = [
       'Nodeway atende Guanambi/BA. Cases Primardi Saúde e Vivre: teleatendimento, licitações, faturamento fiscal e compras para distribuição.',
     h1: 'Desenvolvimento de sistemas em Guanambi',
     localIntro:
-      'Guanambi é um dos principais polos de saúde e comércio do Sudoeste da Bahia, com economia puxada por serviços, distribuição e um comércio que atende dezenas de municípios vizinhos. É nesse cenário que a Nodeway já mantém dois clientes ativos na cidade — Primardi Saúde e Vivre Comércio de Produtos Hospitalares — com sistemas de teleatendimento, licitações, faturamento fiscal e compras totalmente integrados.',
+      'Guanambi é um dos principais polos de saúde e comércio do Sudoeste da Bahia, com economia puxada por serviços, distribuição e um comércio que atende dezenas de municípios vizinhos. É nesse cenário que a Nodeway atende empresas locais de destaque — como a Primardi Saúde e a Vivre Comércio de Produtos Hospitalares — com sistemas de teleatendimento, licitações, faturamento fiscal e compras totalmente integrados.',
     sections: [
       {
         title: 'Guanambi: polo de saúde e comércio do Sudoeste da Bahia',
@@ -466,7 +466,7 @@ export const cityHubs: CityHub[] = [
       },
     ],
     highlights: [
-      '2 clientes ativos em Guanambi/BA: Primardi Saúde e Vivre Comércio de Produtos Hospitalares',
+      'Atuação consolidada em Guanambi/BA: Primardi Saúde e Vivre Comércio de Produtos Hospitalares',
       'Setor de distribuição de medicamentos e produtos hospitalares atendido de ponta a ponta',
       'Teleatendimento e participação em licitações integrados ao sistema',
       'Faturamento fiscal e compras automatizados, com menos retrabalho',
@@ -508,7 +508,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Como funciona o atendimento à distância, já que a sede é em Cascavel/PR?',
         answer:
-          'Trabalhamos de forma 100% remota, com reuniões por vídeo, entregas em ciclos curtos e suporte contínuo. É o mesmo modelo que já usamos com os clientes ativos de Guanambi.',
+          'Trabalhamos de forma 100% remota, com reuniões por vídeo, entregas em ciclos curtos e suporte contínuo. É o mesmo modelo ágil e homologado que usamos para atender clientes em todo o Brasil.',
       },
     ],
   },
@@ -628,7 +628,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Como funciona o atendimento em Curitiba se a sede é em Cascavel?',
         answer:
-          'Trabalhamos de forma remota com reuniões, acompanhamento e entregas contínuas — modelo que já usamos com clientes em outros estados. Quando o projeto exige presença, Cascavel fica a cerca de 2h30 de Curitiba e organizamos encontros presenciais.',
+          'Trabalhamos de forma remota com reuniões, acompanhamento e entregas contínuas — modelo que usamos com clientes em todo o Brasil. Quando o projeto exige presença, Cascavel fica a cerca de 2h30 de Curitiba e organizamos encontros presenciais.',
       },
       {
         question: 'Que serviços a Nodeway oferece para empresas de Curitiba?',
@@ -663,7 +663,7 @@ export const cityHubs: CityHub[] = [
       {
         title: 'Atendimento remoto sem perder proximidade',
         content:
-          'Trabalhar à distância não significa atendimento genérico. A Nodeway mantém clientes ativos em quatro estados — Cascavel e Toledo no oeste do Paraná, Blumenau em Santa Catarina e Guanambi na Bahia — e usa esse mesmo método para qualquer empresa do país: descoberta do processo real, escopo claro, entregas em ciclos curtos e comunicação direta com quem decide. Reuniões por vídeo, ambientes de homologação e documentação substituem a presença física sem perder o acompanhamento. Assim, uma indústria de Santa Catarina, um comércio do Paraná ou uma empresa de serviços do Nordeste recebem a mesma engenharia moderna, com foco em performance, SEO e sistemas que realmente encaixam na operação de cada negócio.',
+          'Trabalhar à distância não significa atendimento genérico. A Nodeway atende empresas em todo o território nacional — com atuação sólida em polos do Paraná, Santa Catarina, Bahia e em expansão contínua — e usa esse mesmo método para qualquer negócio do país: descoberta do processo real, escopo claro, entregas em ciclos curtos e comunicação direta com quem decide. Reuniões por vídeo, ambientes de homologação e documentação substituem a presença física sem perder o acompanhamento. Assim, uma indústria de Santa Catarina, um comércio do Paraná ou uma empresa de serviços do Nordeste recebem a mesma engenharia moderna, com foco em performance, SEO e sistemas que realmente encaixam na operação de cada negócio.',
       },
       {
         title: 'Do site ao dashboard: uma solução completa para crescer',
@@ -673,7 +673,7 @@ export const cityHubs: CityHub[] = [
     ],
     highlights: [
       'Sede em Cascavel/PR com atendimento nacional 100% remoto',
-      'Clientes reais ativos em Cascavel/PR, Toledo/PR, Blumenau/SC e Guanambi/BA',
+      'Atuação comprovada com projetos em operação no Paraná, Santa Catarina, Bahia e todo o Brasil',
       'Desenvolvimento web sob medida, sistemas dedicados e e-commerce',
       'Landing pages de conversão para Google Ads e SEO',
       'Relatórios e dashboards em BI para decisão baseada em dados',
@@ -684,7 +684,7 @@ export const cityHubs: CityHub[] = [
       {
         question: 'Posso contratar a Nodeway de qualquer cidade do Brasil?',
         answer:
-          'Sim. O atendimento é 100% remoto e nacional. A sede fica em Cascavel/PR e há clientes ativos em Toledo/PR, Blumenau/SC e Guanambi/BA.',
+          'Sim. O atendimento é 100% estruturado para operações em todo o Brasil. Nossa sede fica em Cascavel/PR e atendemos empresas de qualquer estado de forma remota ou presencial.',
       },
       {
         question: 'O atendimento remoto tem a mesma qualidade do presencial?',
@@ -715,7 +715,7 @@ export function getCityHub(slug: string) {
 
 export const presenceStatusLabels: Record<PresenceStatus, string> = {
   sede: 'Sede',
-  cliente_ativo: 'Cliente ativo',
+  cliente_ativo: 'Atendimento Ativo',
   em_expansao: 'Em expansão',
-  nacional: 'Nacional',
+  nacional: 'Todo o Brasil',
 };

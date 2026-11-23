@@ -69,51 +69,56 @@ export function Navigation() {
   return (
     <>
       <header
-        className={`fixed z-50 transition-all duration-500 ${
-          isMobileMenuOpen ? "max-lg:pointer-events-none max-lg:opacity-0" : ""
-        } ${
-          isScrolled
+        className={`fixed z-50 transition-all duration-500 ${isMobileMenuOpen ? "max-lg:pointer-events-none max-lg:opacity-0" : ""
+          } ${isScrolled
             ? "top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4"
             : "top-0 left-0 right-0"
-        }`}
+          }`}
       >
         <nav
-          className={`mx-auto transition-all duration-500 ${
-            isScrolled
-              ? "bg-background/90 backdrop-blur-2xl border border-border/70 rounded-2xl shadow-xl shadow-black/25 max-w-[1240px]"
-              : "bg-transparent max-w-[1400px]"
-          }`}
+          className={`mx-auto transition-all duration-500 ${isScrolled
+            ? "bg-background/90 backdrop-blur-2xl border border-border/70 rounded-2xl shadow-xl shadow-black/25 max-w-[1240px]"
+            : "bg-transparent max-w-[1400px]"
+            }`}
         >
           <div
-            className={`flex items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-500 ${
-              isScrolled ? "h-14" : "h-18 sm:h-20"
-            }`}
+            className={`flex items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-500 ${isScrolled ? "h-14" : "h-18 sm:h-20"
+              }`}
           >
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group shrink-0">
-              <div className="relative flex items-center gap-2.5">
+              <div className="relative flex items-center gap-3">
                 <Image
                   src="/icon.png"
                   alt={`${siteConfig.name} - Desenvolvimento Web e Sistemas`}
-                  width={isScrolled ? 32 : 38}
-                  height={isScrolled ? 32 : 38}
-                  className={`object-contain transition-all duration-500 logo-glow ${
-                    isScrolled ? "w-8 h-8" : "w-9 h-9 sm:w-10 sm:h-10"
-                  }`}
+                  width={isScrolled ? 38 : 46}
+                  height={isScrolled ? 38 : 46}
+                  className={`object-contain shrink-0 transition-all duration-500 logo-glow ${isScrolled ? "w-[34px] h-[34px] sm:w-[36px] sm:h-[36px]" : "w-[42px] h-[42px] sm:w-[46px] sm:h-[46px]"
+                    }`}
                   priority
                 />
-                <div className="flex items-center gap-1.5">
+                <div className="flex flex-col items-center justify-center leading-none select-none">
+                  <div className="flex items-start">
+                    <span
+                      className={`font-brand font-bold tracking-[-0.02em] brand-gradient transition-all duration-500 ${isScrolled ? "text-[18px] sm:text-[20px]" : "text-[21px] sm:text-[23px]"
+                        }`}
+                    >
+                      {siteConfig.shortName}
+                    </span>
+                    <span
+                      className={`font-brand font-bold text-sky-400 select-none transition-all duration-500 ${isScrolled
+                        ? "text-[8px] -mt-0.5 ml-0.5"
+                        : "text-[9px] sm:text-[10px] -mt-0.5 ml-0.5"
+                        }`}
+                    >
+                      ®
+                    </span>
+                  </div>
                   <span
-                    className={`${
-                      isScrolled ? "text-xl" : "text-xl sm:text-2xl"
-                    } font-display brand-gradient transition-all duration-500`}
-                  >
-                    {siteConfig.shortName}
-                  </span>
-                  <span
-                    className={`text-muted-foreground font-mono mt-1 transition-all duration-500 ${
-                      isScrolled ? "text-[10px]" : "text-[10px] sm:text-xs"
-                    }`}
+                    className={`font-brand font-bold uppercase text-white tracking-[0.26em] pl-[0.26em] transition-all duration-500 ${isScrolled
+                      ? "text-[7.5px] sm:text-[8px] mt-0.5"
+                      : "text-[8.5px] sm:text-[9.5px] mt-1"
+                      }`}
                   >
                     {siteConfig.brandSuffix}
                   </span>
@@ -140,9 +145,8 @@ export function Navigation() {
               <div className="hidden sm:flex items-center shrink-0">
                 <Button
                   size="sm"
-                  className={`cta-primary rounded-full transition-all duration-500 font-medium border-0 gap-2 ${
-                    isScrolled ? "px-4 h-8 text-xs" : "px-5 h-9 text-sm"
-                  }`}
+                  className={`cta-primary rounded-full transition-all duration-500 font-medium border-0 gap-2 ${isScrolled ? "px-4 h-8 text-xs" : "px-5 h-9 text-sm"
+                    }`}
                   asChild
                 >
                   <a
@@ -175,11 +179,10 @@ export function Navigation() {
 
       {/* Menu Mobile & Tablet Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 z-[60] transition-all duration-300 ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`lg:hidden fixed inset-0 z-[60] transition-all duration-300 ${isMobileMenuOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+          }`}
         style={{
           background: "rgba(8, 16, 35, 0.98)",
           backdropFilter: "blur(20px)",
@@ -192,18 +195,25 @@ export function Navigation() {
             <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center gap-2.5"
+              className="flex items-center gap-3"
             >
               <Image
                 src="/icon.png"
                 alt={siteConfig.name}
-                width={36}
-                height={36}
-                className="w-9 h-9 object-contain logo-glow"
+                width={44}
+                height={44}
+                className="w-11 h-11 object-contain logo-glow shrink-0"
               />
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl font-display brand-gradient">{siteConfig.shortName}</span>
-                <span className="text-[10px] text-muted-foreground font-mono mt-0.5">
+              <div className="flex flex-col items-center justify-center leading-none select-none">
+                <div className="flex items-start">
+                  <span className="text-xl font-brand font-bold tracking-[-0.02em] brand-gradient">
+                    {siteConfig.shortName}
+                  </span>
+                  <span className="text-[10px] font-brand font-bold text-sky-400 -mt-0.5 ml-0.5 select-none">
+                    ®
+                  </span>
+                </div>
+                <span className="text-[9px] font-brand font-bold uppercase text-white tracking-[0.26em] pl-[0.26em] mt-1">
                   {siteConfig.brandSuffix}
                 </span>
               </div>

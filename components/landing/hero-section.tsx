@@ -18,9 +18,9 @@ const realImpactMarquee = [
 ];
 
 type Props = {
-  /** Números reais, calculados a partir de lib/data.ts na página. */
-  projects: number;
-  states: number;
+  /** Opcional: números reais caso queira exibir em outro ponto */
+  projects?: number;
+  states?: number;
 };
 
 export function HeroSection({ projects, states }: Props) {
@@ -58,11 +58,11 @@ export function HeroSection({ projects, states }: Props) {
 
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 pt-28 sm:pt-32 lg:pt-36">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          {/* Selo com prova real */}
+          {/* Selo com foco em impacto e eficiência operacional */}
           <div className="mb-6 hero-rise">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm text-primary font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              + de {projects} projetos entregues em {states} estados
+              Automação inteligente e eficiência operacional
             </span>
           </div>
 
@@ -72,9 +72,8 @@ export function HeroSection({ projects, states }: Props) {
             </span>
             <span className="block text-3xl sm:text-5xl lg:text-6xl h-[1.3em] overflow-visible">
               <span
-                className={`inline-block brand-gradient px-1.5 pb-2 transition-all duration-300 ${
-                  animating ? "opacity-0 translate-y-3 motion-reduce:translate-y-0" : "opacity-100 translate-y-0"
-                }`}
+                className={`inline-block brand-gradient px-1.5 pb-2 transition-all duration-300 ${animating ? "opacity-0 translate-y-3 motion-reduce:translate-y-0" : "opacity-100 translate-y-0"
+                  }`}
                 style={{ lineHeight: "1.22" }}
               >
                 {words[wordIndex]}
@@ -107,10 +106,10 @@ export function HeroSection({ projects, states }: Props) {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#cases"
+              href="/servicos"
               className="inline-flex items-center justify-center gap-2 h-13 sm:h-14 px-6 sm:px-7 text-sm sm:text-base rounded-full border border-border bg-card/60 backdrop-blur-sm text-foreground hover:border-primary/50 hover:bg-card/90 transition-all font-medium"
             >
-              Ver projetos
+              Ver serviços
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
