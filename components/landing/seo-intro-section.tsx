@@ -18,19 +18,19 @@ export function SeoIntroSection() {
           </div>
           <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">
             Sede em{' '}
-            <Link href="/atendimento/cascavel" className="text-primary hover:underline">
+            <Link href="/atendimento/cascavel" className="text-primary underline underline-offset-2 decoration-primary/50 hover:decoration-primary">
               Cascavel/PR
             </Link>
             , com clientes em{' '}
-            <Link href="/atendimento/blumenau" className="text-primary hover:underline">
+            <Link href="/atendimento/blumenau" className="text-primary underline underline-offset-2 decoration-primary/50 hover:decoration-primary">
               Blumenau/SC
             </Link>
             ,{' '}
-            <Link href="/atendimento/guanambi" className="text-primary hover:underline">
+            <Link href="/atendimento/guanambi" className="text-primary underline underline-offset-2 decoration-primary/50 hover:decoration-primary">
               Guanambi/BA
             </Link>{' '}
             e{' '}
-            <Link href="/atendimento/toledo" className="text-primary hover:underline">
+            <Link href="/atendimento/toledo" className="text-primary underline underline-offset-2 decoration-primary/50 hover:decoration-primary">
               Toledo/PR
             </Link>
             . Presencial na região e por vídeo em todo o Brasil.

@@ -44,7 +44,18 @@ export function HeroShowcase() {
   const [active, setActive] = useState(0);
   const [pausedAt, setPausedAt] = useState(0);
   const [reduced, setReduced] = useState(false);
+  // Slides que já ficaram visíveis (centro ou laterais). Os outros só baixam a
+  // imagem quando chegam perto, em vez de carregar os 7 prints de uma vez.
+  const [seen, setSeen] = useState<Set<number>>(() => new Set([slides.length - 1, 0, 1]));
   const n = slides.length;
+
+  useEffect(() => {
+    setSeen((prev) => {
+      const next = [(active - 1 + n) % n, active, (active + 1) % n, (active + 2) % n];
+      if (next.every((i) => prev.has(i))) return prev;
+      return new Set([...prev, ...next]);
+    });
+  }, [active, n]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -100,6 +111,7 @@ export function HeroShowcase() {
               onClick={() => goTo(i)}
               tabIndex={Math.abs(offset) === 1 ? 0 : -1}
               aria-hidden={Math.abs(offset) > 1}
+              inert={Math.abs(offset) > 1}
               aria-label={offset === 0 ? s.label : `Mostrar ${s.label}`}
               className={`absolute left-1/2 top-0 w-full sm:w-[64%] max-w-[720px] text-left transition-all duration-700 ease-out ${positionClass(offset, reduced)} ${
                 offset === 0 ? "cursor-default" : "cursor-pointer"
@@ -113,7 +125,8 @@ export function HeroShowcase() {
                 width={s.width}
                 height={s.height}
                 priority={i === 0}
-                sizes="(min-width: 640px) 720px, 100vw"
+                deferImage={!seen.has(i)}
+                sizes="(min-width: 640px) 720px, 92vw"
               />
             </button>
           );
@@ -128,18 +141,23 @@ export function HeroShowcase() {
         <span className="text-xs sm:text-sm text-muted-foreground" aria-live="polite">
           {slides[active].label}
         </span>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center">
           {slides.map((s, i) => (
+            // Área de toque de 24px+ (o ponto visível continua pequeno).
             <button
               key={s.src}
               type="button"
               onClick={() => goTo(i)}
               aria-label={`Ir para ${s.label}`}
               aria-current={i === active}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === active ? "w-6 brand-gradient-bg" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground/70"
-              }`}
-            />
+              className="group h-8 min-w-6 px-1 flex items-center justify-center"
+            >
+              <span
+                className={`block h-1.5 rounded-full transition-all duration-300 ${
+                  i === active ? "w-6 brand-gradient-bg" : "w-1.5 bg-muted-foreground/40 group-hover:bg-muted-foreground/70"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

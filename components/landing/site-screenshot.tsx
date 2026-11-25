@@ -12,6 +12,8 @@ type Props = {
   height?: number;
   /** Recorta em 16:10 a partir do canto superior esquerdo (para cards de mesma altura). */
   cover?: boolean;
+  /** Só desenha a moldura (sem baixar a imagem ainda). Usado no carrossel. */
+  deferImage?: boolean;
 };
 
 /** Print de um site de cliente dentro de uma moldura de navegador. */
@@ -25,6 +27,7 @@ export function SiteScreenshot({
   width = 1200,
   height = 750,
   cover,
+  deferImage,
 }: Props) {
   const domain = url?.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
   return (
@@ -45,14 +48,17 @@ export function SiteScreenshot({
       </div>
       {cover ? (
         <div className="relative aspect-[16/10]">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes={sizes ?? '(min-width: 1024px) 600px, 100vw'}
-            priority={priority}
-            className="object-cover object-left-top"
-          />
+          {!deferImage && (
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes={sizes ?? '(min-width: 1024px) 600px, 100vw'}
+              preload={priority}
+              fetchPriority={priority ? 'high' : undefined}
+              className="object-cover object-left-top"
+            />
+          )}
         </div>
       ) : (
         <Image
@@ -61,7 +67,8 @@ export function SiteScreenshot({
           width={width}
           height={height}
           sizes={sizes ?? '(min-width: 1024px) 600px, 100vw'}
-          priority={priority}
+          preload={priority}
+          fetchPriority={priority ? 'high' : undefined}
           className="w-full h-auto block"
         />
       )}

@@ -43,7 +43,11 @@ export function LeadForm({ className, variant = 'full' }: LeadFormProps) {
   const pathname = usePathname();
   const widgetRef = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [scriptReady, setScriptReady] = useState(false);
+  // O script do captcha (Turnstile) é pesado: só carrega quando o formulário
+  // está chegando na tela ou quando a pessoa interage com ele.
+  const [loadCaptcha, setLoadCaptcha] = useState(false);
   const [token, setToken] = useState('');
   const [phone, setPhone] = useState('');
   const [status, setStatus] = useState<Status>('idle');
@@ -65,7 +69,27 @@ export function LeadForm({ className, variant = 'full' }: LeadFormProps) {
 
   useEffect(() => {
     // Script já carregado por outra montagem (navegação client-side).
-    if ((window as TurnstileWindow).turnstile) setScriptReady(true);
+    if ((window as TurnstileWindow).turnstile) {
+      setLoadCaptcha(true);
+      setScriptReady(true);
+      return;
+    }
+    const el = formRef.current;
+    if (!el || !('IntersectionObserver' in window)) {
+      setLoadCaptcha(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setLoadCaptcha(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '300px 0px' },
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -150,7 +174,7 @@ export function LeadForm({ className, variant = 'full' }: LeadFormProps) {
 
   return (
     <>
-      {SITE_KEY && (
+      {SITE_KEY && loadCaptcha && (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
           strategy="afterInteractive"
@@ -159,6 +183,8 @@ export function LeadForm({ className, variant = 'full' }: LeadFormProps) {
       )}
 
       <form
+        ref={formRef}
+        onFocusCapture={() => setLoadCaptcha(true)}
         onSubmit={onSubmit}
         className={cn(
           'rounded-2xl sm:rounded-3xl border border-border/80 bg-background/60 p-5 sm:p-7 space-y-3',

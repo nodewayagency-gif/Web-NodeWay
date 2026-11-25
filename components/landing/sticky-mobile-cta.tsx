@@ -20,6 +20,7 @@ export function StickyMobileCta({ href, label }: { href: string; label: string }
   return (
     <div
       aria-hidden={!visible}
+      inert={!visible}
       className={`fixed bottom-0 inset-x-0 z-40 lg:hidden border-t border-border bg-background/95 backdrop-blur px-4 py-3 transition-transform duration-300 ${
         visible ? 'translate-y-0' : 'translate-y-full pointer-events-none'
       }`}

@@ -188,6 +188,7 @@ export function Navigation() {
           backdropFilter: "blur(20px)",
         }}
         aria-hidden={!isMobileMenuOpen}
+        inert={!isMobileMenuOpen}
       >
         <div className="flex flex-col h-full max-w-lg mx-auto">
           {/* Top bar */}

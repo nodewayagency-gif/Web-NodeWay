@@ -134,7 +134,7 @@ export function HeroSection({ projects, states }: Props) {
         </div>
 
         {/* Vitrine com prints reais (carrossel) */}
-        <div className="hero-rise" style={{ animationDelay: "0.45s" }}>
+        <div className="hero-rise-lcp">
           <HeroShowcase />
         </div>
       </div>

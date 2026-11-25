@@ -697,7 +697,7 @@ export default function PlanosPage() {
             href={CRM_PLANOS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="text-primary underline underline-offset-2"
           >
             crm.nodewayagency.com.br/planos
           </a>
